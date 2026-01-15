@@ -1,49 +1,32 @@
 "use client";
-
+import Image from "next/image";
 type Props = {
   onStart: () => void;
 };
 
 export default function StartScreen({ onStart }: Props) {
   return (
-    <Screen>
-      <div style={{ marginBottom: 48 }}>
-        <h1 style={{ fontSize: 48, letterSpacing: 4 }}>HITSTER</h1>
-        <p style={{ opacity: 0.6 }}>Music Timeline Game</p>
+    <div className="flex flex-col items-center justify-center h-screen w-screen bg-black text-white p-6">
+      <Image
+        alt="speakers"
+        src="/images/speakers.png"
+        width={300}
+        height={300}
+        className="w-[40vw] object-fill mb-18"
+      />
+      <div className="mb-10 text-center">
+        <h1 className="text-4xl font-semibold tracking-widest uppercase ">
+          Beat Track
+        </h1>
+        <p className="opacity-60 text-lg mt-2">Muzyczna Linia Czasu</p>
       </div>
 
-      <button onClick={onStart} style={buttonStyle}>
+      <button
+        onClick={onStart}
+        className="Btn text-xl cairo uppercase px-8 py-3 rounded-xl mb-10  text-white font-semibold"
+      >
         Zagraj teraz
       </button>
-    </Screen>
-  );
-}
-
-function Screen({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        background: "#000",
-        color: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        padding: 24,
-      }}
-    >
-      {children}
     </div>
   );
 }
-
-const buttonStyle: React.CSSProperties = {
-  fontSize: 24,
-  padding: "16px 32px",
-  borderRadius: 12,
-  border: "none",
-  cursor: "pointer",
-};
