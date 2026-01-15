@@ -15,24 +15,21 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    async function loadAndPlay() {
+    async function load() {
       try {
         const res = await fetch(`/api/card/${cardId}/play`);
-        if (!res.ok) throw new Error("Nie można odtworzyć");
+        if (!res.ok) throw new Error();
 
         const { previewUrl } = await res.json();
-
         audioRef.current = new Audio(previewUrl);
-        audioRef.current.play();
-        setPlaying(true);
         setLoading(false);
-      } catch (e) {
+      } catch {
         setError("Błąd odtwarzania");
         setLoading(false);
       }
     }
 
-    loadAndPlay();
+    load();
 
     return () => {
       audioRef.current?.pause();
@@ -40,13 +37,30 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     };
   }, [cardId]);
 
+  function handlePlay() {
+    if (!audioRef.current) return;
+
+    audioRef.current
+      .play()
+      .then(() => setPlaying(true))
+      .catch(() => setError("Nie można odtworzyć"));
+  }
+
   return (
     <Screen>
       {loading && <p>🎵 Ładowanie…</p>}
+      {!loading && !playing && !error && (
+        <button
+          onClick={handlePlay}
+          style={{ fontSize: 24, padding: "16px 32px" }}
+        >
+          ▶ PLAY
+        </button>
+      )}
 
       {error && <p>{error}</p>}
 
-      {!loading && !error && (
+      {playing && (
         <>
           <Vinyl spinning={playing} />
 
