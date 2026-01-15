@@ -8,29 +8,36 @@ type Props = {
 };
 
 export default function PlayScreen({ cardId, onNext }: Props) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [src, setSrc] = useState<string | null>(null);
 
   useEffect(() => {
     async function load() {
       try {
         const res = await fetch(`/api/card/${cardId}/play`);
-        if (!res.ok) throw new Error();
+        if (!res.ok) throw new Error("API error");
 
         const { previewUrl } = await res.json();
-        // tylko przypisujemy, nie odtwarzamy
-        audioRef.current = new Audio(previewUrl);
+        setSrc(previewUrl);
         setLoading(false);
-      } catch {
-        setError("Błąd odtwarzania");
+      } catch (e) {
+        setError("Błąd ładowania audio");
         setLoading(false);
       }
     }
 
     load();
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    };
   }, [cardId]);
 
   function handlePlay() {
@@ -39,50 +46,34 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     audioRef.current
       .play()
       .then(() => setPlaying(true))
-      .catch(() => setError("Nie można odtworzyć"));
+      .catch(() => setError("Autoplay zablokowany"));
   }
 
   return (
-    <Screen>
+    <div style={screenStyle}>
       {loading && <p>🎵 Ładowanie…</p>}
+      {error && <p>{error}</p>}
+
       {!loading && !playing && !error && (
-        <button
-          onClick={() => {
-            if (!audioRef.current) return;
-            audioRef.current
-              .play()
-              .then(() => setPlaying(true))
-              .catch((err) => setError("Nie można odtworzyć: " + err));
-          }}
-          style={{ fontSize: 24, padding: "16px 32px" }}
-        >
+        <button onClick={handlePlay} style={playButtonStyle}>
           ▶ PLAY
         </button>
       )}
 
-      {error && <p>{error}</p>}
+      {playing && <Vinyl />}
+
+      <audio ref={audioRef} src={src ?? undefined} preload="auto" />
 
       {playing && (
-        <>
-          <Vinyl spinning={playing} />
-
-          <button
-            onClick={onNext}
-            style={{
-              marginTop: 48,
-              opacity: 0.7,
-              fontSize: 16,
-            }}
-          >
-            Następny utwór
-          </button>
-        </>
+        <button onClick={onNext} style={{ marginTop: 40, opacity: 0.6 }}>
+          Następny utwór
+        </button>
       )}
-    </Screen>
+    </div>
   );
 }
 
-function Vinyl({ spinning }: { spinning: boolean }) {
+function Vinyl() {
   return (
     <div
       style={{
@@ -90,40 +81,27 @@ function Vinyl({ spinning }: { spinning: boolean }) {
         height: 220,
         borderRadius: "50%",
         border: "8px solid #444",
-        animation: spinning ? "spin 2s linear infinite" : "none",
+        animation: "spin 2s linear infinite",
       }}
     />
   );
 }
 
-function Screen({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        background: "#000",
-        color: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        padding: 24,
-      }}
-    >
-      <style jsx global>{`
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
+const screenStyle: React.CSSProperties = {
+  height: "100vh",
+  width: "100vw",
+  background: "#000",
+  color: "#fff",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
-      {children}
-    </div>
-  );
-}
+const playButtonStyle: React.CSSProperties = {
+  fontSize: 24,
+  padding: "16px 32px",
+  borderRadius: 12,
+  border: "none",
+  cursor: "pointer",
+};
