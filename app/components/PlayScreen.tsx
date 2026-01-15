@@ -21,6 +21,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
         if (!res.ok) throw new Error();
 
         const { previewUrl } = await res.json();
+        // tylko przypisujemy, nie odtwarzamy
         audioRef.current = new Audio(previewUrl);
         setLoading(false);
       } catch {
@@ -30,11 +31,6 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     }
 
     load();
-
-    return () => {
-      audioRef.current?.pause();
-      audioRef.current = null;
-    };
   }, [cardId]);
 
   function handlePlay() {
@@ -51,7 +47,13 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       {loading && <p>🎵 Ładowanie…</p>}
       {!loading && !playing && !error && (
         <button
-          onClick={handlePlay}
+          onClick={() => {
+            if (!audioRef.current) return;
+            audioRef.current
+              .play()
+              .then(() => setPlaying(true))
+              .catch((err) => setError("Nie można odtworzyć: " + err));
+          }}
           style={{ fontSize: 24, padding: "16px 32px" }}
         >
           ▶ PLAY
