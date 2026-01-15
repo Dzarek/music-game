@@ -10,98 +10,70 @@ type Props = {
 export default function PlayScreen({ cardId, onNext }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [playing, setPlaying] = useState(false);
   const [src, setSrc] = useState<string | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
+  // 1️⃣ pobranie audio
   useEffect(() => {
-    async function load() {
-      try {
-        const res = await fetch(`/api/card/${cardId}/play`);
-        if (!res.ok) throw new Error("API error");
-
-        const { previewUrl } = await res.json();
-        setSrc(previewUrl);
-        setLoading(false);
-      } catch (e) {
-        setError("Błąd ładowania audio");
-        setLoading(false);
-      }
-    }
-
-    load();
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-    };
+    fetch(`/api/card/${cardId}/play`)
+      .then((res) => {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .then(({ previewUrl }) => setSrc(previewUrl))
+      .catch(() => setError("Błąd ładowania audio"));
   }, [cardId]);
 
-  function handlePlay() {
-    if (!audioRef.current) return;
+  // 2️⃣ AUTO-PLAY po ustawieniu src
+  useEffect(() => {
+    if (!src) return;
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    audioRef.current
+    audio
       .play()
       .then(() => setPlaying(true))
-      .catch(() => setError("Autoplay zablokowany"));
-  }
+      .catch(() => {
+        // fallback – rzadko, ale możliwe
+        setError("Nie można odtworzyć utworu");
+      });
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, [src]);
 
   return (
-    <div style={screenStyle}>
-      {loading && <p>🎵 Ładowanie…</p>}
-      {error && <p>{error}</p>}
+    <div className="flex h-screen w-screen flex-col items-center justify-center bg-black text-white">
+      {/* ERROR */}
+      {error && <p className="text-sm text-red-400">{error}</p>}
 
-      {!loading && !playing && !error && (
-        <button onClick={handlePlay} style={playButtonStyle}>
-          ▶ PLAY
-        </button>
+      {/* VINYL / LOADING */}
+      {!error && (
+        <div className="relative flex h-56 w-56 items-center justify-center">
+          <div
+            className={`h-full w-full rounded-full border-8 border-zinc-700 ${
+              playing ? "animate-spin" : "opacity-40"
+            }`}
+          />
+          <div className="absolute h-4 w-4 rounded-full bg-zinc-500" />
+        </div>
       )}
 
-      {playing && <Vinyl />}
-
-      <audio ref={audioRef} src={src ?? undefined} preload="auto" />
-
+      {/* NEXT */}
       {playing && (
-        <button onClick={onNext} style={{ marginTop: 40, opacity: 0.6 }}>
+        <button
+          onClick={onNext}
+          className="mt-10 text-sm opacity-60 transition hover:opacity-100"
+        >
           Następny utwór
         </button>
       )}
+
+      {/* AUDIO MUSI BYĆ W DOM */}
+      <audio ref={audioRef} src={src ?? undefined} preload="auto" />
     </div>
   );
 }
-
-function Vinyl() {
-  return (
-    <div
-      style={{
-        width: 220,
-        height: 220,
-        borderRadius: "50%",
-        border: "8px solid #444",
-        animation: "spin 2s linear infinite",
-      }}
-    />
-  );
-}
-
-const screenStyle: React.CSSProperties = {
-  height: "100vh",
-  width: "100vw",
-  background: "#000",
-  color: "#fff",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
-const playButtonStyle: React.CSSProperties = {
-  fontSize: 24,
-  padding: "16px 32px",
-  borderRadius: 12,
-  border: "none",
-  cursor: "pointer",
-};

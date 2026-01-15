@@ -12,46 +12,43 @@ const SCANNER_ID = "qr-reader";
 
 export default function ScanScreen({ onScan, onCancel }: Props) {
   const qrCodeRef = useRef<Html5Qrcode | null>(null);
+  const hasScannedRef = useRef(false);
 
   useEffect(() => {
-    qrCodeRef.current = new Html5Qrcode(SCANNER_ID);
+    const qr = new Html5Qrcode(SCANNER_ID);
+    qrCodeRef.current = qr;
 
-    qrCodeRef.current
-      .start(
-        { facingMode: "environment" },
-        {
-          fps: 10,
-          qrbox: (viewfinderWidth, viewfinderHeight) => {
-            const size = Math.min(viewfinderWidth, viewfinderHeight) * 0.8;
-            return { width: size, height: size };
-          },
+    qr.start(
+      { facingMode: "environment" },
+      {
+        fps: 10,
+        qrbox: (vw, vh) => {
+          const size = Math.min(vw, vh) * 0.8;
+          return { width: size, height: size };
         },
-        (decodedText) => {
-          // Tylko jeśli instancja istnieje
-          if (qrCodeRef.current) {
-            qrCodeRef.current
-              .stop()
-              .then(() => {
-                qrCodeRef.current = null;
-                onScan(decodedText);
-              })
-              .catch(() => {
-                // jeśli już zatrzymany, nadal wywołujemy onScan
-                qrCodeRef.current = null;
-                onScan(decodedText);
-              });
-          }
-        },
-        (errorMessage) => {
-          // ignorujemy błędy podczas skanowania
-        }
-      )
-      .catch((err) => {
-        alert("Nie można uruchomić kamery: " + err);
-      });
+      },
+      (decodedText) => {
+        if (hasScannedRef.current) return;
+        hasScannedRef.current = true;
+
+        // 🔑 wyciągamy ID z URL
+        const match = decodedText.match(/\/card\/([^/]+)/);
+        const cardId = match ? match[1] : decodedText;
+
+        qr.stop().finally(() => {
+          qrCodeRef.current = null;
+          onScan(cardId);
+        });
+      },
+      (_errorMessage) => {
+        // 🔇 ignorujemy błędy skanowania (normalne)
+      }
+    ).catch((err) => {
+      alert("Nie można uruchomić kamery: " + err);
+    });
 
     return () => {
-      // Cleanup przy unmount
+      hasScannedRef.current = true;
       if (qrCodeRef.current) {
         qrCodeRef.current.stop().catch(() => {});
         qrCodeRef.current = null;
@@ -61,17 +58,10 @@ export default function ScanScreen({ onScan, onCancel }: Props) {
 
   return (
     <Screen>
-      <div id={SCANNER_ID} style={{ width: "100%" }} />
+      <div id={SCANNER_ID} className="w-full max-w-md" />
 
       {onCancel && (
-        <button
-          onClick={onCancel}
-          style={{
-            marginTop: 24,
-            opacity: 0.6,
-            fontSize: 14,
-          }}
-        >
+        <button onClick={onCancel} className="mt-6 text-sm opacity-60">
           Anuluj
         </button>
       )}
@@ -81,19 +71,7 @@ export default function ScanScreen({ onScan, onCancel }: Props) {
 
 function Screen({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        background: "#000",
-        color: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 16,
-      }}
-    >
+    <div className="flex h-screen w-screen flex-col items-center justify-center bg-black p-4 text-white">
       {children}
     </div>
   );

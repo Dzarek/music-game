@@ -3,14 +3,11 @@
 import { useState } from "react";
 import StartScreen from "./components/StartScreen";
 import ScanScreen from "./components/ScanScreen";
-import PlayScreen from "./components/PlayScreen";
 
-type GameState = "start" | "scan" | "play";
+type GameState = "start" | "scan";
 
 export default function Page() {
   const [state, setState] = useState<GameState>("start");
-  const [cardId, setCardId] = useState<string | null>(null);
-  // const [cardId, setCardId] = useState("1");
 
   return (
     <>
@@ -19,15 +16,12 @@ export default function Page() {
       {state === "scan" && (
         <ScanScreen
           onScan={(id) => {
-            setCardId(id);
-            setState("play");
+            // QR skanowany WEWNĄTRZ aplikacji
+            // przekierowujemy na właściwy route
+            window.location.href = `/card/${id}`;
           }}
           onCancel={() => setState("start")}
         />
-      )}
-
-      {state === "play" && cardId && (
-        <PlayScreen cardId={cardId} onNext={() => setState("scan")} />
       )}
     </>
   );

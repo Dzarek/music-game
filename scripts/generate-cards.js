@@ -13,7 +13,7 @@ const MARGIN = 40;
 
 async function generateCard(doc, song) {
   // 1️⃣ QR Code (strona 1)
-  const qrData = `http://localhost:3000/card/${song.cardId}`;
+  const qrData = `https://music-game-dzarek.netlify.app/card/${song.cardId}`;
   const qrImage = await QRCode.toDataURL(qrData);
 
   doc.addPage({ size: [CARD_WIDTH, CARD_HEIGHT] });
