@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 
 type Props = {
@@ -11,10 +11,12 @@ type Props = {
 const SCANNER_ID = "qr-reader";
 
 export default function ScanScreen({ onScan, onCancel }: Props) {
-  useEffect(() => {
-    const qrCode = new Html5Qrcode(SCANNER_ID);
+  const qrCodeRef = useRef<Html5Qrcode | null>(null);
 
-    qrCode
+  useEffect(() => {
+    qrCodeRef.current = new Html5Qrcode(SCANNER_ID);
+
+    qrCodeRef.current
       .start(
         { facingMode: "environment" },
         {
@@ -25,18 +27,35 @@ export default function ScanScreen({ onScan, onCancel }: Props) {
           },
         },
         (decodedText) => {
-          qrCode.stop().then(() => {
-            onScan(decodedText);
-          });
+          // Tylko jeśli instancja istnieje
+          if (qrCodeRef.current) {
+            qrCodeRef.current
+              .stop()
+              .then(() => {
+                qrCodeRef.current = null;
+                onScan(decodedText);
+              })
+              .catch(() => {
+                // jeśli już zatrzymany, nadal wywołujemy onScan
+                qrCodeRef.current = null;
+                onScan(decodedText);
+              });
+          }
         },
-        () => {}
+        (errorMessage) => {
+          // ignorujemy błędy podczas skanowania
+        }
       )
-      .catch(() => {
-        alert("Nie można uruchomić kamery");
+      .catch((err) => {
+        alert("Nie można uruchomić kamery: " + err);
       });
 
     return () => {
-      qrCode.stop().catch(() => {});
+      // Cleanup przy unmount
+      if (qrCodeRef.current) {
+        qrCodeRef.current.stop().catch(() => {});
+        qrCodeRef.current = null;
+      }
     };
   }, [onScan]);
 
