@@ -9,5 +9,7 @@ export default function CardPage() {
 
   if (!id) return null;
 
-  return <PlayScreen cardId={id} onNext={() => router.push("/")} />;
+  return (
+    <PlayScreen cardId={id} onNext={() => router.push("/?autostart=true")} />
+  );
 }

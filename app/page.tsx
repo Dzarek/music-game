@@ -1,26 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StartScreen from "./components/StartScreen";
 import ScanScreen from "./components/ScanScreen";
 
-type GameState = "start" | "scan";
+type Screen = "start" | "scan";
+
+type AppState = {
+  screen: Screen;
+  autoStart: boolean;
+};
 
 export default function Page() {
-  const [state, setState] = useState<GameState>("start");
+  const [appState, setAppState] = useState<AppState>({
+    screen: "start",
+    autoStart: false,
+  });
+
+  useEffect(() => {
+    if (window.location.search.includes("autostart=true")) {
+      // 🔹 ustawienie stanu w setTimeout, aby uniknąć warningu
+      setTimeout(() => {
+        setAppState({ screen: "scan", autoStart: true });
+        window.history.replaceState({}, "", "/");
+      }, 0);
+    }
+  }, []);
 
   return (
     <>
-      {state === "start" && <StartScreen onStart={() => setState("scan")} />}
+      {appState.screen === "start" && (
+        <StartScreen
+          onStart={() => setAppState({ screen: "scan", autoStart: true })}
+        />
+      )}
 
-      {state === "scan" && (
+      {appState.screen === "scan" && (
         <ScanScreen
+          autoStart={appState.autoStart}
           onScan={(id) => {
-            // QR skanowany WEWNĄTRZ aplikacji
-            // przekierowujemy na właściwy route
-            window.location.href = `/card/${id}`;
+            window.location.href = `/card/${id}?fromscan=true`;
           }}
-          onCancel={() => setState("start")}
+          onCancel={() => setAppState({ screen: "start", autoStart: false })}
         />
       )}
     </>

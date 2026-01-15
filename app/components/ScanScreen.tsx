@@ -6,46 +6,48 @@ import { Html5Qrcode } from "html5-qrcode";
 type Props = {
   onScan: (cardId: string) => void;
   onCancel?: () => void;
+  autoStart?: boolean;
 };
 
 const SCANNER_ID = "qr-reader";
 
-export default function ScanScreen({ onScan, onCancel }: Props) {
+export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
   const qrCodeRef = useRef<Html5Qrcode | null>(null);
   const hasScannedRef = useRef(false);
 
   useEffect(() => {
-    const qr = new Html5Qrcode(SCANNER_ID);
-    qrCodeRef.current = qr;
+    const startScanner = () => {
+      const qr = new Html5Qrcode(SCANNER_ID);
+      qrCodeRef.current = qr;
 
-    qr.start(
-      { facingMode: "environment" },
-      {
-        fps: 10,
-        qrbox: (vw, vh) => {
-          const size = Math.min(vw, vh) * 0.8;
-          return { width: size, height: size };
+      qr.start(
+        { facingMode: "environment" },
+        {
+          fps: 10,
+          qrbox: (vw, vh) => {
+            const size = Math.min(vw, vh) * 0.8;
+            return { width: size, height: size };
+          },
         },
-      },
-      (decodedText) => {
-        if (hasScannedRef.current) return;
-        hasScannedRef.current = true;
+        (decodedText) => {
+          if (hasScannedRef.current) return;
+          hasScannedRef.current = true;
 
-        // 🔑 wyciągamy ID z URL
-        const match = decodedText.match(/\/card\/([^/]+)/);
-        const cardId = match ? match[1] : decodedText;
+          const match = decodedText.match(/\/card\/([^/?]+)/);
+          const cardId = match ? match[1] : decodedText;
 
-        qr.stop().finally(() => {
-          qrCodeRef.current = null;
-          onScan(cardId);
-        });
-      },
-      (_errorMessage) => {
-        // 🔇 ignorujemy błędy skanowania (normalne)
-      }
-    ).catch((err) => {
-      alert("Nie można uruchomić kamery: " + err);
-    });
+          qr.stop().finally(() => {
+            qrCodeRef.current = null;
+            onScan(cardId);
+          });
+        },
+        (_err) => {}
+      ).catch((err) => alert("Nie można uruchomić kamery: " + err));
+    };
+
+    if (autoStart) {
+      startScanner();
+    }
 
     return () => {
       hasScannedRef.current = true;
@@ -54,14 +56,17 @@ export default function ScanScreen({ onScan, onCancel }: Props) {
         qrCodeRef.current = null;
       }
     };
-  }, [onScan]);
+  }, [onScan, autoStart]);
 
   return (
     <Screen>
       <div id={SCANNER_ID} className="w-full max-w-md" />
 
       {onCancel && (
-        <button onClick={onCancel} className="mt-6 text-sm opacity-60">
+        <button
+          onClick={onCancel}
+          className="mt-10 text-lg font-semibold opacity-60"
+        >
           Anuluj
         </button>
       )}
