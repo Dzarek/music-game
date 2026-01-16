@@ -10,9 +10,9 @@ export default function StartScreen({ onStart }: Props) {
       <Image
         alt="speakers"
         src="/images/speakers.png"
-        width={300}
-        height={300}
-        className="w-[40vw] object-fill mb-18"
+        width={500}
+        height={500}
+        className="w-[50vw] object-fill mb-18"
       />
       <div className="mb-10 text-center">
         <h1 className="text-4xl font-semibold tracking-widest uppercase ">

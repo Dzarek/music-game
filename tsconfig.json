@@ -29,7 +29,8 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts",
-    "download-music/fetch-playlist.js"
+    "download-music/fetch-playlist.js",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }
