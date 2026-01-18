@@ -25,10 +25,6 @@ body {
   font-family: var(--font-cairo);
 }
 
-.bitter {
-  font-family: var(--font-bitter);
-}
-
 /* From Uiverse.io by vinodjangid07 */
 
 .Btn {
@@ -36,12 +32,12 @@ body {
   border-radius: 10px;
   background: linear-gradient(
     to right,
-    #58201e,
-    #58201e,
-    rgb(40, 11, 11),
-    #58201e,
-    #58201e,
-    rgb(40, 11, 11)
+    #83221f,
+    #83221f,
+    rgb(78, 17, 17),
+    #83221f,
+    #83221f,
+    rgb(78, 17, 17)
   );
   background-size: 250%;
   background-position: left;
@@ -91,5 +87,18 @@ body {
   }
   100% {
     background-position: right;
+  }
+}
+
+.speakersAnimation {
+  animation: speakersAnimate 1s ease-in infinite alternate;
+}
+
+@keyframes speakersAnimate {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
   }
 }
