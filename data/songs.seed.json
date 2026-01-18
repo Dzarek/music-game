@@ -1,0 +1,271 @@
+[
+  {
+    "cardId": 1,
+    "title": "Billie Jean",
+    "artist": "Michael Jackson",
+    "year": "1982"
+  },
+  {
+    "cardId": 2,
+    "title": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses",
+    "year": "1987"
+  },
+  {
+    "cardId": 3,
+    "title": "Livin' on a Prayer",
+    "artist": "Bon Jovi",
+    "year": "1986"
+  },
+  {
+    "cardId": 4,
+    "title": "With or Without You",
+    "artist": "U2",
+    "year": "1987"
+  },
+  { "cardId": 5, "title": "Africa", "artist": "Toto", "year": "1982" },
+
+  {
+    "cardId": 6,
+    "title": "Smells Like Teen Spirit",
+    "artist": "Nirvana",
+    "year": "1991"
+  },
+  {
+    "cardId": 7,
+    "title": "Enter Sandman",
+    "artist": "Metallica",
+    "year": "1991"
+  },
+  { "cardId": 8, "title": "Wonderwall", "artist": "Oasis", "year": "1995" },
+  {
+    "cardId": 9,
+    "title": "Losing My Religion",
+    "artist": "R.E.M.",
+    "year": "1991"
+  },
+  {
+    "cardId": 10,
+    "title": "Zombie",
+    "artist": "The Cranberries",
+    "year": "1994"
+  },
+
+  {
+    "cardId": 11,
+    "title": "Californication",
+    "artist": "Red Hot Chili Peppers",
+    "year": "1999"
+  },
+  {
+    "cardId": 12,
+    "title": "In the End",
+    "artist": "Linkin Park",
+    "year": "2000"
+  },
+  {
+    "cardId": 13,
+    "title": "Seven Nation Army",
+    "artist": "The White Stripes",
+    "year": "2003"
+  },
+  {
+    "cardId": 14,
+    "title": "Mr. Brightside",
+    "artist": "The Killers",
+    "year": "2004"
+  },
+  {
+    "cardId": 15,
+    "title": "Boulevard of Broken Dreams",
+    "artist": "Green Day",
+    "year": "2004"
+  },
+
+  {
+    "cardId": 16,
+    "title": "Another Brick in the Wall",
+    "artist": "Pink Floyd",
+    "year": "1979"
+  },
+  {
+    "cardId": 17,
+    "title": "The Final Countdown",
+    "artist": "Europe",
+    "year": "1986"
+  },
+  {
+    "cardId": 18,
+    "title": "Eye of the Tiger",
+    "artist": "Survivor",
+    "year": "1982"
+  },
+  { "cardId": 19, "title": "Take On Me", "artist": "a-ha", "year": "1985" },
+  {
+    "cardId": 20,
+    "title": "Don't Stop Believin'",
+    "artist": "Journey",
+    "year": "1981"
+  },
+
+  {
+    "cardId": 21,
+    "title": "Przeżyj to sam",
+    "artist": "Lombard",
+    "year": "1982"
+  },
+  {
+    "cardId": 22,
+    "title": "Autobiografia",
+    "artist": "Perfect",
+    "year": "1983"
+  },
+  {
+    "cardId": 23,
+    "title": "Nie płacz Ewka",
+    "artist": "Perfect",
+    "year": "1981"
+  },
+  {
+    "cardId": 24,
+    "title": "Mniej niż zero",
+    "artist": "Lady Pank",
+    "year": "1984"
+  },
+  {
+    "cardId": 25,
+    "title": "Kryzysowa narzeczona",
+    "artist": "Lady Pank",
+    "year": "1982"
+  },
+
+  {
+    "cardId": 26,
+    "title": "Jolka, Jolka pamiętasz",
+    "artist": "Budka Suflera",
+    "year": "1982"
+  },
+  {
+    "cardId": 27,
+    "title": "Chcemy być sobą",
+    "artist": "Perfect",
+    "year": "1981"
+  },
+  {
+    "cardId": 28,
+    "title": "Cykady na Cykladach",
+    "artist": "Maanam",
+    "year": "1986"
+  },
+  {
+    "cardId": 29,
+    "title": "Kocham wolność",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1990"
+  },
+  {
+    "cardId": 30,
+    "title": "Dorosłe dzieci",
+    "artist": "Turbo",
+    "year": "1983"
+  },
+
+  {
+    "cardId": 31,
+    "title": "Wind of Change",
+    "artist": "Scorpions",
+    "year": "1990"
+  },
+  {
+    "cardId": 32,
+    "title": "Nothing Else Matters",
+    "artist": "Metallica",
+    "year": "1991"
+  },
+  { "cardId": 33, "title": "Creep", "artist": "Radiohead", "year": "1992" },
+  {
+    "cardId": 34,
+    "title": "Karma Police",
+    "artist": "Radiohead",
+    "year": "1997"
+  },
+  {
+    "cardId": 35,
+    "title": "Highway to Hell",
+    "artist": "AC/DC",
+    "year": "1979"
+  },
+
+  { "cardId": 36, "title": "Back in Black", "artist": "AC/DC", "year": "1980" },
+  {
+    "cardId": 37,
+    "title": "November Rain",
+    "artist": "Guns N' Roses",
+    "year": "1991"
+  },
+  {
+    "cardId": 38,
+    "title": "Knockin' on Heaven's Door",
+    "artist": "Guns N' Roses",
+    "year": "1992"
+  },
+  {
+    "cardId": 39,
+    "title": "Enjoy the Silence",
+    "artist": "Depeche Mode",
+    "year": "1990"
+  },
+  {
+    "cardId": 40,
+    "title": "Personal Jesus",
+    "artist": "Depeche Mode",
+    "year": "1989"
+  },
+
+  {
+    "cardId": 41,
+    "title": "The Scientist",
+    "artist": "Coldplay",
+    "year": "2002"
+  },
+  { "cardId": 42, "title": "Clocks", "artist": "Coldplay", "year": "2002" },
+  { "cardId": 43, "title": "Uprising", "artist": "Muse", "year": "2009" },
+  { "cardId": 44, "title": "Starlight", "artist": "Muse", "year": "2006" },
+  {
+    "cardId": 45,
+    "title": "Are You Gonna Be My Girl",
+    "artist": "Jet",
+    "year": "2003"
+  },
+
+  {
+    "cardId": 46,
+    "title": "Ironic",
+    "artist": "Alanis Morissette",
+    "year": "1995"
+  },
+  {
+    "cardId": 47,
+    "title": "Man in the Mirror",
+    "artist": "Michael Jackson",
+    "year": "1988"
+  },
+  {
+    "cardId": 48,
+    "title": "Beat It",
+    "artist": "Michael Jackson",
+    "year": "1982"
+  },
+  {
+    "cardId": 49,
+    "title": "Take Me Out",
+    "artist": "Franz Ferdinand",
+    "year": "2004"
+  },
+  {
+    "cardId": 50,
+    "title": "Use Somebody",
+    "artist": "Kings of Leon",
+    "year": "2008"
+  }
+]
