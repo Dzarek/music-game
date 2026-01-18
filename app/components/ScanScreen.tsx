@@ -41,7 +41,7 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
             onScan(cardId);
           });
         },
-        (_err) => {}
+        (_err) => {},
       ).catch((err) => alert("Nie można uruchomić kamery: " + err));
     };
 
@@ -59,25 +59,17 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
   }, [onScan, autoStart]);
 
   return (
-    <Screen>
+    <div className="flex h-dvh w-screen flex-col items-center justify-center bg-black p-4 text-white">
       <div id={SCANNER_ID} className="w-full max-w-md" />
 
       {onCancel && (
         <button
           onClick={onCancel}
-          className="mt-10 text-lg font-semibold opacity-60"
+          className="mt-10 text-xl uppercase font-semibold opacity-60"
         >
           Anuluj
         </button>
       )}
-    </Screen>
-  );
-}
-
-function Screen({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center bg-black p-4 text-white">
-      {children}
     </div>
   );
 }

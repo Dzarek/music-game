@@ -6,7 +6,7 @@ type Props = {
 
 export default function StartScreen({ onStart }: Props) {
   return (
-    <div className="flex flex-col items-center justify-center h-screen w-screen bg-black text-white p-6">
+    <div className="flex flex-col items-center justify-center h-dvh w-screen bg-black text-white p-6">
       <Image
         alt="speakers"
         src="/images/speakers.png"

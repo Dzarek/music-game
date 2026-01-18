@@ -66,9 +66,9 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   }
 
   return (
-    <div className="flex relative h-screen w-screen flex-col items-center justify-between bg-black text-white ">
+    <div className="flex relative h-dvh w-screen flex-col items-center justify-between bg-black text-white ">
       {/* ERROR */}
-      {/* {error && <p className="text-sm text-red-400">{error}</p>} */}
+      {error && <p className="text-sm text-red-400">{error}</p>}
 
       <div className="relative w-full h-4/5">
         <video
