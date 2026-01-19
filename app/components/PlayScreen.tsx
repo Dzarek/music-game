@@ -70,7 +70,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       {/* ERROR */}
       {error && <p className="text-sm text-red-400">{error}</p>}
 
-      <div className="relative w-full h-4/5">
+      <div className="relative w-full h-[80dvh]">
         <video
           ref={videoRef}
           src={video}
@@ -93,7 +93,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       </div>
       <button
         onClick={onNext}
-        className="absolute h-1/5 bottom-0 left-1/2 -translate-x-1/2 text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
+        className="absolute h-[20dvh] bottom-0 left-1/2 -translate-x-1/2 text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
       >
         Następny utwór
         <ImNext className="text-4xl" />

@@ -35,8 +35,19 @@ async function drawCard(doc, song) {
     margins: { top: 0, bottom: 0, left: 0, right: 0 },
   });
 
-  doc.rect(0, 0, SIZE, SIZE).fill(FRONT_BG);
+  // 🖤 tło karty
+  doc.rect(0, 0, SIZE, SIZE).fill("#000000");
 
+  // ⬜ białe pole pod QR (quiet zone)
+  const whiteSize = qrSize + 40;
+  const whiteOffset = (SIZE - whiteSize) / 2;
+  const RADIUS = 16;
+
+  doc
+    .roundedRect(whiteOffset, whiteOffset, whiteSize, whiteSize, RADIUS)
+    .fill("#ffffff");
+
+  // 📱 QR
   doc.image(qr, qrOffset, qrOffset, {
     width: qrSize,
     height: qrSize,
