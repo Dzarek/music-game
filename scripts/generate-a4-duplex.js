@@ -124,11 +124,15 @@ function drawBackPage(doc, cards) {
   });
 
   let i = 0;
+
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
       if (!cards[i]) return;
 
-      const x = START_X + col * (CARD_SIZE + GAP);
+      // 🔁 ODBICIE LUSTRZANE KOLUMN (KLUCZ DO DUPLEX)
+      const reversedCol = COLS - 1 - col;
+
+      const x = START_X + reversedCol * (CARD_SIZE + GAP);
       const y = START_Y + row * (CARD_SIZE + GAP);
 
       drawBackAt(doc, cards[i], x, y, CARD_SIZE);

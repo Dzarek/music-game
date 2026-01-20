@@ -7,26 +7,35 @@ const songs = JSON.parse(fs.readFileSync(inputPath, "utf8"));
 
 async function enrich() {
   for (const song of songs) {
-    const q = encodeURIComponent(`${song.artist} ${song.title}`);
-    console.log(`🔍 ${song.artist} – ${song.title}`);
+    const query = `${song.artist} ${song.title}`;
+    const q = encodeURIComponent(query);
 
-    const res = await fetch(`https://api.deezer.com/search?q=${q}`);
-    const data = await res.json();
+    console.log(`🔍 ${query}`);
 
-    if (data.data?.length) {
-      song.deezerTrackId = data.data[0].id;
-      song.previewUrl = data.data[0].preview;
-      console.log("   ✅ OK");
-    } else {
-      console.log("   ❌ NIE ZNALEZIONO");
+    try {
+      const res = await fetch(`https://api.deezer.com/search?q=${q}`);
+      const data = await res.json();
+
+      if (data.data && data.data.length > 0) {
+        const track = data.data[0];
+
+        song.deezerTrackId = track.id;
+        console.log(`   ✅ Deezer ID: ${track.id}`);
+      } else {
+        console.log("   ❌ Nie znaleziono");
+        song.deezerTrackId = null;
+      }
+    } catch (err) {
+      console.log("   ❌ Błąd API");
+      song.deezerTrackId = null;
     }
 
-    // mały delay żeby nie triggerować limitów
+    // ⏱️ delay – Deezer nie lubi spamowania
     await new Promise((r) => setTimeout(r, 300));
   }
 
-  fs.writeFileSync(outputPath, JSON.stringify(songs, null, 2));
-  console.log("\n🎉 data/songs.json GOTOWE");
+  fs.writeFileSync(outputPath, JSON.stringify(songs, null, 2), "utf8");
+  console.log("\n🎉 data/songs.json wygenerowane");
 }
 
 enrich();

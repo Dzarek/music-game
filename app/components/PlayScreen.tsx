@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FaCirclePlay, FaCircleStop } from "react-icons/fa6";
 import { ImNext } from "react-icons/im";
+import Loading from "./Loading";
 
 type Props = {
   cardId: string;
@@ -12,9 +13,9 @@ type Props = {
 export default function PlayScreen({ cardId, onNext }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const [src, setSrc] = useState<string | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [src, setSrc] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const video = "/video2.mp4";
@@ -26,8 +27,14 @@ export default function PlayScreen({ cardId, onNext }: Props) {
         if (!res.ok) throw new Error();
         return res.json();
       })
-      .then(({ previewUrl }) => setSrc(previewUrl))
-      .catch(() => setError("Błąd ładowania audio"));
+      .then(({ previewUrl }) => {
+        setSrc(previewUrl);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError("Błąd ładowania audio");
+        setLoading(false);
+      });
   }, [cardId]);
 
   // 2️⃣ AUTO-PLAY po ustawieniu src
@@ -52,6 +59,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   function togglePlay() {
     const audio = audioRef.current;
     const video = videoRef.current;
+    console.log(audio);
     if (!audio || !video) return;
 
     if (playing) {
@@ -68,29 +76,35 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   return (
     <div className="flex relative h-dvh w-screen flex-col items-center justify-between bg-black text-white ">
       {/* ERROR */}
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && (
+        <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl text-bold uppercase text-center text-red-700">
+          {error}
+        </p>
+      )}
+      {loading && !error && <Loading />}
+      {!error && !loading && (
+        <div className="relative w-full h-[80dvh] z-10">
+          <video
+            ref={videoRef}
+            src={video}
+            muted
+            loop
+            playsInline
+            className="inset-0 w-full h-full mx-auto object-cover brightness-60"
+          />
 
-      <div className="relative w-full h-[80dvh]">
-        <video
-          ref={videoRef}
-          src={video}
-          muted
-          loop
-          playsInline
-          className="inset-0 w-full h-full mx-auto object-cover brightness-60"
-        />
-
-        <button
-          onClick={togglePlay}
-          className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
-        >
-          {playing ? (
-            <FaCircleStop className="text-7xl" />
-          ) : (
-            <FaCirclePlay className="text-7xl" />
-          )}
-        </button>
-      </div>
+          <button
+            onClick={togglePlay}
+            className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
+          >
+            {playing ? (
+              <FaCircleStop className="text-7xl" />
+            ) : (
+              <FaCirclePlay className="text-7xl" />
+            )}
+          </button>
+        </div>
+      )}
       <button
         onClick={onNext}
         className="absolute h-[20dvh] bottom-0 left-1/2 -translate-x-1/2 text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
