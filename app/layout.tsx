@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Beat Track",
   description: "Muzyczna Linia Czasu",
   manifest: "/manifest.json",
+  themeColor: "#000000",
   keywords: ["muzyka", "impreza"],
   openGraph: {
     title: "Beat Track",
@@ -34,8 +35,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${cairo.variable} antialiased`}>{children}</body>
+    <html lang="pl">
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
+
+      <body className={`${cairo.variable} antialiased bg-black`}>
+        {children}
+      </body>
     </html>
   );
 }

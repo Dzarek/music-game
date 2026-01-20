@@ -6,6 +6,7 @@
   "start_url": "/",
   "name": "Beat Track",
   "short_name": "Beat Track",
+  "orientation": "portrait",
   "icons": [
     {
       "purpose": "maskable",
