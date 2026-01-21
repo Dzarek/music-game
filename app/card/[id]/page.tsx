@@ -10,7 +10,7 @@ export default function CardPage() {
   if (!id) return null;
 
   return (
-    <div className="h-dvh w-dvw">
+    <div className="h-dvh w-vw overflow-hidden">
       <PlayScreen cardId={id} onNext={() => router.push("/?autostart=true")} />
     </div>
   );

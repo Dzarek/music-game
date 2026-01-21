@@ -74,7 +74,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   }
 
   return (
-    <div className="flex relative min-h-svh pb-[env(safe-area-inset-bottom)] w-screen flex-col bg-black text-white">
+    <div className="flex relative h-full w-full flex-col bg-black text-white">
       {/* ERROR */}
       {error && (
         <p className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl text-bold uppercase text-center text-red-700">
@@ -83,7 +83,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       )}
       {loading && !error && <Loading />}
       {!error && !loading ? (
-        <div className="relative w-full flex-1">
+        <div className="fixed top-0 left-0 w-full h-[80%]">
           <video
             ref={videoRef}
             src={video}
@@ -105,11 +105,11 @@ export default function PlayScreen({ cardId, onNext }: Props) {
           </button>
         </div>
       ) : (
-        <div className="bg-black relative w-full flex-1"></div>
+        <div className="bg-black relative w-full h-[80%]"></div>
       )}
       <button
         onClick={onNext}
-        className="shrink-0 text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
+        className="fixed bottom-0 left-0 h-[20%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
       >
         Następny utwór
         <ImNext className="text-4xl" />

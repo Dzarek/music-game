@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
     <div
-      className={`flex h-screen md:w-[80vw] flex-col items-center justify-center `}
+      className={`flex fixed z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:w-[80vw] flex-col items-center justify-center `}
     >
       {/* <!-- From Uiverse.io by vishalmet -->  */}
       <div className="w-32 h-32 relative flex items-center justify-center mb-10">
