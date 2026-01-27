@@ -54,12 +54,20 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     const video = videoRef.current;
     if (!audio || !video) return;
 
-    const onPlay = () => setPlaying(true);
-    const onPause = () => setPlaying(false);
+    const onPlay = () => {
+      setPlaying(true);
+      video.play().catch(() => {});
+    };
+
+    const onPause = () => {
+      setPlaying(false);
+      video.pause();
+    };
+
     const onEnded = () => {
+      setPlaying(false);
       video.pause();
       video.currentTime = 0;
-      setPlaying(false);
     };
 
     audio.addEventListener("play", onPlay);
@@ -75,16 +83,12 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
   function togglePlay() {
     const audio = audioRef.current;
-    const video = videoRef.current;
-    if (!audio || !video) return;
+    if (!audio) return;
 
     if (audio.paused) {
-      Promise.all([audio.play(), video.play()]).catch(() =>
-        setError("Nie można odtworzyć utworu"),
-      );
+      audio.play().catch(() => setError("Nie można odtworzyć utworu"));
     } else {
       audio.pause();
-      video.pause();
     }
   }
 
