@@ -39,7 +39,7 @@ async function drawCardAt(doc, song, x, y, size) {
   const whiteSize = qrSize + size * 0.12;
   const whiteOffset = (size - whiteSize) / 2;
 
-  const url = `https://music-game-dzarek.netlify.app/card/${song.cardId}`;
+  const url = `https://beat-track.netlify.app/card/${song.cardId}`;
   const qr = await QRCode.toDataURL(url, { margin: 0 });
 
   // ⬛ tło karty

@@ -14,17 +14,40 @@ const songs = JSON.parse(
 const SIZE = 300;
 const QR_RATIO = 0.7;
 const FRONT_BG = "#000000";
-const REDS = ["#5a0000", "#7a0000", "#9a0000", "#b00000"];
+const COLORS = [
+  "#8B0000", // dark red
+  "#B22222", // firebrick
+  "#C0392B", // red
+  "#D35400", // orange
+  "#E67E22", // carrot
+  "#F39C12", // orange yellow
+
+  "#16A085", // teal
+  "#1ABC9C", // turquoise
+  "#27AE60", // green
+  "#2ECC71", // light green
+
+  "#2980B9", // blue
+  "#3498DB", // light blue
+  "#5DADE2", // sky blue
+
+  "#6C3483", // purple
+  "#8E44AD", // amethyst
+  "#AF7AC5", // light purple
+
+  "#7F8C8D", // gray
+  "#95A5A6", // light gray
+];
 
 const qrSize = SIZE * QR_RATIO;
 const qrOffset = (SIZE - qrSize) / 2;
 
-function randomRed() {
-  return REDS[Math.floor(Math.random() * REDS.length)];
+function randomColor() {
+  return COLORS[Math.floor(Math.random() * COLORS.length)];
 }
 
 async function drawCard(doc, song) {
-  const url = `https://music-game-dzarek.netlify.app/card/${song.cardId}`;
+  const url = `https://beat-track.netlify.app/card/${song.cardId}`;
   const qr = await QRCode.toDataURL(url, { margin: 0 });
 
   // ======================
@@ -61,7 +84,7 @@ async function drawCard(doc, song) {
     margins: { top: 0, bottom: 0, left: 0, right: 0 },
   });
 
-  doc.rect(0, 0, SIZE, SIZE).fill(randomRed());
+  doc.rect(0, 0, SIZE, SIZE).fill(randomColor());
 
   // 🎤 WYKONAWCA (góra)
   doc.fillColor("white");
@@ -79,6 +102,11 @@ async function drawCard(doc, song) {
   // 🔢 NUMER KARTY (prawy dół)
   doc.font(FONT_REGULAR).fontSize(9);
   doc.text(`#${song.cardId}`, SIZE - 28, SIZE - 18);
+
+  // 🌍 PL / MIX
+  const label = song.cardId <= 337 ? "PL" : "MIX";
+  doc.font(FONT_BOLD).fontSize(10);
+  doc.text(label, x + 6, y + SIZE - 16);
 }
 
 async function generate() {

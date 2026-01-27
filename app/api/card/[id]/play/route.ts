@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import songs from "@/data/songs.json";
+// import songs from "@/data/songs.json";
+import songs from "@/data/songs-pl.json";
 
 export async function GET(
   _: Request,

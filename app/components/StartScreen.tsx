@@ -12,7 +12,7 @@ export default function StartScreen({ onStart }: Props) {
         src="/images/speakers.png"
         width={500}
         height={500}
-        className="w-[50vw] object-fill mb-18 speakersAnimation"
+        className="w-[50vw] md:w-[15vw] object-fill mb-18 speakersAnimation"
       />
       <div className="mb-10 text-center">
         <h1 className="text-4xl font-semibold tracking-widest uppercase ">

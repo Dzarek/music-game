@@ -1,0 +1,1714 @@
+[
+  {
+    "cardId": 1,
+    "title": "Autobiografia",
+    "artist": "Perfect",
+    "year": "1982"
+  },
+  {
+    "cardId": 2,
+    "title": "Nie płacz Ewka",
+    "artist": "Perfect",
+    "year": "1981"
+  },
+  {
+    "cardId": 3,
+    "title": "Chcemy być sobą",
+    "artist": "Perfect",
+    "year": "1981"
+  },
+  {
+    "cardId": 4,
+    "title": "Przeżyj to sam",
+    "artist": "Lombard",
+    "year": "1982"
+  },
+  {
+    "cardId": 5,
+    "title": "Szklana pogoda",
+    "artist": "Lombard",
+    "year": "1983"
+  },
+  { "cardId": 6, "title": "Tacy sami", "artist": "Lady Pank", "year": "1988" },
+  {
+    "cardId": 7,
+    "title": "Mniej niż zero",
+    "artist": "Lady Pank",
+    "year": "1983"
+  },
+  {
+    "cardId": 8,
+    "title": "Zawsze tam gdzie ty",
+    "artist": "Lady Pank",
+    "year": "1990"
+  },
+  {
+    "cardId": 9,
+    "title": "Kryzysowa narzeczona",
+    "artist": "Lady Pank",
+    "year": "1984"
+  },
+  {
+    "cardId": 10,
+    "title": "Jolka, Jolka pamiętasz",
+    "artist": "Budka Suflera",
+    "year": "1982"
+  },
+
+  {
+    "cardId": 11,
+    "title": "Cień wielkiej góry",
+    "artist": "Budka Suflera",
+    "year": "1975"
+  },
+  {
+    "cardId": 12,
+    "title": "Bal wszystkich świętych",
+    "artist": "Budka Suflera",
+    "year": "1983"
+  },
+  {
+    "cardId": 13,
+    "title": "Takie tango",
+    "artist": "Budka Suflera",
+    "year": "1984"
+  },
+  {
+    "cardId": 14,
+    "title": "Dni których nie znamy",
+    "artist": "Marek Grechuta",
+    "year": "1971"
+  },
+  {
+    "cardId": 15,
+    "title": "Będziesz moją panią",
+    "artist": "Marek Grechuta",
+    "year": "1968"
+  },
+  {
+    "cardId": 16,
+    "title": "Jesteś lekiem na całe zło",
+    "artist": "Krystyna Prońko",
+    "year": "1980"
+  },
+  {
+    "cardId": 17,
+    "title": "Psalm stojących w kolejce",
+    "artist": "Krystyna Prońko",
+    "year": "1981"
+  },
+  {
+    "cardId": 18,
+    "title": "Róże Europy",
+    "artist": "Róże Europy",
+    "year": "1985"
+  },
+  {
+    "cardId": 19,
+    "title": "Jak Nie My To Kto",
+    "artist": "Mrozu",
+    "year": "2014"
+  },
+  { "cardId": 20, "title": "Arahja", "artist": "Kult", "year": "1991" },
+
+  { "cardId": 21, "title": "Baranek", "artist": "Kult", "year": "1997" },
+  {
+    "cardId": 22,
+    "title": "Gdy nie ma dzieci",
+    "artist": "Kult",
+    "year": "1997"
+  },
+  { "cardId": 23, "title": "Polska", "artist": "Kult", "year": "1987" },
+  {
+    "cardId": 24,
+    "title": "Cykady na Cykladach",
+    "artist": "Maanam",
+    "year": "1981"
+  },
+  {
+    "cardId": 25,
+    "title": "Kocham cię, kochanie moje",
+    "artist": "Maanam",
+    "year": "1983"
+  },
+  {
+    "cardId": 26,
+    "title": "Boskie Buenos",
+    "artist": "Maanam",
+    "year": "1980"
+  },
+  {
+    "cardId": 27,
+    "title": "Lipstick on the Glass",
+    "artist": "Maanam",
+    "year": "1984"
+  },
+  {
+    "cardId": 28,
+    "title": "Sen o Warszawie",
+    "artist": "Czesław Niemen",
+    "year": "1966"
+  },
+  {
+    "cardId": 29,
+    "title": "Pożyczony",
+    "artist": "Sylwia Grzeszczak",
+    "year": "2013"
+  },
+  {
+    "cardId": 30,
+    "title": "Jednego serca",
+    "artist": "Czesław Niemen",
+    "year": "1971"
+  },
+
+  {
+    "cardId": 31,
+    "title": "Windą do nieba",
+    "artist": "2 plus 1",
+    "year": "1981"
+  },
+  {
+    "cardId": 32,
+    "title": "Chodź, pomaluj mój świat",
+    "artist": "2 plus 1",
+    "year": "1971"
+  },
+  {
+    "cardId": 33,
+    "title": "Iść w stronę słońca",
+    "artist": "2 plus 1",
+    "year": "1981"
+  },
+  { "cardId": 34, "title": "Jesteś szalona", "artist": "Boys", "year": "1997" },
+  {
+    "cardId": 35,
+    "title": "Wolność",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1992"
+  },
+  {
+    "cardId": 36,
+    "title": "Kiedyś cię znajdę",
+    "artist": "Reni Jusis",
+    "year": "1999"
+  },
+  {
+    "cardId": 37,
+    "title": "Zakręcona",
+    "artist": "Reni Jusis",
+    "year": "2000"
+  },
+  {
+    "cardId": 38,
+    "title": "Dla Ciebie",
+    "artist": "Elektryczne Gitary",
+    "year": "1997"
+  },
+  {
+    "cardId": 39,
+    "title": "Kiler",
+    "artist": "Elektryczne Gitary",
+    "year": "1997"
+  },
+  {
+    "cardId": 40,
+    "title": "Człowiek z liściem",
+    "artist": "Elektryczne Gitary",
+    "year": "1995"
+  },
+
+  { "cardId": 41, "title": "Teksański", "artist": "Hey", "year": "1993" },
+  {
+    "cardId": 42,
+    "title": "Moja i twoja nadzieja",
+    "artist": "Hey",
+    "year": "1993"
+  },
+  { "cardId": 43, "title": "Zazdrość", "artist": "Hey", "year": "1996" },
+  { "cardId": 44, "title": "Agnieszka", "artist": "Łzy", "year": "2001" },
+  {
+    "cardId": 45,
+    "title": "Narcyz się nazywam",
+    "artist": "Łzy",
+    "year": "2003"
+  },
+  { "cardId": 46, "title": "Chciałabym", "artist": "Łzy", "year": "2004" },
+  {
+    "cardId": 47,
+    "title": "Lili",
+    "artist": "Enej",
+    "year": "2013"
+  },
+  {
+    "cardId": 48,
+    "title": "Aleja gwiazd",
+    "artist": "Zdzisława Sośnicka",
+    "year": "1987"
+  },
+  {
+    "cardId": 49,
+    "title": "Peron",
+    "artist": "Jamal",
+    "year": "2013"
+  },
+  {
+    "cardId": 50,
+    "title": "Co mi Panie dasz",
+    "artist": "Bajm",
+    "year": "1983"
+  },
+
+  {
+    "cardId": 51,
+    "title": "Biała flaga",
+    "artist": "Republika",
+    "year": "1983"
+  },
+  { "cardId": 52, "title": "Telefony", "artist": "Republika", "year": "1984" },
+  { "cardId": 53, "title": "Kombinat", "artist": "Republika", "year": "1983" },
+  {
+    "cardId": 54,
+    "title": "Obcy astronom",
+    "artist": "Republika",
+    "year": "1985"
+  },
+  {
+    "cardId": 55,
+    "title": "Nie pytaj o Polskę",
+    "artist": "Obywatel G.C.",
+    "year": "1988"
+  },
+
+  {
+    "cardId": 56,
+    "title": "Kocham wolność",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1990"
+  },
+  {
+    "cardId": 57,
+    "title": "Stachursky – Typ niepokorny",
+    "artist": "Stachursky",
+    "year": "1998"
+  },
+  {
+    "cardId": 58,
+    "title": "A Gdy Jest Już Ciemno",
+    "artist": "Feel",
+    "year": "2007"
+  },
+  { "cardId": 59, "title": "Essa", "artist": "De Mono", "year": "1996" },
+  {
+    "cardId": 60,
+    "title": "Kochać inaczej",
+    "artist": "De Mono",
+    "year": "1989"
+  },
+
+  {
+    "cardId": 61,
+    "title": "Statki na niebie",
+    "artist": "De Mono",
+    "year": "1992"
+  },
+  {
+    "cardId": 62,
+    "title": "Prawy do lewego",
+    "artist": "Kayah & Goran Bregović",
+    "year": "1999"
+  },
+  { "cardId": 63, "title": "Supermenka", "artist": "Kayah", "year": "1998" },
+  { "cardId": 64, "title": "Na językach", "artist": "Kayah", "year": "2001" },
+  { "cardId": 65, "title": "Testosteron", "artist": "Kayah", "year": "2003" },
+
+  {
+    "cardId": 66,
+    "title": "Niech żyje bal",
+    "artist": "Maryla Rodowicz",
+    "year": "1984"
+  },
+  {
+    "cardId": 67,
+    "title": "Małgośka",
+    "artist": "Maryla Rodowicz",
+    "year": "1973"
+  },
+  {
+    "cardId": 68,
+    "title": "To już było",
+    "artist": "Maryla Rodowicz",
+    "year": "1984"
+  },
+  {
+    "cardId": 69,
+    "title": "W Dobrą Stronę",
+    "artist": "Dawid Podsiadło",
+    "year": "2015"
+  },
+  {
+    "cardId": 70,
+    "title": "Kolorowe jarmarki",
+    "artist": "Maryla Rodowicz",
+    "year": "1977"
+  },
+
+  { "cardId": 71, "title": "Wehikuł czasu", "artist": "Dżem", "year": "1981" },
+  { "cardId": 72, "title": "Whisky", "artist": "Dżem", "year": "1984" },
+  {
+    "cardId": 73,
+    "title": "Czerwony jak cegła",
+    "artist": "Dżem",
+    "year": "1985"
+  },
+  { "cardId": 74, "title": "List do M.", "artist": "Dżem", "year": "1992" },
+  { "cardId": 75, "title": "Sen o Victorii", "artist": "Dżem", "year": "1994" },
+
+  {
+    "cardId": 76,
+    "title": "Annuszka",
+    "artist": "Krzysztof Zalewski",
+    "year": "2020"
+  },
+  { "cardId": 77, "title": "Biała armia", "artist": "Bajm", "year": "1990" },
+  { "cardId": 78, "title": "Szklanka wody", "artist": "Bajm", "year": "1987" },
+  {
+    "cardId": 79,
+    "title": "Józek, nie daruję ci tej nocy",
+    "artist": "Bajm",
+    "year": "1984"
+  },
+  { "cardId": 80, "title": "Ta sama chwila", "artist": "Bajm", "year": "1994" },
+
+  {
+    "cardId": 81,
+    "title": "Znak",
+    "artist": "Ewa Farna",
+    "year": "2013"
+  },
+  {
+    "cardId": 82,
+    "title": "Chłopaki nie płaczą",
+    "artist": "T.Love",
+    "year": "1997"
+  },
+  { "cardId": 83, "title": "King", "artist": "T.Love", "year": "1992" },
+  { "cardId": 84, "title": "Warszawa", "artist": "T.Love", "year": "1991" },
+  { "cardId": 85, "title": "Ajrisz", "artist": "T.Love", "year": "1992" },
+
+  { "cardId": 86, "title": "Czarny Alibaba", "artist": "Hey", "year": "1996" },
+  { "cardId": 87, "title": "Anioł", "artist": "Hey", "year": "2001" },
+  { "cardId": 88, "title": "List", "artist": "Hey", "year": "1995" },
+  { "cardId": 89, "title": "Moja droga", "artist": "Hey", "year": "1999" },
+  { "cardId": 90, "title": "Mimo wszystko", "artist": "Hey", "year": "2003" },
+
+  {
+    "cardId": 91,
+    "title": "Dla Mnie Masz Stajla",
+    "artist": "Trzeci Wymiar",
+    "year": "2003"
+  },
+  {
+    "cardId": 92,
+    "title": "Żałuję",
+    "artist": "Ewelina Flinta",
+    "year": "2003"
+  },
+  {
+    "cardId": 93,
+    "title": "Rysowane Tobie",
+    "artist": "Andrzej Piaseczny",
+    "year": "2018"
+  },
+  {
+    "cardId": 94,
+    "title": "Kropla Deszczu",
+    "artist": "Gabriel Fleszar",
+    "year": "1999"
+  },
+  {
+    "cardId": 95,
+    "title": "Orła cień",
+    "artist": "Varius Manx",
+    "year": "1996"
+  },
+
+  {
+    "cardId": 96,
+    "title": "Piosenka księżycowa",
+    "artist": "Varius Manx",
+    "year": "1994"
+  },
+  {
+    "cardId": 97,
+    "title": "Zanim zrozumiesz",
+    "artist": "Varius Manx",
+    "year": "1996"
+  },
+  {
+    "cardId": 98,
+    "title": "Ruchome piaski",
+    "artist": "Varius Manx",
+    "year": "1997"
+  },
+  {
+    "cardId": 99,
+    "title": "Lepsza Połowa",
+    "artist": "Mesajah",
+    "year": "2014"
+  },
+  { "cardId": 100, "title": "Gdzie jesteś", "artist": "Wilki", "year": "1992" },
+  {
+    "cardId": 101,
+    "title": "Son of the Blue Sky",
+    "artist": "Wilki",
+    "year": "1992"
+  },
+  { "cardId": 102, "title": "Baśka", "artist": "Wilki", "year": "2002" },
+  { "cardId": 103, "title": "Urke", "artist": "Wilki", "year": "2004" },
+  {
+    "cardId": 104,
+    "title": "Nie stało się nic",
+    "artist": "Wilki",
+    "year": "1994"
+  },
+  {
+    "cardId": 105,
+    "title": "Cień wielkiej góry",
+    "artist": "Budka Suflera",
+    "year": "1975"
+  },
+
+  {
+    "cardId": 106,
+    "title": "Jolka, Jolka pamiętasz",
+    "artist": "Budka Suflera",
+    "year": "1982"
+  },
+  {
+    "cardId": 107,
+    "title": "Takie tango",
+    "artist": "Budka Suflera",
+    "year": "1984"
+  },
+  {
+    "cardId": 108,
+    "title": "Bal wszystkich świętych",
+    "artist": "Budka Suflera",
+    "year": "1982"
+  },
+  {
+    "cardId": 109,
+    "title": "Twoje radio",
+    "artist": "Budka Suflera",
+    "year": "1983"
+  },
+  {
+    "cardId": 110,
+    "title": "Czas ołowiu",
+    "artist": "Budka Suflera",
+    "year": "1985"
+  },
+
+  {
+    "cardId": 111,
+    "title": "Autobiografia",
+    "artist": "Perfect",
+    "year": "1982"
+  },
+  {
+    "cardId": 112,
+    "title": "Nie płacz Ewka",
+    "artist": "Perfect",
+    "year": "1981"
+  },
+  {
+    "cardId": 113,
+    "title": "Chcemy być sobą",
+    "artist": "Perfect",
+    "year": "1981"
+  },
+  {
+    "cardId": 114,
+    "title": "Kołysanka dla nieznajomej",
+    "artist": "Perfect",
+    "year": "1985"
+  },
+  {
+    "cardId": 115,
+    "title": "Ale wkoło jest wesoło",
+    "artist": "Perfect",
+    "year": "1984"
+  },
+
+  {
+    "cardId": 116,
+    "title": "Przeżyj to sam",
+    "artist": "Lombard",
+    "year": "1982"
+  },
+  {
+    "cardId": 117,
+    "title": "Szklana pogoda",
+    "artist": "Lombard",
+    "year": "1983"
+  },
+  {
+    "cardId": 118,
+    "title": "Droga Pani z TV",
+    "artist": "Lombard",
+    "year": "1984"
+  },
+  {
+    "cardId": 119,
+    "title": "Gołębi puch",
+    "artist": "Lombard",
+    "year": "1982"
+  },
+  {
+    "cardId": 120,
+    "title": "Adriatyk – ocean gorący",
+    "artist": "Lombard",
+    "year": "1986"
+  },
+
+  {
+    "cardId": 121,
+    "title": "Mniej niż zero",
+    "artist": "Lady Pank",
+    "year": "1983"
+  },
+  {
+    "cardId": 122,
+    "title": "Zawsze tam gdzie ty",
+    "artist": "Lady Pank",
+    "year": "1990"
+  },
+  {
+    "cardId": 123,
+    "title": "Kryzysowa narzeczona",
+    "artist": "Lady Pank",
+    "year": "1983"
+  },
+  {
+    "cardId": 124,
+    "title": "Tańcz głupia, tańcz",
+    "artist": "Lady Pank",
+    "year": "1984"
+  },
+  {
+    "cardId": 125,
+    "title": "Na co komu dziś",
+    "artist": "Lady Pank",
+    "year": "1984"
+  },
+
+  {
+    "cardId": 126,
+    "title": "Wciąż bardziej obcy",
+    "artist": "Lady Pank",
+    "year": "1985"
+  },
+  {
+    "cardId": 127,
+    "title": "Szansa",
+    "artist": "Virgin",
+    "year": "2006"
+  },
+  {
+    "cardId": 128,
+    "title": "Dmuchawce, latawce, wiatr",
+    "artist": "Urszula",
+    "year": "1983"
+  },
+  {
+    "cardId": 129,
+    "title": "Malinowy król",
+    "artist": "Urszula",
+    "year": "1984"
+  },
+  {
+    "cardId": 130,
+    "title": "Konik na biegunach",
+    "artist": "Urszula",
+    "year": "1985"
+  },
+
+  {
+    "cardId": 131,
+    "title": "Cykady na Cykladach",
+    "artist": "Maanam",
+    "year": "1981"
+  },
+  {
+    "cardId": 132,
+    "title": "Boskie Buenos",
+    "artist": "Maanam",
+    "year": "1980"
+  },
+  {
+    "cardId": 133,
+    "title": "Kocham cię, kochanie moje",
+    "artist": "Maanam",
+    "year": "1983"
+  },
+  {
+    "cardId": 134,
+    "title": "Szare miraże",
+    "artist": "Maanam",
+    "year": "1984"
+  },
+  {
+    "cardId": 135,
+    "title": "Lipstick on the Glass",
+    "artist": "Maanam",
+    "year": "1986"
+  },
+
+  {
+    "cardId": 136,
+    "title": "Za Krokiem Krok",
+    "artist": "Cleo",
+    "year": "2019"
+  },
+  {
+    "cardId": 137,
+    "title": "Za ostatni grosz",
+    "artist": "Budka Suflera",
+    "year": "1982"
+  },
+  {
+    "cardId": 138,
+    "title": "Jest taki samotny dom",
+    "artist": "Budka Suflera",
+    "year": "1974"
+  },
+  {
+    "cardId": 139,
+    "title": "Tak tak to ja",
+    "artist": "Obywatel G.C.",
+    "year": "1988"
+  },
+  {
+    "cardId": 140,
+    "title": "Aniele",
+    "artist": "Mezo Liber",
+    "year": "2003"
+  },
+
+  {
+    "cardId": 141,
+    "title": "Chodź, pomaluj mój świat",
+    "artist": "2 plus 1",
+    "year": "1971"
+  },
+  {
+    "cardId": 142,
+    "title": "Iść w stronę słońca",
+    "artist": "2 plus 1",
+    "year": "1978"
+  },
+  {
+    "cardId": 143,
+    "title": "Windą do nieba",
+    "artist": "2 plus 1",
+    "year": "1981"
+  },
+  {
+    "cardId": 144,
+    "title": "Antidotum",
+    "artist": "Kasia Kowalska",
+    "year": "2002"
+  },
+  {
+    "cardId": 145,
+    "title": "Na Kolana",
+    "artist": "Kasia Cerekwicka",
+    "year": "2006"
+  },
+
+  {
+    "cardId": 146,
+    "title": "Kiler",
+    "artist": "Elektryczne Gitary",
+    "year": "1997"
+  },
+  {
+    "cardId": 147,
+    "title": "Co ty tutaj robisz",
+    "artist": "Elektryczne Gitary",
+    "year": "1996"
+  },
+  {
+    "cardId": 148,
+    "title": "Jestem z miasta",
+    "artist": "Elektryczne Gitary",
+    "year": "1990"
+  },
+  {
+    "cardId": 149,
+    "title": "Człowiek z liściem",
+    "artist": "Elektryczne Gitary",
+    "year": "1994"
+  },
+  {
+    "cardId": 150,
+    "title": "Ona jest pedałem",
+    "artist": "Elektryczne Gitary",
+    "year": "1993"
+  },
+
+  {
+    "cardId": 151,
+    "title": "Lato",
+    "artist": "Formacja Nieżywych Schabuff",
+    "year": "1995"
+  },
+  {
+    "cardId": 152,
+    "title": "Party",
+    "artist": "Oddział Zamknięty",
+    "year": "1984"
+  },
+  {
+    "cardId": 153,
+    "title": "Andzia",
+    "artist": "Oddział Zamknięty",
+    "year": "1985"
+  },
+  {
+    "cardId": 154,
+    "title": "Obudź się",
+    "artist": "Oddział Zamknięty",
+    "year": "1983"
+  },
+  {
+    "cardId": 155,
+    "title": "Twój ból jest lepszy niż mój",
+    "artist": "Kazik",
+    "year": "1991"
+  },
+
+  { "cardId": 156, "title": "12 groszy", "artist": "Kazik", "year": "1993" },
+  {
+    "cardId": 157,
+    "title": "Jeszcze Polska",
+    "artist": "Kazik",
+    "year": "1997"
+  },
+  { "cardId": 158, "title": "Spalam się", "artist": "Kazik", "year": "1991" },
+  { "cardId": 159, "title": "Baranek", "artist": "Kazik", "year": "1997" },
+  { "cardId": 160, "title": "Arahja", "artist": "Kult", "year": "1988" },
+
+  { "cardId": 161, "title": "Do Ani", "artist": "Kult", "year": "1991" },
+  {
+    "cardId": 162,
+    "title": "Gdy nie ma dzieci",
+    "artist": "Kult",
+    "year": "1998"
+  },
+  {
+    "cardId": 163,
+    "title": "Brooklyńska rada Żydów",
+    "artist": "Kult",
+    "year": "1997"
+  },
+  { "cardId": 164, "title": "Polska", "artist": "Kult", "year": "1987" },
+  {
+    "cardId": 165,
+    "title": "Komu bije dzwon",
+    "artist": "Kult",
+    "year": "1997"
+  },
+
+  {
+    "cardId": 166,
+    "title": "Zawsze tam gdzie ty (live)",
+    "artist": "Lady Pank",
+    "year": "1995"
+  },
+  {
+    "cardId": 167,
+    "title": "Niepokonani",
+    "artist": "Perfect",
+    "year": "1993"
+  },
+  { "cardId": 168, "title": "Raz po raz", "artist": "Perfect", "year": "1987" },
+  {
+    "cardId": 169,
+    "title": "Nie daj się",
+    "artist": "Perfect",
+    "year": "1991"
+  },
+  {
+    "cardId": 170,
+    "title": "Błękit",
+    "artist": "Roxie",
+    "year": "2025"
+  },
+
+  {
+    "cardId": 171,
+    "title": "Jestem kobietą",
+    "artist": "Edyta Górniak",
+    "year": "1995"
+  },
+  {
+    "cardId": 172,
+    "title": "To nie ja",
+    "artist": "Edyta Górniak",
+    "year": "1994"
+  },
+  {
+    "cardId": 173,
+    "title": "Dumka na dwa serca",
+    "artist": "Edyta Górniak & Mietek Szcześniak",
+    "year": "1999"
+  },
+  {
+    "cardId": 174,
+    "title": "Kolorowy wiatr",
+    "artist": "Edyta Górniak",
+    "year": "1995"
+  },
+  {
+    "cardId": 175,
+    "title": "Każdego Dnia",
+    "artist": "Mesajah",
+    "year": "2008"
+  },
+
+  {
+    "cardId": 176,
+    "title": "Ne Rozumiju",
+    "artist": "Vixen",
+    "year": "2023"
+  },
+  {
+    "cardId": 177,
+    "title": "Jak zapomnieć",
+    "artist": "Jeden Osiem L",
+    "year": "2003"
+  },
+  {
+    "cardId": 178,
+    "title": "A wszystko to",
+    "artist": "Ich Troje",
+    "year": "2001"
+  },
+  { "cardId": 179, "title": "Powiedz", "artist": "Ich Troje", "year": "2002" },
+  {
+    "cardId": 180,
+    "title": "Zawsze z tobą chciałbym być",
+    "artist": "Ich Troje",
+    "year": "1999"
+  },
+
+  {
+    "cardId": 181,
+    "title": "Keine Grenzen – Żadnych granic",
+    "artist": "Ich Troje",
+    "year": "2003"
+  },
+  {
+    "cardId": 182,
+    "title": "Adrenalina",
+    "artist": "Michał Szczygieł",
+    "year": "2023"
+  },
+  {
+    "cardId": 183,
+    "title": "Cień w dolinie mgieł",
+    "artist": "Wilki",
+    "year": "1994"
+  },
+  {
+    "cardId": 184,
+    "title": "Bang Bang",
+    "artist": "Sylwia Grzeszczak",
+    "year": "2023"
+  },
+  {
+    "cardId": 185,
+    "title": "Czerwone korale",
+    "artist": "Brathanki",
+    "year": "2000"
+  },
+
+  {
+    "cardId": 186,
+    "title": "Hej góry, hej góry",
+    "artist": "Brathanki",
+    "year": "2001"
+  },
+  {
+    "cardId": 187,
+    "title": "W kinie, w Lublinie",
+    "artist": "Brathanki",
+    "year": "2000"
+  },
+  {
+    "cardId": 188,
+    "title": "Poszłabym za tobą",
+    "artist": "Breakout",
+    "year": "1969"
+  },
+  {
+    "cardId": 189,
+    "title": "Wypijmy za błędy",
+    "artist": "Ryszard Rynkowski",
+    "year": "1994"
+  },
+  {
+    "cardId": 190,
+    "title": "Dziewczyny lubią brąz",
+    "artist": "Ryszard Rynkowski",
+    "year": "1992"
+  },
+
+  {
+    "cardId": 191,
+    "title": "Nie liczę godzin i lat",
+    "artist": "Andrzej Rybiński",
+    "year": "1985"
+  },
+  {
+    "cardId": 192,
+    "title": "Niech mówią, że to nie jest miłość",
+    "artist": "Piotr Rubik",
+    "year": "2006"
+  },
+  {
+    "cardId": 193,
+    "title": "Psalm dla Ciebie",
+    "artist": "Piotr Rubik",
+    "year": "2004"
+  },
+  {
+    "cardId": 194,
+    "title": "Co z nami będzie",
+    "artist": "Liber i Sylwia Grzeszczak",
+    "year": "2008"
+  },
+  {
+    "cardId": 195,
+    "title": "Do nieba, do piekła",
+    "artist": "Blue Café",
+    "year": "2004"
+  },
+
+  { "cardId": 196, "title": "Buziak", "artist": "Blue Café", "year": "2006" },
+  {
+    "cardId": 197,
+    "title": "Love Song",
+    "artist": "Blue Café",
+    "year": "2002"
+  },
+  {
+    "cardId": 198,
+    "title": "Nieprawda",
+    "artist": "Łukasz Zagrobelny",
+    "year": "2007"
+  },
+  {
+    "cardId": 199,
+    "title": "Skrzydlate Ręce",
+    "artist": "Enej",
+    "year": "2012"
+  },
+  {
+    "cardId": 200,
+    "title": "Superhero",
+    "artist": "Viki Gabor",
+    "year": "2020"
+  },
+  {
+    "cardId": 201,
+    "title": "Mój jest ten kawałek podłogi",
+    "artist": "Mr. Zoob",
+    "year": "1986"
+  },
+  { "cardId": 202, "title": "Sułtan", "artist": "Dżem", "year": "1989" },
+  { "cardId": 203, "title": "Whisky", "artist": "Dżem", "year": "1992" },
+  {
+    "cardId": 204,
+    "title": "Czerwony jak cegła",
+    "artist": "Dżem",
+    "year": "1985"
+  },
+  { "cardId": 205, "title": "Wehikuł czasu", "artist": "Dżem", "year": "1994" },
+
+  {
+    "cardId": 206,
+    "title": "Sen o Victorii",
+    "artist": "Dżem",
+    "year": "1989"
+  },
+  { "cardId": 207, "title": "List do M.", "artist": "Dżem", "year": "1990" },
+  {
+    "cardId": 208,
+    "title": "Naiwne pytania",
+    "artist": "Dżem",
+    "year": "1994"
+  },
+  {
+    "cardId": 209,
+    "title": "Skazany na bluesa",
+    "artist": "Dżem",
+    "year": "1992"
+  },
+  {
+    "cardId": 210,
+    "title": "Polski",
+    "artist": "Human",
+    "year": "2005"
+  },
+
+  {
+    "cardId": 211,
+    "title": "Biała flaga",
+    "artist": "Republika",
+    "year": "1983"
+  },
+  { "cardId": 212, "title": "Kombinat", "artist": "Republika", "year": "1983" },
+  { "cardId": 213, "title": "Telefony", "artist": "Republika", "year": "1984" },
+  {
+    "cardId": 214,
+    "title": "Nie pytaj o Polskę",
+    "artist": "Obywatel G.C.",
+    "year": "1988"
+  },
+  {
+    "cardId": 215,
+    "title": "Tak… Tak… To ja",
+    "artist": "Obywatel G.C.",
+    "year": "1988"
+  },
+
+  {
+    "cardId": 216,
+    "title": "Kocham wolność",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1992"
+  },
+  {
+    "cardId": 217,
+    "title": "O Ela",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1992"
+  },
+  {
+    "cardId": 218,
+    "title": "Kocham cię jak Irlandię",
+    "artist": "Kobranocka",
+    "year": "1988"
+  },
+  {
+    "cardId": 219,
+    "title": "List z pola boju",
+    "artist": "Kobranocka",
+    "year": "1987"
+  },
+  {
+    "cardId": 220,
+    "title": "Sztuka jest skarpetką kulawego",
+    "artist": "Kobranocka",
+    "year": "1989"
+  },
+
+  {
+    "cardId": 221,
+    "title": "Jej Czarne Oczy",
+    "artist": "Ivan I Delfin",
+    "year": "2005"
+  },
+  {
+    "cardId": 222,
+    "title": "Wszystko chuj",
+    "artist": "Elektryczne Gitary",
+    "year": "1995"
+  },
+  {
+    "cardId": 223,
+    "title": "Nie Dokazuj",
+    "artist": "Marek Grechuta",
+    "year": "1970"
+  },
+  { "cardId": 224, "title": "Makumba", "artist": "Big Cyc", "year": "1996" },
+  {
+    "cardId": 225,
+    "title": "Berlin Zachodni",
+    "artist": "Big Cyc",
+    "year": "1989"
+  },
+
+  {
+    "cardId": 226,
+    "title": "Rudy się żeni",
+    "artist": "Big Cyc",
+    "year": "1995"
+  },
+  { "cardId": 227, "title": "Długa noc", "artist": "IRA", "year": "1993" },
+  { "cardId": 228, "title": "Mój dom", "artist": "IRA", "year": "1993" },
+  { "cardId": 229, "title": "Nadzieja", "artist": "IRA", "year": "1995" },
+  { "cardId": 230, "title": "Wiara", "artist": "IRA", "year": "1996" },
+
+  { "cardId": 231, "title": "Teksański", "artist": "Hey", "year": "1993" },
+  {
+    "cardId": 232,
+    "title": "Moja i twoja nadzieja",
+    "artist": "Hey",
+    "year": "1993"
+  },
+  { "cardId": 233, "title": "Zazdrość", "artist": "Hey", "year": "1996" },
+  { "cardId": 234, "title": "Misie", "artist": "Hey", "year": "1997" },
+  {
+    "cardId": 235,
+    "title": "Cisza, ja i czas",
+    "artist": "Hey",
+    "year": "2001"
+  },
+
+  {
+    "cardId": 236,
+    "title": "Tin Pan Alley",
+    "artist": "Halina Frąckowiak",
+    "year": "1987"
+  },
+  {
+    "cardId": 237,
+    "title": "Długość dźwięku samotności",
+    "artist": "Myslovitz",
+    "year": "2000"
+  },
+  {
+    "cardId": 238,
+    "title": "Scenariusz dla moich sąsiadów",
+    "artist": "Myslovitz",
+    "year": "2001"
+  },
+  {
+    "cardId": 239,
+    "title": "Peggy Brown",
+    "artist": "Myslovitz",
+    "year": "2001"
+  },
+  {
+    "cardId": 240,
+    "title": "Z twarzą Marilyn Monroe",
+    "artist": "Myslovitz",
+    "year": "2001"
+  },
+
+  {
+    "cardId": 241,
+    "title": "Chłopaki nie płaczą",
+    "artist": "T.Love",
+    "year": "1997"
+  },
+  { "cardId": 242, "title": "Warszawa", "artist": "T.Love", "year": "1999" },
+  { "cardId": 243, "title": "King", "artist": "T.Love", "year": "1992" },
+  { "cardId": 244, "title": "Ajrisz", "artist": "T.Love", "year": "1994" },
+  {
+    "cardId": 245,
+    "title": "Nie, nie, nie",
+    "artist": "T.Love",
+    "year": "1992"
+  },
+
+  {
+    "cardId": 246,
+    "title": "No Co Ty",
+    "artist": "Oskar Cyms",
+    "year": "2025"
+  },
+  {
+    "cardId": 247,
+    "title": "Mniej niż zero (live)",
+    "artist": "Lady Pank",
+    "year": "1995"
+  },
+  { "cardId": 248, "title": "Biała armia", "artist": "Bajm", "year": "1990" },
+  {
+    "cardId": 249,
+    "title": "Co mi Panie dasz",
+    "artist": "Bajm",
+    "year": "1983"
+  },
+  {
+    "cardId": 250,
+    "title": "Józek, nie daruję ci tej nocy",
+    "artist": "Bajm",
+    "year": "1985"
+  },
+
+  {
+    "cardId": 251,
+    "title": "Nie ma wody na pustyni",
+    "artist": "Bajm",
+    "year": "1987"
+  },
+  { "cardId": 252, "title": "Szklanka wody", "artist": "Bajm", "year": "2000" },
+  {
+    "cardId": 253,
+    "title": "Modlitwa o złoty deszcz",
+    "artist": "Bajm",
+    "year": "1993"
+  },
+  {
+    "cardId": 254,
+    "title": "Płynie w nas gorąca krew",
+    "artist": "Bajm",
+    "year": "1986"
+  },
+  {
+    "cardId": 255,
+    "title": "Róże Europy",
+    "artist": "Róże Europy",
+    "year": "1985"
+  },
+
+  { "cardId": 256, "title": "Jedwab", "artist": "Róże Europy", "year": "1987" },
+  {
+    "cardId": 257,
+    "title": "Zodiak na Melanzu",
+    "artist": "Monopol",
+    "year": "2009"
+  },
+  {
+    "cardId": 258,
+    "title": "Runął już ostatni mur",
+    "artist": "Tilt",
+    "year": "1986"
+  },
+  {
+    "cardId": 259,
+    "title": "Lepszy Model",
+    "artist": "Kasia Klich",
+    "year": "2002"
+  },
+  {
+    "cardId": 260,
+    "title": "Ona By Tak Chciała",
+    "artist": "Ronnie Ferrari",
+    "year": "2019"
+  },
+
+  {
+    "cardId": 261,
+    "title": "Ku przyszłości",
+    "artist": "Dezerter",
+    "year": "1988"
+  },
+  {
+    "cardId": 262,
+    "title": "Spytaj milicjanta",
+    "artist": "Dezerter",
+    "year": "1987"
+  },
+  { "cardId": 263, "title": "Nienawiść", "artist": "Dezerter", "year": "1989" },
+  {
+    "cardId": 264,
+    "title": "Weź Nie Pytaj",
+    "artist": "Paweł Domagała",
+    "year": "2018"
+  },
+  {
+    "cardId": 265,
+    "title": "Hydropiekłowstąpienie",
+    "artist": "Lao Che",
+    "year": "2008"
+  },
+
+  { "cardId": 266, "title": "Zombi!", "artist": "Lao Che", "year": "2006" },
+  { "cardId": 267, "title": "Wojenka", "artist": "Lao Che", "year": "2010" },
+  { "cardId": 268, "title": "Everest", "artist": "Lao Che", "year": "2005" },
+  {
+    "cardId": 269,
+    "title": "W Stronę Słońca",
+    "artist": "Ewelina Lisowska",
+    "year": "2013"
+  },
+  { "cardId": 270, "title": "Drzwi", "artist": "O.N.A.", "year": "1998" },
+
+  {
+    "cardId": 271,
+    "title": "Kiedy powiem sobie dość",
+    "artist": "O.N.A.",
+    "year": "2000"
+  },
+  { "cardId": 272, "title": "Znalazłam", "artist": "O.N.A.", "year": "1999" },
+  { "cardId": 273, "title": "Krzyczę", "artist": "O.N.A.", "year": "1997" },
+  { "cardId": 274, "title": "Niekochana", "artist": "O.N.A.", "year": "1998" },
+  {
+    "cardId": 275,
+    "title": "Ona Jest Ze Snu",
+    "artist": "IRA",
+    "year": "2005"
+  },
+
+  { "cardId": 276, "title": "51", "artist": "TSA", "year": "1981" },
+  { "cardId": 277, "title": "Trzy zapałki", "artist": "TSA", "year": "1982" },
+  {
+    "cardId": 278,
+    "title": "Miliony Monet",
+    "artist": "Mrozu",
+    "year": "2009"
+  },
+  { "cardId": 279, "title": "Bez podtekstów", "artist": "TSA", "year": "1985" },
+  {
+    "cardId": 280,
+    "title": "Pokaż Na Co Cię Stać",
+    "artist": "Feel",
+    "year": "2009"
+  },
+
+  {
+    "cardId": 281,
+    "title": "Jestem Bogiem",
+    "artist": "Paktofonika",
+    "year": "2000"
+  },
+  {
+    "cardId": 282,
+    "title": "Chwile ulotne",
+    "artist": "Paktofonika",
+    "year": "2000"
+  },
+  {
+    "cardId": 283,
+    "title": "Priorytety",
+    "artist": "Paktofonika",
+    "year": "2000"
+  },
+  { "cardId": 284, "title": "Gdyby", "artist": "Paktofonika", "year": "2000" },
+  {
+    "cardId": 285,
+    "title": "Bałkanica",
+    "artist": "Piersi",
+    "year": "2013"
+  },
+
+  {
+    "cardId": 286,
+    "title": "Policeman",
+    "artist": "Jamal",
+    "year": "2005"
+  },
+  { "cardId": 287, "title": "Film", "artist": "Kaliber 44", "year": "1998" },
+  {
+    "cardId": 288,
+    "title": "Normalnie o tej porze",
+    "artist": "Kaliber 44",
+    "year": "1996"
+  },
+  {
+    "cardId": 289,
+    "title": "Plus i minus",
+    "artist": "Kaliber 44",
+    "year": "1998"
+  },
+  {
+    "cardId": 290,
+    "title": "Pieprz I Sól",
+    "artist": "Kasia Kowalska",
+    "year": "1996"
+  },
+
+  {
+    "cardId": 291,
+    "title": "Jesteś szalona",
+    "artist": "Boys",
+    "year": "1994"
+  },
+  { "cardId": 292, "title": "Wolność", "artist": "Boys", "year": "1996" },
+  {
+    "cardId": 293,
+    "title": "Ona tańczy dla mnie",
+    "artist": "Weekend",
+    "year": "2012"
+  },
+  {
+    "cardId": 294,
+    "title": "Przez twe oczy zielone",
+    "artist": "Akcent",
+    "year": "2014"
+  },
+  {
+    "cardId": 295,
+    "title": "W Dzień Gorącego Lata",
+    "artist": "Big Day",
+    "year": "1997"
+  },
+
+  {
+    "cardId": 296,
+    "title": "Lato 2000",
+    "artist": "Sami",
+    "year": "2000"
+  },
+  {
+    "cardId": 297,
+    "title": "Otwieram Wino",
+    "artist": "Sidney Polak Pezet",
+    "year": "2004"
+  },
+  {
+    "cardId": 298,
+    "title": "było, minęło",
+    "artist": "sanah",
+    "year": "2024"
+  },
+  {
+    "cardId": 299,
+    "title": "Na Falochronie",
+    "artist": "Emigranci",
+    "year": "1990"
+  },
+  { "cardId": 300, "title": "Żono moja", "artist": "Masters", "year": "2015" },
+  {
+    "cardId": 301,
+    "title": "Jesień - Tańcuj",
+    "artist": "L.U.C.",
+    "year": "2023"
+  },
+  {
+    "cardId": 302,
+    "title": "W aucie",
+    "artist": "Sokół",
+    "year": "2007"
+  },
+  {
+    "cardId": 303,
+    "title": "My Słowianie",
+    "artist": "Donatan",
+    "year": "2013"
+  },
+  {
+    "cardId": 304,
+    "title": "Ech, poleczko",
+    "artist": "Guzowianki",
+    "year": "2021"
+  },
+  {
+    "cardId": 305,
+    "title": "Niebo z moich stron",
+    "artist": "Czerwone Gitary",
+    "year": "1969"
+  },
+
+  {
+    "cardId": 306,
+    "title": "Dziwny jest ten świat",
+    "artist": "Niemen",
+    "year": "1967"
+  },
+
+  {
+    "cardId": 307,
+    "title": "Pod Papugami",
+    "artist": "Niemen",
+    "year": "1968"
+  },
+
+  {
+    "cardId": 308,
+    "title": "Sen o Warszawie",
+    "artist": "Niemen",
+    "year": "1966"
+  },
+
+  {
+    "cardId": 309,
+    "title": "Z kopyta kulig rwie",
+    "artist": "Skaldowie",
+    "year": "1970"
+  },
+
+  {
+    "cardId": 310,
+    "title": "Wszystko mi mówi, że mnie ktoś pokochał",
+    "artist": "Skaldowie",
+    "year": "1968"
+  },
+
+  {
+    "cardId": 311,
+    "title": "Parostatek",
+    "artist": "Krzysztof Krawczyk",
+    "year": "1976"
+  },
+
+  {
+    "cardId": 312,
+    "title": "Jak minął dzień",
+    "artist": "Krzysztof Krawczyk",
+    "year": "1975"
+  },
+
+  {
+    "cardId": 313,
+    "title": "Biały krzyż",
+    "artist": "Czerwone Gitary",
+    "year": "1969"
+  },
+
+  {
+    "cardId": 314,
+    "title": "Gdzie się podziały tamte prywatki",
+    "artist": "Wojciech Gąssowski",
+    "year": "1973"
+  },
+
+  {
+    "cardId": 315,
+    "title": "Bujaj się, Fela",
+    "artist": "Mieczysław Fogg",
+    "year": "1955"
+  },
+
+  {
+    "cardId": 316,
+    "title": "Jak juz popić",
+    "artist": "Mieczysław Fogg",
+    "year": "1946"
+  },
+  {
+    "cardId": 317,
+    "title": "To ostatnia niedziela",
+    "artist": "Mieczysław Fogg",
+    "year": "1935"
+  },
+
+  {
+    "cardId": 319,
+    "title": "Sex Appeal",
+    "artist": "Eugeniusz Bodo",
+    "year": "1937"
+  },
+
+  {
+    "cardId": 320,
+    "title": "Umówiłem Się z Nią na 9-tą",
+    "artist": "Eugeniusz Bodo",
+    "year": "1937"
+  },
+
+  {
+    "cardId": 321,
+    "title": "Bo we mnie jest seks",
+    "artist": "Kalina Jędrusik",
+    "year": "1963"
+  },
+  {
+    "cardId": 322,
+    "title": "Patrzę na ciebie",
+    "artist": "Kalina Jędrusik",
+    "year": "1962"
+  },
+
+  {
+    "cardId": 323,
+    "title": "Miłość w Portofino",
+    "artist": "Sława Przybylska",
+    "year": "1960"
+  },
+
+  {
+    "cardId": 324,
+    "title": "Nie bądź taki szybki Bill",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1965"
+  },
+
+  {
+    "cardId": 325,
+    "title": "O mnie się nie martw",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1964"
+  },
+
+  {
+    "cardId": 326,
+    "title": "Trzynastego",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1967"
+  },
+
+  {
+    "cardId": 327,
+    "title": "Ja mam taniec, śpiew i ciebie",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1965"
+  },
+
+  {
+    "cardId": 328,
+    "title": "Tyle słońca w całym mieście",
+    "artist": "Anna Jantar",
+    "year": "1974"
+  },
+
+  {
+    "cardId": 329,
+    "title": "Najtrudniejszy pierwszy krok",
+    "artist": "Anna Jantar",
+    "year": "1974"
+  },
+
+  {
+    "cardId": 330,
+    "title": "Nic nie może wiecznie trwać",
+    "artist": "Anna Jantar",
+    "year": "1979"
+  },
+
+  {
+    "cardId": 331,
+    "title": "Mój, tylko mój",
+    "artist": "Anna Jantar",
+    "year": "1975"
+  },
+
+  {
+    "cardId": 332,
+    "title": "Wielka dama tańczy sama",
+    "artist": "Anna Jantar",
+    "year": "1979"
+  },
+
+  {
+    "cardId": 333,
+    "title": "Zawsze gdzieś czeka ktoś",
+    "artist": "Anna Jantar",
+    "year": "1978"
+  },
+
+  {
+    "cardId": 334,
+    "title": "Gdzie są dzisiaj tamci ludzie",
+    "artist": "Anna Jantar",
+    "year": "1979"
+  },
+
+  {
+    "cardId": 335,
+    "title": "Do zakochania jeden krok",
+    "artist": "Andrzej Dąbrowski",
+    "year": "1972"
+  },
+
+  {
+    "cardId": 336,
+    "title": "Czarny Alibaba",
+    "artist": "Helena Majdaniec",
+    "year": "1963"
+  },
+
+  {
+    "cardId": 337,
+    "title": "Rudy rydz",
+    "artist": "Helena Majdaniec",
+    "year": "1963"
+  }
+]

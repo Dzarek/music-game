@@ -5,7 +5,7 @@ import QRCode from "qrcode";
 
 // ===== DANE =====
 const songs = JSON.parse(
-  fs.readFileSync(path.resolve("data/songs.json"), "utf8"),
+  fs.readFileSync(path.resolve("data/songs-pl.json"), "utf8"),
 );
 
 // ===== FONTY =====
@@ -25,9 +25,35 @@ const GAP = 12;
 const START_X = (A4_WIDTH - (COLS * CARD_SIZE + (COLS - 1) * GAP)) / 2;
 const START_Y = (A4_HEIGHT - (ROWS * CARD_SIZE + (ROWS - 1) * GAP)) / 2;
 
-// ===== KOLORY =====
-const REDS = ["#5a0000", "#7a0000", "#9a0000", "#b00000"];
-const randomRed = () => REDS[Math.floor(Math.random() * REDS.length)];
+// ===== KOLORY (czytelne pod biały tekst) =====
+const COLORS = [
+  "#8B0000", // dark red
+  "#B22222", // firebrick
+  "#C0392B", // red
+  "#D35400", // orange
+  "#E67E22", // carrot
+  "#F39C12", // orange yellow
+
+  "#16A085", // teal
+  "#1ABC9C", // turquoise
+  "#27AE60", // green
+  "#2ECC71", // light green
+
+  "#2980B9", // blue
+  "#3498DB", // light blue
+  "#5DADE2", // sky blue
+
+  "#6C3483", // purple
+  "#8E44AD", // amethyst
+  "#AF7AC5", // light purple
+
+  "#7F8C8D", // gray
+  "#95A5A6", // light gray
+];
+
+function randomColor() {
+  return COLORS[Math.floor(Math.random() * COLORS.length)];
+}
 
 // ===== FRONT (QR) =====
 async function drawFrontAt(doc, song, x, y, size) {
@@ -36,7 +62,7 @@ async function drawFrontAt(doc, song, x, y, size) {
   const whiteSize = qrSize + size * 0.12;
   const whiteOffset = (size - whiteSize) / 2;
 
-  const url = `https://music-game-dzarek.netlify.app/card/${song.cardId}`;
+  const url = `https://beat-track.netlify.app/card/${song.cardId}`;
   const qr = await QRCode.toDataURL(url, { margin: 0 });
 
   doc.rect(x, y, size, size).fill("#000");
@@ -53,7 +79,7 @@ async function drawFrontAt(doc, song, x, y, size) {
 
 // ===== BACK =====
 function drawBackAt(doc, song, x, y, size) {
-  doc.rect(x, y, size, size).fill(randomRed());
+  doc.rect(x, y, size, size).fill(randomColor());
   doc.fillColor("white");
 
   doc.font(FONT_BOLD).fontSize(14);
@@ -73,6 +99,11 @@ function drawBackAt(doc, song, x, y, size) {
 
   doc.font(FONT_REGULAR).fontSize(8);
   doc.text(`#${song.cardId}`, x + size - 24, y + size - 16);
+
+  // 🌍 PL / MIX
+  const label = song.cardId <= 337 ? "PL" : "MIX";
+  doc.font(FONT_BOLD).fontSize(10);
+  doc.text(label, x + 6, y + size - 16);
 }
 
 // ===== LINIE CIĘCIA =====

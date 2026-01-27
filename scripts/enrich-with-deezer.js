@@ -1,7 +1,9 @@
 import fs from "fs";
 
-const inputPath = "data/songs.seed.json";
-const outputPath = "data/songs.json";
+// const inputPath = "data/songs.seed.json";
+// const outputPath = "data/songs.json";
+const inputPath = "data/songs-pl.seed.json";
+const outputPath = "data/songs-pl.json";
 
 const songs = JSON.parse(fs.readFileSync(inputPath, "utf8"));
 

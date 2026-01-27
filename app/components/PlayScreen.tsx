@@ -69,7 +69,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     } else {
       Promise.all([audio.play(), video.play()])
         .then(() => setPlaying(true))
-        .catch(() => setError("Nie można odtworzyć"));
+        .catch(() => setError("Nie można odtworzyć utworu"));
     }
   }
 
@@ -83,14 +83,14 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       )}
       {loading && !error && <Loading />}
       {!error && !loading ? (
-        <div className="fixed top-0 left-0 w-full h-[80%]">
+        <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
           <video
             ref={videoRef}
             src={video}
             muted
             loop
             playsInline
-            className="inset-0 w-full h-full mx-auto object-cover brightness-60"
+            className="inset-0 w-full h-full  mx-auto object-cover lg:object-contain brightness-60"
           />
 
           <button

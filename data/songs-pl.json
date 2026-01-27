@@ -1,0 +1,2354 @@
+[
+  {
+    "cardId": 1,
+    "title": "Autobiografia",
+    "artist": "Perfect",
+    "year": "1982",
+    "deezerTrackId": 791206222
+  },
+  {
+    "cardId": 2,
+    "title": "Nie płacz Ewka",
+    "artist": "Perfect",
+    "year": "1981",
+    "deezerTrackId": 99220062
+  },
+  {
+    "cardId": 3,
+    "title": "Chcemy być sobą",
+    "artist": "Perfect",
+    "year": "1981",
+    "deezerTrackId": 99220048
+  },
+  {
+    "cardId": 4,
+    "title": "Przeżyj to sam",
+    "artist": "Lombard",
+    "year": "1982",
+    "deezerTrackId": 120994986
+  },
+  {
+    "cardId": 5,
+    "title": "Szklana pogoda",
+    "artist": "Lombard",
+    "year": "1983",
+    "deezerTrackId": 120994984
+  },
+  {
+    "cardId": 6,
+    "title": "Tacy sami",
+    "artist": "Lady Pank",
+    "year": "1988",
+    "deezerTrackId": 779301152
+  },
+  {
+    "cardId": 7,
+    "title": "Mniej niż zero",
+    "artist": "Lady Pank",
+    "year": "1983",
+    "deezerTrackId": 779745982
+  },
+  {
+    "cardId": 8,
+    "title": "Zawsze tam gdzie ty",
+    "artist": "Lady Pank",
+    "year": "1990",
+    "deezerTrackId": 779749162
+  },
+  {
+    "cardId": 9,
+    "title": "Kryzysowa narzeczona",
+    "artist": "Lady Pank",
+    "year": "1984",
+    "deezerTrackId": 779745992
+  },
+  {
+    "cardId": 10,
+    "title": "Jolka, Jolka pamiętasz",
+    "artist": "Budka Suflera",
+    "year": "1982",
+    "deezerTrackId": 588032292
+  },
+  {
+    "cardId": 11,
+    "title": "Cień wielkiej góry",
+    "artist": "Budka Suflera",
+    "year": "1975",
+    "deezerTrackId": 456487112
+  },
+  {
+    "cardId": 12,
+    "title": "Bal wszystkich świętych",
+    "artist": "Budka Suflera",
+    "year": "1983",
+    "deezerTrackId": 451345722
+  },
+  {
+    "cardId": 13,
+    "title": "Takie tango",
+    "artist": "Budka Suflera",
+    "year": "1984",
+    "deezerTrackId": 451345312
+  },
+  {
+    "cardId": 14,
+    "title": "Dni których nie znamy",
+    "artist": "Marek Grechuta",
+    "year": "1971",
+    "deezerTrackId": 190531151
+  },
+  {
+    "cardId": 15,
+    "title": "Będziesz moją panią",
+    "artist": "Marek Grechuta",
+    "year": "1968",
+    "deezerTrackId": 190531251
+  },
+  {
+    "cardId": 16,
+    "title": "Jesteś lekiem na całe zło",
+    "artist": "Krystyna Prońko",
+    "year": "1980",
+    "deezerTrackId": 139501895
+  },
+  {
+    "cardId": 17,
+    "title": "Psalm stojących w kolejce",
+    "artist": "Krystyna Prońko",
+    "year": "1981",
+    "deezerTrackId": 139501909
+  },
+  {
+    "cardId": 18,
+    "title": "Róże Europy",
+    "artist": "Róże Europy",
+    "year": "1985",
+    "deezerTrackId": 697981872
+  },
+  {
+    "cardId": 19,
+    "title": "Jak Nie My To Kto",
+    "artist": "Mrozu",
+    "year": "2014",
+    "deezerTrackId": 1652904802
+  },
+  {
+    "cardId": 20,
+    "title": "Arahja",
+    "artist": "Kult",
+    "year": "1991",
+    "deezerTrackId": 121737452
+  },
+  {
+    "cardId": 21,
+    "title": "Baranek",
+    "artist": "Kult",
+    "year": "1997",
+    "deezerTrackId": 121736180
+  },
+  {
+    "cardId": 22,
+    "title": "Gdy nie ma dzieci",
+    "artist": "Kult",
+    "year": "1997",
+    "deezerTrackId": 121736510
+  },
+  {
+    "cardId": 23,
+    "title": "Polska",
+    "artist": "Kult",
+    "year": "1987",
+    "deezerTrackId": 121736400
+  },
+  {
+    "cardId": 24,
+    "title": "Cykady na Cykladach",
+    "artist": "Maanam",
+    "year": "1981",
+    "deezerTrackId": 10246097
+  },
+  {
+    "cardId": 25,
+    "title": "Kocham cię, kochanie moje",
+    "artist": "Maanam",
+    "year": "1983",
+    "deezerTrackId": 3355141
+  },
+  {
+    "cardId": 26,
+    "title": "Boskie Buenos",
+    "artist": "Maanam",
+    "year": "1980",
+    "deezerTrackId": 10245973
+  },
+  {
+    "cardId": 27,
+    "title": "Lipstick on the Glass",
+    "artist": "Maanam",
+    "year": "1984",
+    "deezerTrackId": 78873068
+  },
+  {
+    "cardId": 28,
+    "title": "Sen o Warszawie",
+    "artist": "Czesław Niemen",
+    "year": "1966",
+    "deezerTrackId": 663031472
+  },
+  {
+    "cardId": 29,
+    "title": "Pożyczony",
+    "artist": "Sylwia Grzeszczak",
+    "year": "2013",
+    "deezerTrackId": 67854793
+  },
+  {
+    "cardId": 30,
+    "title": "Jednego serca",
+    "artist": "Czesław Niemen",
+    "year": "1971",
+    "deezerTrackId": 631689572
+  },
+  {
+    "cardId": 31,
+    "title": "Windą do nieba",
+    "artist": "2 plus 1",
+    "year": "1981",
+    "deezerTrackId": 3370545981
+  },
+  {
+    "cardId": 32,
+    "title": "Chodź, pomaluj mój świat",
+    "artist": "2 plus 1",
+    "year": "1971",
+    "deezerTrackId": 3370545951
+  },
+  {
+    "cardId": 33,
+    "title": "Iść w stronę słońca",
+    "artist": "2 plus 1",
+    "year": "1981",
+    "deezerTrackId": 719121492
+  },
+  {
+    "cardId": 34,
+    "title": "Jesteś szalona",
+    "artist": "Boys",
+    "year": "1997",
+    "deezerTrackId": 3363158211
+  },
+  {
+    "cardId": 35,
+    "title": "Wolność",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1992",
+    "deezerTrackId": 791995322
+  },
+  {
+    "cardId": 36,
+    "title": "Kiedyś cię znajdę",
+    "artist": "Reni Jusis",
+    "year": "1999",
+    "deezerTrackId": 3090337
+  },
+  {
+    "cardId": 37,
+    "title": "Zakręcona",
+    "artist": "Reni Jusis",
+    "year": "2000",
+    "deezerTrackId": 80899552
+  },
+  {
+    "cardId": 38,
+    "title": "Dla Ciebie",
+    "artist": "Elektryczne Gitary",
+    "year": "1997",
+    "deezerTrackId": 363489491
+  },
+  {
+    "cardId": 39,
+    "title": "Kiler",
+    "artist": "Elektryczne Gitary",
+    "year": "1997",
+    "deezerTrackId": 78712217
+  },
+  {
+    "cardId": 40,
+    "title": "Człowiek z liściem",
+    "artist": "Elektryczne Gitary",
+    "year": "1995",
+    "deezerTrackId": 78712220
+  },
+  {
+    "cardId": 41,
+    "title": "Teksański",
+    "artist": "Hey",
+    "year": "1993",
+    "deezerTrackId": 17466931
+  },
+  {
+    "cardId": 42,
+    "title": "Moja i twoja nadzieja",
+    "artist": "Hey",
+    "year": "1993",
+    "deezerTrackId": 17466922
+  },
+  {
+    "cardId": 43,
+    "title": "Zazdrość",
+    "artist": "Hey",
+    "year": "1996",
+    "deezerTrackId": 17466921
+  },
+  {
+    "cardId": 44,
+    "title": "Agnieszka",
+    "artist": "Łzy",
+    "year": "2001",
+    "deezerTrackId": 509341592
+  },
+  {
+    "cardId": 45,
+    "title": "Narcyz się nazywam",
+    "artist": "Łzy",
+    "year": "2003",
+    "deezerTrackId": 509341482
+  },
+  {
+    "cardId": 46,
+    "title": "Chciałabym",
+    "artist": "Łzy",
+    "year": "2004",
+    "deezerTrackId": 504019982
+  },
+  {
+    "cardId": 47,
+    "title": "Lili",
+    "artist": "Enej",
+    "year": "2013",
+    "deezerTrackId": 2968420891
+  },
+  {
+    "cardId": 48,
+    "title": "Aleja gwiazd",
+    "artist": "Zdzisława Sośnicka",
+    "year": "1987",
+    "deezerTrackId": 791149362
+  },
+  {
+    "cardId": 49,
+    "title": "Peron",
+    "artist": "Jamal",
+    "year": "2013",
+    "deezerTrackId": 71336903
+  },
+  {
+    "cardId": 50,
+    "title": "Co mi Panie dasz",
+    "artist": "Bajm",
+    "year": "1983",
+    "deezerTrackId": 546835792
+  },
+  {
+    "cardId": 51,
+    "title": "Biała flaga",
+    "artist": "Republika",
+    "year": "1983",
+    "deezerTrackId": 88413379
+  },
+  {
+    "cardId": 52,
+    "title": "Telefony",
+    "artist": "Republika",
+    "year": "1984",
+    "deezerTrackId": 82409958
+  },
+  {
+    "cardId": 53,
+    "title": "Kombinat",
+    "artist": "Republika",
+    "year": "1983",
+    "deezerTrackId": 3356027691
+  },
+  {
+    "cardId": 54,
+    "title": "Obcy astronom",
+    "artist": "Republika",
+    "year": "1985",
+    "deezerTrackId": 82409814
+  },
+  {
+    "cardId": 55,
+    "title": "Nie pytaj o Polskę",
+    "artist": "Obywatel G.C.",
+    "year": "1988",
+    "deezerTrackId": 1616487652
+  },
+  {
+    "cardId": 56,
+    "title": "Kocham wolność",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1990",
+    "deezerTrackId": 791995322
+  },
+  {
+    "cardId": 57,
+    "title": "Stachursky – Typ niepokorny",
+    "artist": "Stachursky",
+    "year": "1998",
+    "deezerTrackId": 10496123
+  },
+  {
+    "cardId": 58,
+    "title": "A Gdy Jest Już Ciemno",
+    "artist": "Feel",
+    "year": "2007",
+    "deezerTrackId": 3460006
+  },
+  {
+    "cardId": 59,
+    "title": "Essa",
+    "artist": "De Mono",
+    "year": "1996",
+    "deezerTrackId": 74672797
+  },
+  {
+    "cardId": 60,
+    "title": "Kochać inaczej",
+    "artist": "De Mono",
+    "year": "1989",
+    "deezerTrackId": 91069125
+  },
+  {
+    "cardId": 61,
+    "title": "Statki na niebie",
+    "artist": "De Mono",
+    "year": "1992",
+    "deezerTrackId": 74672797
+  },
+  {
+    "cardId": 62,
+    "title": "Prawy do lewego",
+    "artist": "Kayah & Goran Bregović",
+    "year": "1999",
+    "deezerTrackId": 13200557
+  },
+  {
+    "cardId": 63,
+    "title": "Supermenka",
+    "artist": "Kayah",
+    "year": "1998",
+    "deezerTrackId": 110195116
+  },
+  {
+    "cardId": 64,
+    "title": "Na językach",
+    "artist": "Kayah",
+    "year": "2001",
+    "deezerTrackId": 110195114
+  },
+  {
+    "cardId": 65,
+    "title": "Testosteron",
+    "artist": "Kayah",
+    "year": "2003",
+    "deezerTrackId": 109215652
+  },
+  {
+    "cardId": 66,
+    "title": "Niech żyje bal",
+    "artist": "Maryla Rodowicz",
+    "year": "1984",
+    "deezerTrackId": 3606151812
+  },
+  {
+    "cardId": 67,
+    "title": "Małgośka",
+    "artist": "Maryla Rodowicz",
+    "year": "1973",
+    "deezerTrackId": 3606151792
+  },
+  {
+    "cardId": 68,
+    "title": "To już było",
+    "artist": "Maryla Rodowicz",
+    "year": "1984",
+    "deezerTrackId": 2725815781
+  },
+  {
+    "cardId": 69,
+    "title": "W Dobrą Stronę",
+    "artist": "Dawid Podsiadło",
+    "year": "2015",
+    "deezerTrackId": 111779384
+  },
+  {
+    "cardId": 70,
+    "title": "Kolorowe jarmarki",
+    "artist": "Maryla Rodowicz",
+    "year": "1977",
+    "deezerTrackId": 99686858
+  },
+  {
+    "cardId": 71,
+    "title": "Wehikuł czasu",
+    "artist": "Dżem",
+    "year": "1981",
+    "deezerTrackId": 79590782
+  },
+  {
+    "cardId": 72,
+    "title": "Whisky",
+    "artist": "Dżem",
+    "year": "1984",
+    "deezerTrackId": 79590780
+  },
+  {
+    "cardId": 73,
+    "title": "Czerwony jak cegła",
+    "artist": "Dżem",
+    "year": "1985",
+    "deezerTrackId": 79590778
+  },
+  {
+    "cardId": 74,
+    "title": "List do M.",
+    "artist": "Dżem",
+    "year": "1992",
+    "deezerTrackId": 79590784
+  },
+  {
+    "cardId": 75,
+    "title": "Sen o Victorii",
+    "artist": "Dżem",
+    "year": "1994",
+    "deezerTrackId": 79590768
+  },
+  {
+    "cardId": 76,
+    "title": "Annuszka",
+    "artist": "Krzysztof Zalewski",
+    "year": "2020",
+    "deezerTrackId": 1010418162
+  },
+  {
+    "cardId": 77,
+    "title": "Biała armia",
+    "artist": "Bajm",
+    "year": "1990",
+    "deezerTrackId": 17384386
+  },
+  {
+    "cardId": 78,
+    "title": "Szklanka wody",
+    "artist": "Bajm",
+    "year": "1987",
+    "deezerTrackId": 17384415
+  },
+  {
+    "cardId": 79,
+    "title": "Józek, nie daruję ci tej nocy",
+    "artist": "Bajm",
+    "year": "1984",
+    "deezerTrackId": 546835782
+  },
+  {
+    "cardId": 80,
+    "title": "Ta sama chwila",
+    "artist": "Bajm",
+    "year": "1994",
+    "deezerTrackId": 17384393
+  },
+  {
+    "cardId": 81,
+    "title": "Znak",
+    "artist": "Ewa Farna",
+    "year": "2013",
+    "deezerTrackId": 71434973
+  },
+  {
+    "cardId": 82,
+    "title": "Chłopaki nie płaczą",
+    "artist": "T.Love",
+    "year": "1997",
+    "deezerTrackId": 3258372
+  },
+  {
+    "cardId": 83,
+    "title": "King",
+    "artist": "T.Love",
+    "year": "1992",
+    "deezerTrackId": 81811430
+  },
+  {
+    "cardId": 84,
+    "title": "Warszawa",
+    "artist": "T.Love",
+    "year": "1991",
+    "deezerTrackId": 81811428
+  },
+  {
+    "cardId": 85,
+    "title": "Ajrisz",
+    "artist": "T.Love",
+    "year": "1992",
+    "deezerTrackId": 3170553
+  },
+  {
+    "cardId": 86,
+    "title": "Czarny Alibaba",
+    "artist": "Hey",
+    "year": "1996",
+    "deezerTrackId": 126904183
+  },
+  {
+    "cardId": 87,
+    "title": "Anioł",
+    "artist": "Hey",
+    "year": "2001",
+    "deezerTrackId": 17466937
+  },
+  {
+    "cardId": 88,
+    "title": "List",
+    "artist": "Hey",
+    "year": "1995",
+    "deezerTrackId": 17466942
+  },
+  {
+    "cardId": 89,
+    "title": "Moja droga",
+    "artist": "Hey",
+    "year": "1999",
+    "deezerTrackId": 2235216267
+  },
+  {
+    "cardId": 90,
+    "title": "Mimo wszystko",
+    "artist": "Hey",
+    "year": "2003",
+    "deezerTrackId": 119238728
+  },
+  {
+    "cardId": 91,
+    "title": "Dla Mnie Masz Stajla",
+    "artist": "Trzeci Wymiar",
+    "year": "2003",
+    "deezerTrackId": 94076690
+  },
+  {
+    "cardId": 92,
+    "title": "Żałuję",
+    "artist": "Ewelina Flinta",
+    "year": "2003",
+    "deezerTrackId": 15405008
+  },
+  {
+    "cardId": 93,
+    "title": "Rysowane Tobie",
+    "artist": "Andrzej Piaseczny",
+    "year": "2018",
+    "deezerTrackId": 581395072
+  },
+  {
+    "cardId": 94,
+    "title": "Kropla Deszczu",
+    "artist": "Gabriel Fleszar",
+    "year": "1999",
+    "deezerTrackId": 2206552937
+  },
+  {
+    "cardId": 95,
+    "title": "Orła cień",
+    "artist": "Varius Manx",
+    "year": "1996",
+    "deezerTrackId": 133752234
+  },
+  {
+    "cardId": 96,
+    "title": "Piosenka księżycowa",
+    "artist": "Varius Manx",
+    "year": "1994",
+    "deezerTrackId": 3747824252
+  },
+  {
+    "cardId": 97,
+    "title": "Zanim zrozumiesz",
+    "artist": "Varius Manx",
+    "year": "1996",
+    "deezerTrackId": 387057661
+  },
+  {
+    "cardId": 98,
+    "title": "Ruchome piaski",
+    "artist": "Varius Manx",
+    "year": "1997",
+    "deezerTrackId": 133752232
+  },
+  {
+    "cardId": 99,
+    "title": "Lepsza Połowa",
+    "artist": "Mesajah",
+    "year": "2014",
+    "deezerTrackId": 67643870
+  },
+  {
+    "cardId": 100,
+    "title": "Gdzie jesteś",
+    "artist": "Wilki",
+    "year": "1992",
+    "deezerTrackId": 1345895352
+  },
+  {
+    "cardId": 101,
+    "title": "Son of the Blue Sky",
+    "artist": "Wilki",
+    "year": "1992",
+    "deezerTrackId": 501721802
+  },
+  {
+    "cardId": 102,
+    "title": "Baśka",
+    "artist": "Wilki",
+    "year": "2002",
+    "deezerTrackId": 3092477
+  },
+  {
+    "cardId": 103,
+    "title": "Urke",
+    "artist": "Wilki",
+    "year": "2004",
+    "deezerTrackId": 3092481
+  },
+  {
+    "cardId": 104,
+    "title": "Nie stało się nic",
+    "artist": "Wilki",
+    "year": "1994",
+    "deezerTrackId": 3481571421
+  },
+  {
+    "cardId": 105,
+    "title": "Cień wielkiej góry",
+    "artist": "Budka Suflera",
+    "year": "1975",
+    "deezerTrackId": 456487112
+  },
+  {
+    "cardId": 106,
+    "title": "Jolka, Jolka pamiętasz",
+    "artist": "Budka Suflera",
+    "year": "1982",
+    "deezerTrackId": 588032292
+  },
+  {
+    "cardId": 107,
+    "title": "Takie tango",
+    "artist": "Budka Suflera",
+    "year": "1984",
+    "deezerTrackId": 451345312
+  },
+  {
+    "cardId": 108,
+    "title": "Bal wszystkich świętych",
+    "artist": "Budka Suflera",
+    "year": "1982",
+    "deezerTrackId": 451345722
+  },
+  {
+    "cardId": 109,
+    "title": "Twoje radio",
+    "artist": "Budka Suflera",
+    "year": "1983",
+    "deezerTrackId": 456567092
+  },
+  {
+    "cardId": 110,
+    "title": "Czas ołowiu",
+    "artist": "Budka Suflera",
+    "year": "1985",
+    "deezerTrackId": 456567542
+  },
+  {
+    "cardId": 111,
+    "title": "Autobiografia",
+    "artist": "Perfect",
+    "year": "1982",
+    "deezerTrackId": 791206222
+  },
+  {
+    "cardId": 112,
+    "title": "Nie płacz Ewka",
+    "artist": "Perfect",
+    "year": "1981",
+    "deezerTrackId": 99220062
+  },
+  {
+    "cardId": 113,
+    "title": "Chcemy być sobą",
+    "artist": "Perfect",
+    "year": "1981",
+    "deezerTrackId": 99220048
+  },
+  {
+    "cardId": 114,
+    "title": "Kołysanka dla nieznajomej",
+    "artist": "Perfect",
+    "year": "1985",
+    "deezerTrackId": 779748772
+  },
+  {
+    "cardId": 115,
+    "title": "Ale wkoło jest wesoło",
+    "artist": "Perfect",
+    "year": "1984",
+    "deezerTrackId": 99220058
+  },
+  {
+    "cardId": 116,
+    "title": "Przeżyj to sam",
+    "artist": "Lombard",
+    "year": "1982",
+    "deezerTrackId": 120994986
+  },
+  {
+    "cardId": 117,
+    "title": "Szklana pogoda",
+    "artist": "Lombard",
+    "year": "1983",
+    "deezerTrackId": 120994984
+  },
+  {
+    "cardId": 118,
+    "title": "Droga Pani z TV",
+    "artist": "Lombard",
+    "year": "1984",
+    "deezerTrackId": 3165289931
+  },
+  {
+    "cardId": 119,
+    "title": "Gołębi puch",
+    "artist": "Lombard",
+    "year": "1982",
+    "deezerTrackId": 84656131
+  },
+  {
+    "cardId": 120,
+    "title": "Adriatyk – ocean gorący",
+    "artist": "Lombard",
+    "year": "1986",
+    "deezerTrackId": 84656143
+  },
+  {
+    "cardId": 121,
+    "title": "Mniej niż zero",
+    "artist": "Lady Pank",
+    "year": "1983",
+    "deezerTrackId": 779745982
+  },
+  {
+    "cardId": 122,
+    "title": "Zawsze tam gdzie ty",
+    "artist": "Lady Pank",
+    "year": "1990",
+    "deezerTrackId": 779749162
+  },
+  {
+    "cardId": 123,
+    "title": "Kryzysowa narzeczona",
+    "artist": "Lady Pank",
+    "year": "1983",
+    "deezerTrackId": 779745992
+  },
+  {
+    "cardId": 124,
+    "title": "Tańcz głupia, tańcz",
+    "artist": "Lady Pank",
+    "year": "1984",
+    "deezerTrackId": 786030142
+  },
+  {
+    "cardId": 125,
+    "title": "Na co komu dziś",
+    "artist": "Lady Pank",
+    "year": "1984",
+    "deezerTrackId": 786028382
+  },
+  {
+    "cardId": 126,
+    "title": "Wciąż bardziej obcy",
+    "artist": "Lady Pank",
+    "year": "1985",
+    "deezerTrackId": 779746052
+  },
+  {
+    "cardId": 127,
+    "title": "Szansa",
+    "artist": "Virgin",
+    "year": "2006",
+    "deezerTrackId": 417263372
+  },
+  {
+    "cardId": 128,
+    "title": "Dmuchawce, latawce, wiatr",
+    "artist": "Urszula",
+    "year": "1983",
+    "deezerTrackId": 78573356
+  },
+  {
+    "cardId": 129,
+    "title": "Malinowy król",
+    "artist": "Urszula",
+    "year": "1984",
+    "deezerTrackId": 78573355
+  },
+  {
+    "cardId": 130,
+    "title": "Konik na biegunach",
+    "artist": "Urszula",
+    "year": "1985",
+    "deezerTrackId": 1496653532
+  },
+  {
+    "cardId": 131,
+    "title": "Cykady na Cykladach",
+    "artist": "Maanam",
+    "year": "1981",
+    "deezerTrackId": 10246097
+  },
+  {
+    "cardId": 132,
+    "title": "Boskie Buenos",
+    "artist": "Maanam",
+    "year": "1980",
+    "deezerTrackId": 10245973
+  },
+  {
+    "cardId": 133,
+    "title": "Kocham cię, kochanie moje",
+    "artist": "Maanam",
+    "year": "1983",
+    "deezerTrackId": 3355141
+  },
+  {
+    "cardId": 134,
+    "title": "Szare miraże",
+    "artist": "Maanam",
+    "year": "1984",
+    "deezerTrackId": 3355147
+  },
+  {
+    "cardId": 135,
+    "title": "Lipstick on the Glass",
+    "artist": "Maanam",
+    "year": "1986",
+    "deezerTrackId": 78873068
+  },
+  {
+    "cardId": 136,
+    "title": "Za Krokiem Krok",
+    "artist": "Cleo",
+    "year": "2019",
+    "deezerTrackId": 2895974121
+  },
+  {
+    "cardId": 137,
+    "title": "Za ostatni grosz",
+    "artist": "Budka Suflera",
+    "year": "1982",
+    "deezerTrackId": 779754482
+  },
+  {
+    "cardId": 138,
+    "title": "Jest taki samotny dom",
+    "artist": "Budka Suflera",
+    "year": "1974",
+    "deezerTrackId": 456487142
+  },
+  {
+    "cardId": 139,
+    "title": "Tak tak to ja",
+    "artist": "Obywatel G.C.",
+    "year": "1988",
+    "deezerTrackId": 1616487602
+  },
+  {
+    "cardId": 140,
+    "title": "Aniele",
+    "artist": "Mezo Liber",
+    "year": "2003",
+    "deezerTrackId": 2453802695
+  },
+  {
+    "cardId": 141,
+    "title": "Chodź, pomaluj mój świat",
+    "artist": "2 plus 1",
+    "year": "1971",
+    "deezerTrackId": 3370545951
+  },
+  {
+    "cardId": 142,
+    "title": "Iść w stronę słońca",
+    "artist": "2 plus 1",
+    "year": "1978",
+    "deezerTrackId": 719121492
+  },
+  {
+    "cardId": 143,
+    "title": "Windą do nieba",
+    "artist": "2 plus 1",
+    "year": "1981",
+    "deezerTrackId": 3370545981
+  },
+  {
+    "cardId": 144,
+    "title": "Antidotum",
+    "artist": "Kasia Kowalska",
+    "year": "2002",
+    "deezerTrackId": 928368
+  },
+  {
+    "cardId": 145,
+    "title": "Na Kolana",
+    "artist": "Kasia Cerekwicka",
+    "year": "2006",
+    "deezerTrackId": 1277457
+  },
+  {
+    "cardId": 146,
+    "title": "Kiler",
+    "artist": "Elektryczne Gitary",
+    "year": "1997",
+    "deezerTrackId": 78712217
+  },
+  {
+    "cardId": 147,
+    "title": "Co ty tutaj robisz",
+    "artist": "Elektryczne Gitary",
+    "year": "1996",
+    "deezerTrackId": 17011845
+  },
+  {
+    "cardId": 148,
+    "title": "Jestem z miasta",
+    "artist": "Elektryczne Gitary",
+    "year": "1990",
+    "deezerTrackId": 78712210
+  },
+  {
+    "cardId": 149,
+    "title": "Człowiek z liściem",
+    "artist": "Elektryczne Gitary",
+    "year": "1994",
+    "deezerTrackId": 78712220
+  },
+  {
+    "cardId": 150,
+    "title": "Ona jest pedałem",
+    "artist": "Elektryczne Gitary",
+    "year": "1993",
+    "deezerTrackId": 17011858
+  },
+  {
+    "cardId": 151,
+    "title": "Lato",
+    "artist": "Formacja Nieżywych Schabuff",
+    "year": "1995",
+    "deezerTrackId": 1006190182
+  },
+  {
+    "cardId": 152,
+    "title": "Party",
+    "artist": "Oddział Zamknięty",
+    "year": "1984",
+    "deezerTrackId": 2394796155
+  },
+  {
+    "cardId": 153,
+    "title": "Andzia",
+    "artist": "Oddział Zamknięty",
+    "year": "1985",
+    "deezerTrackId": 2394796155
+  },
+  {
+    "cardId": 154,
+    "title": "Obudź się",
+    "artist": "Oddział Zamknięty",
+    "year": "1983",
+    "deezerTrackId": 128114065
+  },
+  {
+    "cardId": 155,
+    "title": "Twój ból jest lepszy niż mój",
+    "artist": "Kazik",
+    "year": "1991",
+    "deezerTrackId": 974544812
+  },
+  {
+    "cardId": 156,
+    "title": "12 groszy",
+    "artist": "Kazik",
+    "year": "1993",
+    "deezerTrackId": 121736558
+  },
+  {
+    "cardId": 157,
+    "title": "Jeszcze Polska",
+    "artist": "Kazik",
+    "year": "1997",
+    "deezerTrackId": 121736684
+  },
+  {
+    "cardId": 158,
+    "title": "Spalam się",
+    "artist": "Kazik",
+    "year": "1991",
+    "deezerTrackId": 121737322
+  },
+  {
+    "cardId": 159,
+    "title": "Baranek",
+    "artist": "Kazik",
+    "year": "1997",
+    "deezerTrackId": 121736180
+  },
+  {
+    "cardId": 160,
+    "title": "Arahja",
+    "artist": "Kult",
+    "year": "1988",
+    "deezerTrackId": 121737452
+  },
+  {
+    "cardId": 161,
+    "title": "Do Ani",
+    "artist": "Kult",
+    "year": "1991",
+    "deezerTrackId": 121736398
+  },
+  {
+    "cardId": 162,
+    "title": "Gdy nie ma dzieci",
+    "artist": "Kult",
+    "year": "1998",
+    "deezerTrackId": 121736510
+  },
+  {
+    "cardId": 163,
+    "title": "Brooklyńska rada Żydów",
+    "artist": "Kult",
+    "year": "1997",
+    "deezerTrackId": 131329996
+  },
+  {
+    "cardId": 164,
+    "title": "Polska",
+    "artist": "Kult",
+    "year": "1987",
+    "deezerTrackId": 121736400
+  },
+  {
+    "cardId": 165,
+    "title": "Komu bije dzwon",
+    "artist": "Kult",
+    "year": "1997",
+    "deezerTrackId": 121736534
+  },
+  {
+    "cardId": 166,
+    "title": "Zawsze tam gdzie ty (live)",
+    "artist": "Lady Pank",
+    "year": "1995",
+    "deezerTrackId": 786030132
+  },
+  {
+    "cardId": 167,
+    "title": "Niepokonani",
+    "artist": "Perfect",
+    "year": "1993",
+    "deezerTrackId": 88250207
+  },
+  {
+    "cardId": 168,
+    "title": "Raz po raz",
+    "artist": "Perfect",
+    "year": "1987",
+    "deezerTrackId": 7563891
+  },
+  {
+    "cardId": 169,
+    "title": "Nie daj się",
+    "artist": "Perfect",
+    "year": "1991",
+    "deezerTrackId": 791206212
+  },
+  {
+    "cardId": 170,
+    "title": "Błękit",
+    "artist": "Roxie",
+    "year": "2025",
+    "deezerTrackId": 3421016471
+  },
+  {
+    "cardId": 171,
+    "title": "Jestem kobietą",
+    "artist": "Edyta Górniak",
+    "year": "1995",
+    "deezerTrackId": 951194022
+  },
+  {
+    "cardId": 172,
+    "title": "To nie ja",
+    "artist": "Edyta Górniak",
+    "year": "1994",
+    "deezerTrackId": 951194112
+  },
+  {
+    "cardId": 173,
+    "title": "Dumka na dwa serca",
+    "artist": "Edyta Górniak & Mietek Szcześniak",
+    "year": "1999",
+    "deezerTrackId": 886194502
+  },
+  {
+    "cardId": 174,
+    "title": "Kolorowy wiatr",
+    "artist": "Edyta Górniak",
+    "year": "1995",
+    "deezerTrackId": 3191158
+  },
+  {
+    "cardId": 175,
+    "title": "Każdego Dnia",
+    "artist": "Mesajah",
+    "year": "2008",
+    "deezerTrackId": 62213358
+  },
+  {
+    "cardId": 176,
+    "title": "Ne Rozumiju",
+    "artist": "Vixen",
+    "year": "2023",
+    "deezerTrackId": 3635187462
+  },
+  {
+    "cardId": 177,
+    "title": "Jak zapomnieć",
+    "artist": "Jeden Osiem L",
+    "year": "2003",
+    "deezerTrackId": 69533216
+  },
+  {
+    "cardId": 178,
+    "title": "A wszystko to",
+    "artist": "Ich Troje",
+    "year": "2001",
+    "deezerTrackId": 4670520
+  },
+  {
+    "cardId": 179,
+    "title": "Powiedz",
+    "artist": "Ich Troje",
+    "year": "2002",
+    "deezerTrackId": 4670975
+  },
+  {
+    "cardId": 180,
+    "title": "Zawsze z tobą chciałbym być",
+    "artist": "Ich Troje",
+    "year": "1999",
+    "deezerTrackId": 4670985
+  },
+  {
+    "cardId": 181,
+    "title": "Keine Grenzen – Żadnych granic",
+    "artist": "Ich Troje",
+    "year": "2003",
+    "deezerTrackId": 4671108
+  },
+  {
+    "cardId": 182,
+    "title": "Adrenalina",
+    "artist": "Michał Szczygieł",
+    "year": "2023",
+    "deezerTrackId": 1823467807
+  },
+  {
+    "cardId": 183,
+    "title": "Cień w dolinie mgieł",
+    "artist": "Wilki",
+    "year": "1994",
+    "deezerTrackId": 501719562
+  },
+  {
+    "cardId": 184,
+    "title": "Bang Bang",
+    "artist": "Sylwia Grzeszczak",
+    "year": "2023",
+    "deezerTrackId": 2350040825
+  },
+  {
+    "cardId": 185,
+    "title": "Czerwone korale",
+    "artist": "Brathanki",
+    "year": "2000",
+    "deezerTrackId": 13343356
+  },
+  {
+    "cardId": 186,
+    "title": "Hej góry, hej góry",
+    "artist": "Brathanki",
+    "year": "2001",
+    "deezerTrackId": 13343364
+  },
+  {
+    "cardId": 187,
+    "title": "W kinie, w Lublinie",
+    "artist": "Brathanki",
+    "year": "2000",
+    "deezerTrackId": 97309332
+  },
+  {
+    "cardId": 188,
+    "title": "Poszłabym za tobą",
+    "artist": "Breakout",
+    "year": "1969",
+    "deezerTrackId": 114011066
+  },
+  {
+    "cardId": 189,
+    "title": "Wypijmy za błędy",
+    "artist": "Ryszard Rynkowski",
+    "year": "1994",
+    "deezerTrackId": 780124912
+  },
+  {
+    "cardId": 190,
+    "title": "Dziewczyny lubią brąz",
+    "artist": "Ryszard Rynkowski",
+    "year": "1992",
+    "deezerTrackId": 3102056
+  },
+  {
+    "cardId": 191,
+    "title": "Nie liczę godzin i lat",
+    "artist": "Andrzej Rybiński",
+    "year": "1985",
+    "deezerTrackId": 429709382
+  },
+  {
+    "cardId": 192,
+    "title": "Niech mówią, że to nie jest miłość",
+    "artist": "Piotr Rubik",
+    "year": "2006",
+    "deezerTrackId": 782561252
+  },
+  {
+    "cardId": 193,
+    "title": "Psalm dla Ciebie",
+    "artist": "Piotr Rubik",
+    "year": "2004",
+    "deezerTrackId": 782561232
+  },
+  {
+    "cardId": 194,
+    "title": "Co z nami będzie",
+    "artist": "Liber i Sylwia Grzeszczak",
+    "year": "2008",
+    "deezerTrackId": 2404994505
+  },
+  {
+    "cardId": 195,
+    "title": "Do nieba, do piekła",
+    "artist": "Blue Café",
+    "year": "2004",
+    "deezerTrackId": 3089295
+  },
+  {
+    "cardId": 196,
+    "title": "Buziak",
+    "artist": "Blue Café",
+    "year": "2006",
+    "deezerTrackId": 69881515
+  },
+  {
+    "cardId": 197,
+    "title": "Love Song",
+    "artist": "Blue Café",
+    "year": "2002",
+    "deezerTrackId": 3089294
+  },
+  {
+    "cardId": 198,
+    "title": "Nieprawda",
+    "artist": "Łukasz Zagrobelny",
+    "year": "2007",
+    "deezerTrackId": 92525556
+  },
+  {
+    "cardId": 199,
+    "title": "Skrzydlate Ręce",
+    "artist": "Enej",
+    "year": "2012",
+    "deezerTrackId": 2968421661
+  },
+  {
+    "cardId": 200,
+    "title": "Superhero",
+    "artist": "Viki Gabor",
+    "year": "2020",
+    "deezerTrackId": 766584752
+  },
+  {
+    "cardId": 201,
+    "title": "Mój jest ten kawałek podłogi",
+    "artist": "Mr. Zoob",
+    "year": "1986",
+    "deezerTrackId": 792031932
+  },
+  {
+    "cardId": 202,
+    "title": "Sułtan",
+    "artist": "Dżem",
+    "year": "1989",
+    "deezerTrackId": 479748772
+  },
+  {
+    "cardId": 203,
+    "title": "Whisky",
+    "artist": "Dżem",
+    "year": "1992",
+    "deezerTrackId": 79590780
+  },
+  {
+    "cardId": 204,
+    "title": "Czerwony jak cegła",
+    "artist": "Dżem",
+    "year": "1985",
+    "deezerTrackId": 79590778
+  },
+  {
+    "cardId": 205,
+    "title": "Wehikuł czasu",
+    "artist": "Dżem",
+    "year": "1994",
+    "deezerTrackId": 79590782
+  },
+  {
+    "cardId": 206,
+    "title": "Sen o Victorii",
+    "artist": "Dżem",
+    "year": "1989",
+    "deezerTrackId": 79590768
+  },
+  {
+    "cardId": 207,
+    "title": "List do M.",
+    "artist": "Dżem",
+    "year": "1990",
+    "deezerTrackId": 79590784
+  },
+  {
+    "cardId": 208,
+    "title": "Naiwne pytania",
+    "artist": "Dżem",
+    "year": "1994",
+    "deezerTrackId": 79590766
+  },
+  {
+    "cardId": 209,
+    "title": "Skazany na bluesa",
+    "artist": "Dżem",
+    "year": "1992",
+    "deezerTrackId": 79590788
+  },
+  {
+    "cardId": 210,
+    "title": "Polski",
+    "artist": "Human",
+    "year": "2005",
+    "deezerTrackId": 509116072
+  },
+  {
+    "cardId": 211,
+    "title": "Biała flaga",
+    "artist": "Republika",
+    "year": "1983",
+    "deezerTrackId": 88413379
+  },
+  {
+    "cardId": 212,
+    "title": "Kombinat",
+    "artist": "Republika",
+    "year": "1983",
+    "deezerTrackId": 3356027691
+  },
+  {
+    "cardId": 213,
+    "title": "Telefony",
+    "artist": "Republika",
+    "year": "1984",
+    "deezerTrackId": 82409958
+  },
+  {
+    "cardId": 214,
+    "title": "Nie pytaj o Polskę",
+    "artist": "Obywatel G.C.",
+    "year": "1988",
+    "deezerTrackId": 1616487652
+  },
+  {
+    "cardId": 215,
+    "title": "Tak… Tak… To ja",
+    "artist": "Obywatel G.C.",
+    "year": "1988",
+    "deezerTrackId": 1616487602
+  },
+  {
+    "cardId": 216,
+    "title": "Kocham wolność",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1992",
+    "deezerTrackId": 791995322
+  },
+  {
+    "cardId": 217,
+    "title": "O Ela",
+    "artist": "Chłopcy z Placu Broni",
+    "year": "1992",
+    "deezerTrackId": 1099385632
+  },
+  {
+    "cardId": 218,
+    "title": "Kocham cię jak Irlandię",
+    "artist": "Kobranocka",
+    "year": "1988",
+    "deezerTrackId": 780306732
+  },
+  {
+    "cardId": 219,
+    "title": "List z pola boju",
+    "artist": "Kobranocka",
+    "year": "1987",
+    "deezerTrackId": 785885152
+  },
+  {
+    "cardId": 220,
+    "title": "Sztuka jest skarpetką kulawego",
+    "artist": "Kobranocka",
+    "year": "1989",
+    "deezerTrackId": 785885152
+  },
+  {
+    "cardId": 221,
+    "title": "Jej Czarne Oczy",
+    "artist": "Ivan I Delfin",
+    "year": "2005",
+    "deezerTrackId": 62210507
+  },
+  {
+    "cardId": 222,
+    "title": "Wszystko chuj",
+    "artist": "Elektryczne Gitary",
+    "year": "1995",
+    "deezerTrackId": 78712224
+  },
+  {
+    "cardId": 223,
+    "title": "Nie Dokazuj",
+    "artist": "Marek Grechuta",
+    "year": "1970",
+    "deezerTrackId": 190531261
+  },
+  {
+    "cardId": 224,
+    "title": "Makumba",
+    "artist": "Big Cyc",
+    "year": "1996",
+    "deezerTrackId": 936046882
+  },
+  {
+    "cardId": 225,
+    "title": "Berlin Zachodni",
+    "artist": "Big Cyc",
+    "year": "1989",
+    "deezerTrackId": 407667692
+  },
+  {
+    "cardId": 226,
+    "title": "Rudy się żeni",
+    "artist": "Big Cyc",
+    "year": "1995",
+    "deezerTrackId": 3481571181
+  },
+  {
+    "cardId": 227,
+    "title": "Długa noc",
+    "artist": "IRA",
+    "year": "1993",
+    "deezerTrackId": 1547998532
+  },
+  {
+    "cardId": 228,
+    "title": "Mój dom",
+    "artist": "IRA",
+    "year": "1993",
+    "deezerTrackId": 79221157
+  },
+  {
+    "cardId": 229,
+    "title": "Nadzieja",
+    "artist": "IRA",
+    "year": "1995",
+    "deezerTrackId": 79221169
+  },
+  {
+    "cardId": 230,
+    "title": "Wiara",
+    "artist": "IRA",
+    "year": "1996",
+    "deezerTrackId": 79221223
+  },
+  {
+    "cardId": 231,
+    "title": "Teksański",
+    "artist": "Hey",
+    "year": "1993",
+    "deezerTrackId": 17466931
+  },
+  {
+    "cardId": 232,
+    "title": "Moja i twoja nadzieja",
+    "artist": "Hey",
+    "year": "1993",
+    "deezerTrackId": 17466922
+  },
+  {
+    "cardId": 233,
+    "title": "Zazdrość",
+    "artist": "Hey",
+    "year": "1996",
+    "deezerTrackId": 17466921
+  },
+  {
+    "cardId": 234,
+    "title": "Misie",
+    "artist": "Hey",
+    "year": "1997",
+    "deezerTrackId": 17466908
+  },
+  {
+    "cardId": 235,
+    "title": "Cisza, ja i czas",
+    "artist": "Hey",
+    "year": "2001",
+    "deezerTrackId": 14497498
+  },
+  {
+    "cardId": 236,
+    "title": "Tin Pan Alley",
+    "artist": "Halina Frąckowiak",
+    "year": "1987",
+    "deezerTrackId": 1324871422
+  },
+  {
+    "cardId": 237,
+    "title": "Długość dźwięku samotności",
+    "artist": "Myslovitz",
+    "year": "2000",
+    "deezerTrackId": 950273432
+  },
+  {
+    "cardId": 238,
+    "title": "Scenariusz dla moich sąsiadów",
+    "artist": "Myslovitz",
+    "year": "2001",
+    "deezerTrackId": 950273082
+  },
+  {
+    "cardId": 239,
+    "title": "Peggy Brown",
+    "artist": "Myslovitz",
+    "year": "2001",
+    "deezerTrackId": 988498062
+  },
+  {
+    "cardId": 240,
+    "title": "Z twarzą Marilyn Monroe",
+    "artist": "Myslovitz",
+    "year": "2001",
+    "deezerTrackId": 988498082
+  },
+  {
+    "cardId": 241,
+    "title": "Chłopaki nie płaczą",
+    "artist": "T.Love",
+    "year": "1997",
+    "deezerTrackId": 3258372
+  },
+  {
+    "cardId": 242,
+    "title": "Warszawa",
+    "artist": "T.Love",
+    "year": "1999",
+    "deezerTrackId": 81811428
+  },
+  {
+    "cardId": 243,
+    "title": "King",
+    "artist": "T.Love",
+    "year": "1992",
+    "deezerTrackId": 81811430
+  },
+  {
+    "cardId": 244,
+    "title": "Ajrisz",
+    "artist": "T.Love",
+    "year": "1994",
+    "deezerTrackId": 3170553
+  },
+  {
+    "cardId": 245,
+    "title": "Nie, nie, nie",
+    "artist": "T.Love",
+    "year": "1992",
+    "deezerTrackId": 3258356
+  },
+  {
+    "cardId": 246,
+    "title": "No Co Ty",
+    "artist": "Oskar Cyms",
+    "year": "2025",
+    "deezerTrackId": 3310916861
+  },
+  {
+    "cardId": 247,
+    "title": "Mniej niż zero (live)",
+    "artist": "Lady Pank",
+    "year": "1995",
+    "deezerTrackId": 791119522
+  },
+  {
+    "cardId": 248,
+    "title": "Biała armia",
+    "artist": "Bajm",
+    "year": "1990",
+    "deezerTrackId": 17384386
+  },
+  {
+    "cardId": 249,
+    "title": "Co mi Panie dasz",
+    "artist": "Bajm",
+    "year": "1983",
+    "deezerTrackId": 546835792
+  },
+  {
+    "cardId": 250,
+    "title": "Józek, nie daruję ci tej nocy",
+    "artist": "Bajm",
+    "year": "1985",
+    "deezerTrackId": 546835782
+  },
+  {
+    "cardId": 251,
+    "title": "Nie ma wody na pustyni",
+    "artist": "Bajm",
+    "year": "1987",
+    "deezerTrackId": 546835772
+  },
+  {
+    "cardId": 252,
+    "title": "Szklanka wody",
+    "artist": "Bajm",
+    "year": "2000",
+    "deezerTrackId": 17384415
+  },
+  {
+    "cardId": 253,
+    "title": "Modlitwa o złoty deszcz",
+    "artist": "Bajm",
+    "year": "1993",
+    "deezerTrackId": 17384420
+  },
+  {
+    "cardId": 254,
+    "title": "Płynie w nas gorąca krew",
+    "artist": "Bajm",
+    "year": "1986",
+    "deezerTrackId": 546835902
+  },
+  {
+    "cardId": 255,
+    "title": "Róże Europy",
+    "artist": "Róże Europy",
+    "year": "1985",
+    "deezerTrackId": 697981872
+  },
+  {
+    "cardId": 256,
+    "title": "Jedwab",
+    "artist": "Róże Europy",
+    "year": "1987",
+    "deezerTrackId": 697981872
+  },
+  {
+    "cardId": 257,
+    "title": "Zodiak na Melanzu",
+    "artist": "Monopol",
+    "year": "2009",
+    "deezerTrackId": 4763413
+  },
+  {
+    "cardId": 258,
+    "title": "Runął już ostatni mur",
+    "artist": "Tilt",
+    "year": "1986",
+    "deezerTrackId": 785903552
+  },
+  {
+    "cardId": 259,
+    "title": "Lepszy Model",
+    "artist": "Kasia Klich",
+    "year": "2002",
+    "deezerTrackId": 97312830
+  },
+  {
+    "cardId": 260,
+    "title": "Ona By Tak Chciała",
+    "artist": "Ronnie Ferrari",
+    "year": "2019",
+    "deezerTrackId": 749565442
+  },
+  {
+    "cardId": 261,
+    "title": "Ku przyszłości",
+    "artist": "Dezerter",
+    "year": "1988",
+    "deezerTrackId": 3484822881
+  },
+  {
+    "cardId": 262,
+    "title": "Spytaj milicjanta",
+    "artist": "Dezerter",
+    "year": "1987",
+    "deezerTrackId": 3484822891
+  },
+  {
+    "cardId": 263,
+    "title": "Nienawiść",
+    "artist": "Dezerter",
+    "year": "1989",
+    "deezerTrackId": 782686492
+  },
+  {
+    "cardId": 264,
+    "title": "Weź Nie Pytaj",
+    "artist": "Paweł Domagała",
+    "year": "2018",
+    "deezerTrackId": 2578912672
+  },
+  {
+    "cardId": 265,
+    "title": "Hydropiekłowstąpienie",
+    "artist": "Lao Che",
+    "year": "2008",
+    "deezerTrackId": 446485972
+  },
+  {
+    "cardId": 266,
+    "title": "Zombi!",
+    "artist": "Lao Che",
+    "year": "2006",
+    "deezerTrackId": 65017736
+  },
+  {
+    "cardId": 267,
+    "title": "Wojenka",
+    "artist": "Lao Che",
+    "year": "2010",
+    "deezerTrackId": 96409272
+  },
+  {
+    "cardId": 268,
+    "title": "Everest",
+    "artist": "Lao Che",
+    "year": "2005",
+    "deezerTrackId": 3202549
+  },
+  {
+    "cardId": 269,
+    "title": "W Stronę Słońca",
+    "artist": "Ewelina Lisowska",
+    "year": "2013",
+    "deezerTrackId": 62953815
+  },
+  {
+    "cardId": 270,
+    "title": "Drzwi",
+    "artist": "O.N.A.",
+    "year": "1998",
+    "deezerTrackId": 3362495491
+  },
+  {
+    "cardId": 271,
+    "title": "Kiedy powiem sobie dość",
+    "artist": "O.N.A.",
+    "year": "2000",
+    "deezerTrackId": 3362497711
+  },
+  {
+    "cardId": 272,
+    "title": "Znalazłam",
+    "artist": "O.N.A.",
+    "year": "1999",
+    "deezerTrackId": 3362495461
+  },
+  {
+    "cardId": 273,
+    "title": "Krzyczę",
+    "artist": "O.N.A.",
+    "year": "1997",
+    "deezerTrackId": 3362497721
+  },
+  {
+    "cardId": 274,
+    "title": "Niekochana",
+    "artist": "O.N.A.",
+    "year": "1998",
+    "deezerTrackId": 3362494331
+  },
+  {
+    "cardId": 275,
+    "title": "Ona Jest Ze Snu",
+    "artist": "IRA",
+    "year": "2005",
+    "deezerTrackId": 90347887
+  },
+  {
+    "cardId": 276,
+    "title": "51",
+    "artist": "TSA",
+    "year": "1981",
+    "deezerTrackId": 782772652
+  },
+  {
+    "cardId": 277,
+    "title": "Trzy zapałki",
+    "artist": "TSA",
+    "year": "1982",
+    "deezerTrackId": 972690142
+  },
+  {
+    "cardId": 278,
+    "title": "Miliony Monet",
+    "artist": "Mrozu",
+    "year": "2009",
+    "deezerTrackId": 62213366
+  },
+  {
+    "cardId": 279,
+    "title": "Bez podtekstów",
+    "artist": "TSA",
+    "year": "1985",
+    "deezerTrackId": 972690182
+  },
+  {
+    "cardId": 280,
+    "title": "Pokaż Na Co Cię Stać",
+    "artist": "Feel",
+    "year": "2009",
+    "deezerTrackId": 3460007
+  },
+  {
+    "cardId": 281,
+    "title": "Jestem Bogiem",
+    "artist": "Paktofonika",
+    "year": "2000",
+    "deezerTrackId": 62850529
+  },
+  {
+    "cardId": 282,
+    "title": "Chwile ulotne",
+    "artist": "Paktofonika",
+    "year": "2000",
+    "deezerTrackId": 62850525
+  },
+  {
+    "cardId": 283,
+    "title": "Priorytety",
+    "artist": "Paktofonika",
+    "year": "2000",
+    "deezerTrackId": 62850519
+  },
+  {
+    "cardId": 284,
+    "title": "Gdyby",
+    "artist": "Paktofonika",
+    "year": "2000",
+    "deezerTrackId": 62850520
+  },
+  {
+    "cardId": 285,
+    "title": "Bałkanica",
+    "artist": "Piersi",
+    "year": "2013",
+    "deezerTrackId": 69557246
+  },
+  {
+    "cardId": 286,
+    "title": "Policeman",
+    "artist": "Jamal",
+    "year": "2005",
+    "deezerTrackId": 3500118
+  },
+  {
+    "cardId": 287,
+    "title": "Film",
+    "artist": "Kaliber 44",
+    "year": "1998",
+    "deezerTrackId": 121737116
+  },
+  {
+    "cardId": 288,
+    "title": "Normalnie o tej porze",
+    "artist": "Kaliber 44",
+    "year": "1996",
+    "deezerTrackId": 121737162
+  },
+  {
+    "cardId": 289,
+    "title": "Plus i minus",
+    "artist": "Kaliber 44",
+    "year": "1998",
+    "deezerTrackId": 121737216
+  },
+  {
+    "cardId": 290,
+    "title": "Pieprz I Sól",
+    "artist": "Kasia Kowalska",
+    "year": "1996",
+    "deezerTrackId": 928372
+  },
+  {
+    "cardId": 291,
+    "title": "Jesteś szalona",
+    "artist": "Boys",
+    "year": "1994",
+    "deezerTrackId": 3363158211
+  },
+  {
+    "cardId": 292,
+    "title": "Wolność",
+    "artist": "Boys",
+    "year": "1996",
+    "deezerTrackId": 3643743692
+  },
+  {
+    "cardId": 293,
+    "title": "Ona tańczy dla mnie",
+    "artist": "Weekend",
+    "year": "2012",
+    "deezerTrackId": 64304452
+  },
+  {
+    "cardId": 294,
+    "title": "Przez twe oczy zielone",
+    "artist": "Akcent",
+    "year": "2014",
+    "deezerTrackId": 87171601
+  },
+  {
+    "cardId": 295,
+    "title": "W Dzień Gorącego Lata",
+    "artist": "Big Day",
+    "year": "1997",
+    "deezerTrackId": 125517966
+  },
+  {
+    "cardId": 296,
+    "title": "Lato 2000",
+    "artist": "Sami",
+    "year": "2000",
+    "deezerTrackId": 974581212
+  },
+  {
+    "cardId": 297,
+    "title": "Otwieram Wino",
+    "artist": "Sidney Polak Pezet",
+    "year": "2004",
+    "deezerTrackId": 3276513
+  },
+  {
+    "cardId": 298,
+    "title": "było, minęło",
+    "artist": "sanah",
+    "year": "2024",
+    "deezerTrackId": 2835961512
+  },
+  {
+    "cardId": 299,
+    "title": "Na Falochronie",
+    "artist": "Emigranci",
+    "year": "1990",
+    "deezerTrackId": 2335281025
+  },
+  {
+    "cardId": 300,
+    "title": "Żono moja",
+    "artist": "Masters",
+    "year": "2015",
+    "deezerTrackId": 108458930
+  },
+  {
+    "cardId": 301,
+    "title": "Jesień - Tańcuj",
+    "artist": "L.U.C.",
+    "year": "2023",
+    "deezerTrackId": 3622296692
+  },
+  {
+    "cardId": 302,
+    "title": "W aucie",
+    "artist": "Sokół",
+    "year": "2007",
+    "deezerTrackId": 1372231442
+  },
+  {
+    "cardId": 303,
+    "title": "My Słowianie",
+    "artist": "Donatan",
+    "year": "2013",
+    "deezerTrackId": 72369258
+  },
+  {
+    "cardId": 304,
+    "title": "Ech, poleczko",
+    "artist": "Guzowianki",
+    "year": "2021",
+    "deezerTrackId": 1301316572
+  },
+  {
+    "cardId": 305,
+    "title": "Niebo z moich stron",
+    "artist": "Czerwone Gitary",
+    "year": "1969",
+    "deezerTrackId": 635681732
+  },
+  {
+    "cardId": 306,
+    "title": "Dziwny jest ten świat",
+    "artist": "Niemen",
+    "year": "1967",
+    "deezerTrackId": 3698352222
+  },
+  {
+    "cardId": 307,
+    "title": "Pod Papugami",
+    "artist": "Niemen",
+    "year": "1968",
+    "deezerTrackId": 631832962
+  },
+  {
+    "cardId": 308,
+    "title": "Sen o Warszawie",
+    "artist": "Niemen",
+    "year": "1966",
+    "deezerTrackId": 663031472
+  },
+  {
+    "cardId": 309,
+    "title": "Z kopyta kulig rwie",
+    "artist": "Skaldowie",
+    "year": "1970",
+    "deezerTrackId": 791119022
+  },
+  {
+    "cardId": 310,
+    "title": "Wszystko mi mówi, że mnie ktoś pokochał",
+    "artist": "Skaldowie",
+    "year": "1968",
+    "deezerTrackId": 730393082
+  },
+  {
+    "cardId": 311,
+    "title": "Parostatek",
+    "artist": "Krzysztof Krawczyk",
+    "year": "1976",
+    "deezerTrackId": 1741986707
+  },
+  {
+    "cardId": 312,
+    "title": "Jak minął dzień",
+    "artist": "Krzysztof Krawczyk",
+    "year": "1975",
+    "deezerTrackId": 1741986717
+  },
+  {
+    "cardId": 313,
+    "title": "Biały krzyż",
+    "artist": "Czerwone Gitary",
+    "year": "1969",
+    "deezerTrackId": 114013570
+  },
+  {
+    "cardId": 314,
+    "title": "Gdzie się podziały tamte prywatki",
+    "artist": "Wojciech Gąssowski",
+    "year": "1973",
+    "deezerTrackId": 2781207851
+  },
+  {
+    "cardId": 315,
+    "title": "Bujaj się, Fela",
+    "artist": "Mieczysław Fogg",
+    "year": "1955",
+    "deezerTrackId": 126904429
+  },
+  {
+    "cardId": 316,
+    "title": "Jak juz popić",
+    "artist": "Mieczysław Fogg",
+    "year": "1946",
+    "deezerTrackId": 53153701
+  },
+  {
+    "cardId": 317,
+    "title": "To ostatnia niedziela",
+    "artist": "Mieczysław Fogg",
+    "year": "1935",
+    "deezerTrackId": 1379592972
+  },
+  {
+    "cardId": 319,
+    "title": "Sex Appeal",
+    "artist": "Eugeniusz Bodo",
+    "year": "1937",
+    "deezerTrackId": 124605044
+  },
+  {
+    "cardId": 320,
+    "title": "Umówiłem Się z Nią na 9-tą",
+    "artist": "Eugeniusz Bodo",
+    "year": "1937",
+    "deezerTrackId": 124605096
+  },
+  {
+    "cardId": 321,
+    "title": "Bo we mnie jest seks",
+    "artist": "Kalina Jędrusik",
+    "year": "1963",
+    "deezerTrackId": 1677917557
+  },
+  {
+    "cardId": 322,
+    "title": "Patrzę na ciebie",
+    "artist": "Kalina Jędrusik",
+    "year": "1962",
+    "deezerTrackId": 1677917587
+  },
+  {
+    "cardId": 323,
+    "title": "Miłość w Portofino",
+    "artist": "Sława Przybylska",
+    "year": "1960",
+    "deezerTrackId": 126903629
+  },
+  {
+    "cardId": 324,
+    "title": "Nie bądź taki szybki Bill",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1965",
+    "deezerTrackId": 853549802
+  },
+  {
+    "cardId": 325,
+    "title": "O mnie się nie martw",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1964",
+    "deezerTrackId": 780316762
+  },
+  {
+    "cardId": 326,
+    "title": "Trzynastego",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1967",
+    "deezerTrackId": 854366882
+  },
+  {
+    "cardId": 327,
+    "title": "Ja mam taniec, śpiew i ciebie",
+    "artist": "Katarzyna Sobczyk",
+    "year": "1965",
+    "deezerTrackId": 853788652
+  },
+  {
+    "cardId": 328,
+    "title": "Tyle słońca w całym mieście",
+    "artist": "Anna Jantar",
+    "year": "1974",
+    "deezerTrackId": 569471922
+  },
+  {
+    "cardId": 329,
+    "title": "Najtrudniejszy pierwszy krok",
+    "artist": "Anna Jantar",
+    "year": "1974",
+    "deezerTrackId": 569471872
+  },
+  {
+    "cardId": 330,
+    "title": "Nic nie może wiecznie trwać",
+    "artist": "Anna Jantar",
+    "year": "1979",
+    "deezerTrackId": 2665885052
+  },
+  {
+    "cardId": 331,
+    "title": "Mój, tylko mój",
+    "artist": "Anna Jantar",
+    "year": "1975",
+    "deezerTrackId": 569472612
+  },
+  {
+    "cardId": 332,
+    "title": "Wielka dama tańczy sama",
+    "artist": "Anna Jantar",
+    "year": "1979",
+    "deezerTrackId": 2665885002
+  },
+  {
+    "cardId": 333,
+    "title": "Zawsze gdzieś czeka ktoś",
+    "artist": "Anna Jantar",
+    "year": "1978",
+    "deezerTrackId": 572184262
+  },
+  {
+    "cardId": 334,
+    "title": "Gdzie są dzisiaj tamci ludzie",
+    "artist": "Anna Jantar",
+    "year": "1979",
+    "deezerTrackId": 2665885022
+  },
+  {
+    "cardId": 335,
+    "title": "Do zakochania jeden krok",
+    "artist": "Andrzej Dąbrowski",
+    "year": "1972",
+    "deezerTrackId": 462185032
+  },
+  {
+    "cardId": 336,
+    "title": "Czarny Alibaba",
+    "artist": "Helena Majdaniec",
+    "year": "1963",
+    "deezerTrackId": 126904183
+  },
+  {
+    "cardId": 337,
+    "title": "Rudy rydz",
+    "artist": "Helena Majdaniec",
+    "year": "1963",
+    "deezerTrackId": 126904197
+  }
+]
