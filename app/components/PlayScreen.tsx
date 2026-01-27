@@ -113,6 +113,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       audio.pause();
       video.pause();
     }
+    setPlaying((prev) => !prev);
   }
 
   return (
@@ -134,14 +135,15 @@ export default function PlayScreen({ cardId, onNext }: Props) {
             playsInline
             className="inset-0 w-full h-full  mx-auto object-cover lg:object-contain brightness-60"
           />
-          {playing ? (
+          {playing && (
             <button
               onClick={togglePlay}
               className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
             >
               <FaCircleStop className="text-7xl" />
             </button>
-          ) : (
+          )}
+          {!playing && (
             <button
               onClick={togglePlay}
               className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
@@ -153,21 +155,19 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       ) : (
         <div className="bg-black relative w-full h-[80%]"></div>
       )}
-      <div className="fixed bottom-0 left-0 w-full flex flex-col">
-        <button
-          onClick={onNext}
-          className="h-[19%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
-        >
-          Następny utwór
-          <ImNext className="text-4xl" />
-        </button>
-        {/* PROGRESS BAR */}
-        <div className="h-[1%] w-full bg-black">
-          <div
-            className="h-full bg-red-800 transition-all duration-100 linear"
-            style={{ width: `${progress * 100}%` }}
-          />
-        </div>
+      <button
+        onClick={onNext}
+        className="fixed bottom-0 left-0 h-[20%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
+      >
+        Następny utwór
+        <ImNext className="text-4xl" />
+      </button>
+      {/* PROGRESS BAR */}
+      <div className="fixed z-50 bottom-0 left-0 h-[1%] w-full bg-black">
+        <div
+          className="h-full bg-red-800 transition-all duration-100 linear"
+          style={{ width: `${progress * 100}%` }}
+        />
       </div>
 
       {/* AUDIO MUSI BYĆ W DOM */}
