@@ -56,6 +56,24 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     };
   }, [src]);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    const video = videoRef.current;
+    if (!audio || !video) return;
+
+    function handleEnded() {
+      video!.pause();
+      video!.currentTime = 0;
+      setPlaying(false);
+    }
+
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
   function togglePlay() {
     const audio = audioRef.current;
     const video = videoRef.current;
@@ -88,7 +106,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
             ref={videoRef}
             src={video}
             muted
-            loop
+            // loop
             playsInline
             className="inset-0 w-full h-full  mx-auto object-cover lg:object-contain brightness-60"
           />
