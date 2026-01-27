@@ -47,13 +47,6 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     Promise.all([audio.play(), video.play()])
       .then(() => setPlaying(true))
       .catch(() => setError("Nie można odtworzyć"));
-
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-      video.pause();
-      video.currentTime = 0;
-    };
   }, [src]);
 
   useEffect(() => {
@@ -61,33 +54,37 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     const video = videoRef.current;
     if (!audio || !video) return;
 
-    function handleEnded() {
-      video!.pause();
-      video!.currentTime = 0;
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    const onEnded = () => {
+      video.pause();
+      video.currentTime = 0;
       setPlaying(false);
-    }
+    };
 
-    audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("ended", onEnded);
 
     return () => {
-      audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("ended", onEnded);
     };
   }, []);
 
   function togglePlay() {
     const audio = audioRef.current;
     const video = videoRef.current;
-    console.log(audio);
     if (!audio || !video) return;
 
-    if (playing) {
+    if (audio.paused) {
+      Promise.all([audio.play(), video.play()]).catch(() =>
+        setError("Nie można odtworzyć utworu"),
+      );
+    } else {
       audio.pause();
       video.pause();
-      setPlaying(false);
-    } else {
-      Promise.all([audio.play(), video.play()])
-        .then(() => setPlaying(true))
-        .catch(() => setError("Nie można odtworzyć utworu"));
     }
   }
 
