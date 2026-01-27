@@ -83,12 +83,16 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
   function togglePlay() {
     const audio = audioRef.current;
-    if (!audio) return;
+    const video = videoRef.current;
+    if (!audio || !video) return;
 
     if (audio.paused) {
-      audio.play().catch(() => setError("Nie można odtworzyć utworu"));
+      Promise.all([audio.play(), video.play()]).catch(() =>
+        setError("Nie można odtworzyć utworu"),
+      );
     } else {
       audio.pause();
+      video.pause();
     }
   }
 
