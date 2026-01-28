@@ -11,6 +11,7 @@ const songs = JSON.parse(
 // ===== FONTY =====
 const FONT_REGULAR = path.resolve("fonts/Inter-Regular.ttf");
 const FONT_BOLD = path.resolve("fonts/Inter-Bold.ttf");
+const FONT_YEAR = path.resolve("fonts/Audiowide-Regular.ttf");
 const FONT_ITALIC = path.resolve("fonts/Inter-Italic.ttf");
 
 // ===== A4 =====
@@ -27,76 +28,100 @@ const START_Y = (A4_HEIGHT - (ROWS * CARD_SIZE + (ROWS - 1) * GAP)) / 2;
 
 // ===== KOLORY (czytelne pod biały tekst) =====
 const COLORS = [
-  "#8B0000", // dark red
-  "#B22222", // firebrick
-  "#C0392B", // red
-  "#D35400", // orange
-  "#E67E22", // carrot
-  "#F39C12", // orange yellow
-
-  "#16A085", // teal
-  "#1ABC9C", // turquoise
-  "#27AE60", // green
-  "#2ECC71", // light green
-
-  "#2980B9", // blue
-  "#3498DB", // light blue
-  "#5DADE2", // sky blue
-
-  "#6C3483", // purple
-  "#8E44AD", // amethyst
-  "#AF7AC5", // light purple
-
-  "#7F8C8D", // gray
-  "#95A5A6", // light gray
+  "#8B0000",
+  "#B22222",
+  "#C0392B",
+  "#D35400",
+  "#E67E22",
+  "#F39C12",
+  "#16A085",
+  "#1ABC9C",
+  "#27AE60",
+  "#2ECC71",
+  "#2980B9",
+  "#3498DB",
+  "#5DADE2",
+  "#6C3483",
+  "#8E44AD",
+  "#AF7AC5",
 ];
 
 function randomColor() {
   return COLORS[Math.floor(Math.random() * COLORS.length)];
 }
 
-// ===== FRONT (QR) =====
+// ===== FRONT (QR + gradient + napis) =====
 async function drawFrontAt(doc, song, x, y, size) {
-  const qrSize = size * 0.7;
+  const qrSize = size * 0.7 * 0.75; // zmniejszony o ~15%
   const qrOffset = (size - qrSize) / 2;
-  const whiteSize = qrSize + size * 0.12;
+  const whiteSize = qrSize + size * 0.11;
   const whiteOffset = (size - whiteSize) / 2;
 
   const url = `https://beat-track.netlify.app/card/${song.cardId}`;
   const qr = await QRCode.toDataURL(url, { margin: 0 });
 
-  doc.rect(x, y, size, size).fill("#000");
+  // 🔴 Gradient tła (czarny -> ciemnoczerwony)
+  const gradient = doc
+    .linearGradient(x, y, x, y + size)
+    .stop(0, "#000000")
+    .stop(0.7, "#0a0000")
+    .stop(1, "#3a0000");
+  doc.rect(x, y, size, size).fill(gradient);
 
+  // ⬜ Pole na QR
   doc
     .roundedRect(x + whiteOffset, y + whiteOffset, whiteSize, whiteSize, 12)
     .fill("#fff");
 
+  // 📱 QR
   doc.image(qr, x + qrOffset, y + qrOffset, {
     width: qrSize,
     height: qrSize,
   });
+
+  // ✍️ Napis Beat Track
+  doc.fillColor("white").opacity(0.5).font(FONT_BOLD).fontSize(10);
+  doc.text("Beat Track", x, y + size - 16, { width: size, align: "center" });
+  doc.opacity(1); // reset opacity
 }
 
 // ===== BACK =====
 function drawBackAt(doc, song, x, y, size) {
-  doc.rect(x, y, size, size).fill(randomColor());
+  // 🔴 Tło — bez szarości
+  const baseColor = randomColor();
+  // tło bazowe
+  doc.rect(x, y, size, size).fill(baseColor);
+
+  // gradient czarny (bez alpha!)
+  const gradient = doc
+    .linearGradient(x, y, x, y + size)
+    .stop(0, "#000000")
+    .stop(0.6, "#000000")
+    .stop(1, "#000000");
+
+  // overlay z opacity
+  doc.save();
+  doc.opacity(0.45);
+  doc.rect(x, y, size, size).fill(gradient);
+  doc.restore();
   doc.fillColor("white");
 
+  // 🎤 Wykonawca 10px niżej
   doc.font(FONT_BOLD).fontSize(14);
-  doc.text(song.artist, x, y + 16, { width: size, align: "center" });
+  doc.text(song.artist, x, y + 20, { width: size, align: "center" });
 
-  doc.font(FONT_BOLD).fontSize(40);
-  doc.text(song.year, x, y + size / 2 - 28, {
-    width: size,
-    align: "center",
-  });
+  // 📅 Rok
+  doc.font(FONT_YEAR).fontSize(36);
+  doc.text(song.year, x, y + size / 2 - 28, { width: size, align: "center" });
 
+  // 🎵 Tytuł 10px wyżej
   doc.font(FONT_ITALIC).fontSize(12);
-  doc.text(song.title, x + 12, y + size - 44, {
+  doc.text(song.title, x + 12, y + size - 49, {
     width: size - 24,
     align: "center",
   });
 
+  // 🔢 Numer karty
   doc.font(FONT_REGULAR).fontSize(8);
   doc.text(`#${song.cardId}`, x + size - 24, y + size - 16);
 
@@ -104,12 +129,16 @@ function drawBackAt(doc, song, x, y, size) {
   const label = song.cardId <= 337 ? "PL" : "MIX";
   doc.font(FONT_BOLD).fontSize(10);
   doc.text(label, x + 6, y + size - 16);
+
+  // ✍️ Napis Beat Track na dole
+  doc.fillColor("white").opacity(0.5).font(FONT_BOLD).fontSize(10);
+  doc.text("Beat Track", x, y + size - 16, { width: size, align: "center" });
+  doc.opacity(1);
 }
 
 // ===== LINIE CIĘCIA =====
 function drawCutLines(doc, x, y, size) {
   doc.strokeColor("#777").lineWidth(0.5);
-
   doc
     .moveTo(x, y - 6)
     .lineTo(x, y)
@@ -124,51 +153,39 @@ function drawCutLines(doc, x, y, size) {
     .stroke();
 }
 
-// ===== STRONA FRONT =====
+// ===== STRONY =====
 async function drawFrontPage(doc, cards) {
   doc.addPage({
     size: [A4_WIDTH, A4_HEIGHT],
     margins: { top: 0, bottom: 0, left: 0, right: 0 },
   });
-
   let i = 0;
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
       if (!cards[i]) return;
-
       const x = START_X + col * (CARD_SIZE + GAP);
       const y = START_Y + row * (CARD_SIZE + GAP);
-
       await drawFrontAt(doc, cards[i], x, y, CARD_SIZE);
       drawCutLines(doc, x, y, CARD_SIZE);
-
       i++;
     }
   }
 }
 
-// ===== STRONA BACK =====
 function drawBackPage(doc, cards) {
   doc.addPage({
     size: [A4_WIDTH, A4_HEIGHT],
     margins: { top: 0, bottom: 0, left: 0, right: 0 },
   });
-
   let i = 0;
-
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
       if (!cards[i]) return;
-
-      // 🔁 ODBICIE LUSTRZANE KOLUMN (KLUCZ DO DUPLEX)
-      const reversedCol = COLS - 1 - col;
-
+      const reversedCol = COLS - 1 - col; // odbicie lustrzane
       const x = START_X + reversedCol * (CARD_SIZE + GAP);
       const y = START_Y + row * (CARD_SIZE + GAP);
-
       drawBackAt(doc, cards[i], x, y, CARD_SIZE);
       drawCutLines(doc, x, y, CARD_SIZE);
-
       i++;
     }
   }
@@ -190,7 +207,7 @@ async function generate() {
   }
 
   doc.end();
-  console.log("✅ cards-a4-duplex.pdf gotowy (druk dwustronny)");
+  console.log("✅ cards-a4-duplex.pdf gotowy (nowy design)");
 }
 
 generate();

@@ -14,8 +14,8 @@ export default function StartScreen({ onStart }: Props) {
         height={500}
         className="w-[50vw] md:w-[15vw] object-fill mb-18 speakersAnimation"
       />
-      <div className="mb-10 text-center">
-        <h1 className="text-4xl font-semibold tracking-widest uppercase ">
+      <div className="mb-20 text-center">
+        <h1 className="text-4xl font-semibold audiowide tracking-wider uppercase ">
           Beat Track
         </h1>
         <p className="opacity-60 text-lg mt-2">Muzyczna Linia Czasu</p>

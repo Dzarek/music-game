@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
+import { Cairo, Audiowide } from "next/font/google";
 import "./globals.css";
 
 const cairo = Cairo({
   variable: "--font-cairo",
+  weight: ["400"],
+  subsets: ["latin"],
+});
+const audiowide = Audiowide({
+  variable: "--font-audiowide",
   weight: ["400"],
   subsets: ["latin"],
 });
@@ -17,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Beat Track",
     description: "Muzyczna Linia Czasu",
-    url: "https://music-game-dzarek.netlify.app/",
+    url: "https://beat-track.netlify.app/",
     type: "website",
     images: [
       {
@@ -49,7 +54,9 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
 
-      <body className={`${cairo.variable} antialiased bg-black`}>
+      <body
+        className={`${cairo.variable} ${audiowide.variable} antialiased bg-black`}
+      >
         {children}
       </body>
     </html>

@@ -122,42 +122,42 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   return (
     <div className="flex relative h-full w-full flex-col bg-black text-white">
       {/* ERROR */}
-      {/* {error && (
+      {error && (
         <p className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl font-bold uppercase text-center text-red-800">
           {error}
         </p>
-      )} */}
+      )}
       {loading && !error && <Loading />}
-      {/* {!error && !loading ? ( */}
-      <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
-        <video
-          ref={videoRef}
-          src={video}
-          muted
-          // loop
-          playsInline
-          className="inset-0 w-full h-full  mx-auto object-cover lg:object-contain brightness-60"
-        />
-        {playing && (
-          <button
-            onClick={togglePlay}
-            className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
-          >
-            <FaCircleStop className="text-7xl" />
-          </button>
-        )}
-        {!playing && (
-          <button
-            onClick={togglePlay}
-            className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
-          >
-            <FaCirclePlay className="text-7xl" />
-          </button>
-        )}
-      </div>
-      {/* ) : (
+      {!error && !loading ? (
+        <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
+          <video
+            ref={videoRef}
+            src={video}
+            muted
+            // loop
+            playsInline
+            className="inset-0 w-full h-full  mx-auto object-cover lg:object-contain brightness-60"
+          />
+          {playing && (
+            <button
+              onClick={togglePlay}
+              className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
+            >
+              <FaCircleStop className="text-7xl" />
+            </button>
+          )}
+          {!playing && (
+            <button
+              onClick={togglePlay}
+              className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
+            >
+              <FaCirclePlay className="text-7xl" />
+            </button>
+          )}
+        </div>
+      ) : (
         <div className="bg-black relative w-full h-[80%]"></div>
-      )} */}
+      )}
       <button
         onClick={onNext}
         className="fixed bottom-0 left-0 h-[20%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
