@@ -80,8 +80,8 @@ async function drawFrontAt(doc, song, x, y, size) {
   });
 
   // ✍️ Napis Beat Track
-  doc.fillColor("white").opacity(0.5).font(FONT_BOLD).fontSize(10);
-  doc.text("Beat Track", x, y + size - 16, { width: size, align: "center" });
+  doc.fillColor("white").opacity(0.5).font(FONT_YEAR).fontSize(8);
+  doc.text("BEAT TRACK", x, y + size - 16, { width: size, align: "center" });
   doc.opacity(1); // reset opacity
 }
 
@@ -131,8 +131,8 @@ function drawBackAt(doc, song, x, y, size) {
   doc.text(label, x + 6, y + size - 16);
 
   // ✍️ Napis Beat Track na dole
-  doc.fillColor("white").opacity(0.5).font(FONT_BOLD).fontSize(10);
-  doc.text("Beat Track", x, y + size - 16, { width: size, align: "center" });
+  doc.fillColor("white").opacity(0.5).font(FONT_YEAR).fontSize(8);
+  doc.text("BEAT TRACK", x, y + size - 16, { width: size, align: "center" });
   doc.opacity(1);
 }
 
