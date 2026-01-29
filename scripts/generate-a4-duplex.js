@@ -116,7 +116,7 @@ function drawBackAt(doc, song, x, y, size) {
 
   // 🎵 Tytuł 10px wyżej
   doc.font(FONT_ITALIC).fontSize(12);
-  doc.text(song.title, x + 12, y + size - 49, {
+  doc.text(song.title, x + 12, y + size - 55, {
     width: size - 24,
     align: "center",
   });
