@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 
 type Props = {
@@ -14,6 +14,8 @@ const SCANNER_ID = "qr-reader";
 export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
   const qrCodeRef = useRef<Html5Qrcode | null>(null);
   const hasScannedRef = useRef(false);
+
+  const [finishing, setFinishing] = useState(false); // 👈 UI STATE
 
   useEffect(() => {
     const startScanner = () => {
@@ -31,18 +33,23 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
         },
         (decodedText) => {
           if (hasScannedRef.current) return;
+
           hasScannedRef.current = true;
+          setFinishing(true); // 🔥 natychmiast ukrywa "Anuluj"
 
           const match = decodedText.match(/\/card\/([^/?]+)/);
           const cardId = match ? match[1] : decodedText;
 
-          qr.stop().finally(() => {
-            qrCodeRef.current = null;
-            onScan(cardId);
-          });
+          onScan(cardId);
+          navigator.vibrate?.(20);
+
+          qr.stop().catch(() => {});
+          qrCodeRef.current = null;
         },
-        (_err) => {},
-      ).catch((err) => alert("Nie można uruchomić kamery: " + err));
+        () => {},
+      ).catch((err) => {
+        alert("Nie można uruchomić kamery: " + err);
+      });
     };
 
     if (autoStart) {
@@ -62,7 +69,7 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
     <div className="flex h-dvh w-screen flex-col items-center justify-center bg-black p-4 text-white">
       <div id={SCANNER_ID} className="w-full max-w-md" />
 
-      {onCancel && (
+      {onCancel && !finishing && (
         <button
           onClick={onCancel}
           className="mt-10 text-xl uppercase font-semibold opacity-60"
