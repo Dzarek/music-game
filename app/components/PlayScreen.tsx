@@ -127,7 +127,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
           {error}
         </p>
       )}
-      {loading && !error && <Loading />}
+      {/* {loading && !error && <Loading />} */}
       {!error && !loading ? (
         <>
           <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
@@ -176,7 +176,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
           </div>
         </>
       ) : (
-        <div className="bg-black relative w-full h-full"></div>
+        <Loading />
       )}
 
       {/* AUDIO MUSI BYĆ W DOM */}
