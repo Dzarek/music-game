@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import { useRouter } from "next/navigation";
 
@@ -17,8 +17,6 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
   const hasScannedRef = useRef(false);
   const router = useRouter();
 
-  const [finishing, setFinishing] = useState(false); // 👈 UI STATE
-
   useEffect(() => {
     const startScanner = () => {
       const qr = new Html5Qrcode(SCANNER_ID);
@@ -26,44 +24,32 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
 
       qr.start(
         { facingMode: "environment" },
-        {
-          fps: 10,
-          qrbox: (vw, vh) => {
-            const size = Math.min(vw, vh) * 0.8;
-            return { width: size, height: size };
-          },
-        },
+        { fps: 10 },
         (decodedText) => {
           if (hasScannedRef.current) return;
-
           hasScannedRef.current = true;
-          setFinishing(true); // 🔥 natychmiast ukrywa "Anuluj"
 
           const match = decodedText.match(/\/card\/([^/?]+)/);
           const cardId = match ? match[1] : decodedText;
-          router.prefetch(`/card/${cardId}`);
-          onScan(cardId);
-          // navigator.vibrate?.(20);
 
-          qr.stop().catch(() => {});
-          qrCodeRef.current = null;
+          // 🚀 PREFETCH STRONY KARTY
+          router.prefetch(`/card/${cardId}`);
+
+          qr.stop().finally(() => {
+            qrCodeRef.current = null;
+            onScan(cardId);
+          });
         },
         () => {},
-      ).catch((err) => {
-        alert("Nie można uruchomić kamery: " + err);
-      });
+      );
     };
 
-    if (autoStart) {
-      startScanner();
-    }
+    if (autoStart) startScanner();
 
     return () => {
       hasScannedRef.current = true;
-      if (qrCodeRef.current) {
-        qrCodeRef.current.stop().catch(() => {});
-        qrCodeRef.current = null;
-      }
+      qrCodeRef.current?.stop().catch(() => {});
+      qrCodeRef.current = null;
     };
   }, [onScan, autoStart, router]);
 
@@ -71,7 +57,7 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
     <div className="flex h-dvh w-screen flex-col items-center justify-center bg-black p-4 text-white">
       <div id={SCANNER_ID} className="w-full max-w-md" />
 
-      {onCancel && !finishing && (
+      {onCancel && (
         <button
           onClick={onCancel}
           className="mt-10 text-xl uppercase font-semibold opacity-60"
