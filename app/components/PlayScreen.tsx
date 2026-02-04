@@ -136,6 +136,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
               src={video}
               muted
               // loop
+              preload="auto"
               playsInline
               className="inset-0 w-full h-full  mx-auto object-cover lg:object-contain brightness-60"
             />

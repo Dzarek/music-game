@@ -52,6 +52,7 @@ export default function RootLayout({
           content="black-translucent"
         />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="preload" href="/video2.mp4" as="video" type="video/mp4" />
       </head>
 
       <body

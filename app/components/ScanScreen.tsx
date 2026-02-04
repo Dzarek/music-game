@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
+import { useRouter } from "next/navigation";
 
 type Props = {
   onScan: (cardId: string) => void;
@@ -14,6 +15,7 @@ const SCANNER_ID = "qr-reader";
 export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
   const qrCodeRef = useRef<Html5Qrcode | null>(null);
   const hasScannedRef = useRef(false);
+  const router = useRouter();
 
   const [finishing, setFinishing] = useState(false); // 👈 UI STATE
 
@@ -39,9 +41,9 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
 
           const match = decodedText.match(/\/card\/([^/?]+)/);
           const cardId = match ? match[1] : decodedText;
-
+          router.prefetch(`/card/${cardId}`);
           onScan(cardId);
-          navigator.vibrate?.(20);
+          // navigator.vibrate?.(20);
 
           qr.stop().catch(() => {});
           qrCodeRef.current = null;
@@ -63,7 +65,7 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
         qrCodeRef.current = null;
       }
     };
-  }, [onScan, autoStart]);
+  }, [onScan, autoStart, router]);
 
   return (
     <div className="flex h-dvh w-screen flex-col items-center justify-center bg-black p-4 text-white">
