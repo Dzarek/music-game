@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 // import songs from "@/data/songs.json";
-import songs from "@/data/songs-pl.json";
+// import songs from "@/data/songs-pl.json";
+import songs from "@/data/test.json";
 
 export async function GET(
   _: Request,
@@ -20,5 +21,6 @@ export async function GET(
 
   return NextResponse.json({
     previewUrl: data.preview,
+    spotifyTrackId: song.spotifyTrackId ?? null,
   });
 }

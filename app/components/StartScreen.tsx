@@ -27,6 +27,12 @@ export default function StartScreen({ onStart }: Props) {
       >
         Zagraj teraz
       </button>
+      <button
+        onClick={() => (window.location.href = "/api/auth/spotify")}
+        className="Btn text-xl cairo uppercase px-8 py-3 rounded-xl mb-4 text-white font-semibold"
+      >
+        Zagraj Premium
+      </button>
     </div>
   );
 }
