@@ -1,18 +1,18 @@
 "use client";
 import Image from "next/image";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 type Props = {
   onStart: () => void;
-  isPremium: boolean;
+  // isPremium: boolean;
 };
 
-export default function StartScreen({ onStart, isPremium }: Props) {
-  // const [isPremium, setIsPremium] = useState(false);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsPremium(document.cookie.includes("spotify_access_token="));
-  //   }, 0);
-  // }, []);
+export default function StartScreen({ onStart }: Props) {
+  const [isPremium, setIsPremium] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsPremium(document.cookie.includes("spotify_access_token="));
+    }, 0);
+  }, []);
 
   const handlePremiumClick = () => {
     if (isPremium) {
