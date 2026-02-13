@@ -30,10 +30,9 @@ export async function GET(req: Request) {
 
   const data = await tokenRes.json();
   console.log("Token response:", data);
-  const res = NextResponse.redirect("/"); // wróć do gry
+  const res = NextResponse.redirect("https://beat-track.netlify.app"); // <- absolutny URL
   res.cookies.set("spotify_access_token", data.access_token, {
     httpOnly: true,
   });
-
   return res;
 }
