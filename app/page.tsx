@@ -19,15 +19,13 @@ export default function Page() {
   const [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
-    // 🔹 tylko w client-side
-    const premium = document.cookie.includes("spotify_access_token=");
+    const cookie = document.cookie || "";
     setTimeout(() => {
-      setIsPremium(premium);
+      setIsPremium(cookie.includes("spotify_access_token="));
     }, 0);
-
     // 🔹 jeśli połączony z Spotify Premium lub autostart=true w URL
     const autostart = window.location.search.includes("autostart=true");
-    if (premium || autostart) {
+    if (isPremium || autostart) {
       setTimeout(() => {
         setAppState({ screen: "scan", autoStart: true });
         if (autostart) window.history.replaceState({}, "", "/");
@@ -48,7 +46,7 @@ export default function Page() {
       {appState.screen === "start" && (
         <StartScreen
           onStart={() => setAppState({ screen: "scan", autoStart: true })}
-          // isPremium={isPremium} // można przekazać props żeby StartScreen zmienił zachowanie
+          isPremium={isPremium} // można przekazać props żeby StartScreen zmienił zachowanie
         />
       )}
 
