@@ -34,7 +34,7 @@ export default function Page() {
       }, 0);
     }
   }, []);
-
+  console.log(isPremium);
   return (
     <>
       {/* 🔹 Informacja o Spotify Premium */}

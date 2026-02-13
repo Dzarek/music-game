@@ -23,7 +23,7 @@ export default function StartScreen({ onStart }: Props) {
       window.location.href = "/api/auth/spotify";
     }
   };
-
+  console.log(isPremium);
   return (
     <div className="flex flex-col items-center justify-center h-dvh w-screen bg-black text-white p-6">
       <Image

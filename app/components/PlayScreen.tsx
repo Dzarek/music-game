@@ -146,6 +146,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     }
     setPlaying((prev) => !prev);
   }
+  console.log(isPremium);
 
   return (
     <div className="flex relative h-full w-full flex-col bg-black text-white">
