@@ -16,16 +16,18 @@ export default function Page() {
     screen: "start",
     autoStart: false,
   });
+  const [isPremium, setIsPremium] = useState(false);
 
   // 🔹 sprawdzenie, czy użytkownik połączony z Spotify
-  const isPremium = document.cookie.includes("spotify_access_token=");
+  // const isPremium = document.cookie.includes("spotify_access_token=");
 
   useEffect(() => {
-    if (isPremium) {
-      setTimeout(() => {
+    setTimeout(() => {
+      setIsPremium(document.cookie.includes("spotify_access_token="));
+      if (isPremium) {
         setAppState({ screen: "scan", autoStart: true });
-      }, 0);
-    }
+      }
+    }, 0);
 
     // 🔹 obsługa parametru autostart z URL (np. ?autostart=true)
     if (window.location.search.includes("autostart=true")) {
