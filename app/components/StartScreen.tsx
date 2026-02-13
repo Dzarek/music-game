@@ -5,6 +5,20 @@ type Props = {
 };
 
 export default function StartScreen({ onStart }: Props) {
+  const isPremium =
+    typeof document !== "undefined" &&
+    document.cookie.includes("spotify_access_token=");
+
+  const handlePremiumClick = () => {
+    if (isPremium) {
+      // jeśli już zalogowany, od razu ScanScreen
+      onStart();
+    } else {
+      // jeśli nie, przekieruj do logowania Spotify
+      window.location.href = "/api/auth/spotify";
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-dvh w-screen bg-black text-white p-6">
       <Image
@@ -28,10 +42,10 @@ export default function StartScreen({ onStart }: Props) {
         Zagraj teraz
       </button>
       <button
-        onClick={() => (window.location.href = "/api/auth/spotify")}
+        onClick={handlePremiumClick}
         className="Btn text-xl cairo uppercase px-8 py-3 rounded-xl mb-4 text-white font-semibold"
       >
-        Zagraj Premium
+        Gra Premium
       </button>
     </div>
   );
