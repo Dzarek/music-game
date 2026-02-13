@@ -23,8 +23,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   const video = "/video2.mp4";
 
   // Sprawdź czy użytkownik zalogowany do Spotify Premium
-  const isPremium = document.cookie.includes("spotify_access_token=");
-
+  const isPremium = document.cookie.includes("spotify_logged_in=true");
   // 1️⃣ pobranie audio
   useEffect(() => {
     fetch(`/api/card/${cardId}/play`)

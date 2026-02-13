@@ -34,5 +34,8 @@ export async function GET(req: Request) {
   res.cookies.set("spotify_access_token", data.access_token, {
     httpOnly: true,
   });
+  res.cookies.set("spotify_logged_in", "true", {
+    httpOnly: false, // dostępne w JS
+  });
   return res;
 }

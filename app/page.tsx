@@ -19,9 +19,8 @@ export default function Page() {
   const [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
-    const cookie = document.cookie || "";
     setTimeout(() => {
-      setIsPremium(cookie.includes("spotify_access_token="));
+      setIsPremium(document.cookie.includes("spotify_logged_in=true"));
     }, 0);
     // 🔹 jeśli połączony z Spotify Premium lub autostart=true w URL
     const autostart = window.location.search.includes("autostart=true");
