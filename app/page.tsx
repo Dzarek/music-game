@@ -18,25 +18,22 @@ export default function Page() {
   });
   const [isPremium, setIsPremium] = useState(false);
 
-  // 🔹 sprawdzenie, czy użytkownik połączony z Spotify
-  // const isPremium = document.cookie.includes("spotify_access_token=");
-
   useEffect(() => {
+    // 🔹 tylko w client-side
+    const premium = document.cookie.includes("spotify_access_token=");
     setTimeout(() => {
-      setIsPremium(document.cookie.includes("spotify_access_token="));
-      if (isPremium) {
-        setAppState({ screen: "scan", autoStart: true });
-      }
+      setIsPremium(premium);
     }, 0);
 
-    // 🔹 obsługa parametru autostart z URL (np. ?autostart=true)
-    if (window.location.search.includes("autostart=true")) {
+    // 🔹 jeśli połączony z Spotify Premium lub autostart=true w URL
+    const autostart = window.location.search.includes("autostart=true");
+    if (premium || autostart) {
       setTimeout(() => {
         setAppState({ screen: "scan", autoStart: true });
-        window.history.replaceState({}, "", "/");
+        if (autostart) window.history.replaceState({}, "", "/");
       }, 0);
     }
-  }, [isPremium]);
+  }, []);
 
   return (
     <>
@@ -51,6 +48,7 @@ export default function Page() {
       {appState.screen === "start" && (
         <StartScreen
           onStart={() => setAppState({ screen: "scan", autoStart: true })}
+          isPremium={isPremium} // można przekazać props żeby StartScreen zmienił zachowanie
         />
       )}
 
@@ -59,7 +57,6 @@ export default function Page() {
         <ScanScreen
           autoStart={appState.autoStart}
           onScan={(id) => {
-            // 🔹 przekazanie info premium do PlayScreen
             const url = isPremium ? `/card/${id}?premium=true` : `/card/${id}`;
             window.location.href = url;
           }}
