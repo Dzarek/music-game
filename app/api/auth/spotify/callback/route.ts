@@ -1,43 +1,35 @@
 import { NextResponse } from "next/server";
-import qs from "querystring";
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const code = searchParams.get("code");
-
+  const url = new URL(req.url);
+  const code = url.searchParams.get("code");
   if (!code) return NextResponse.json({ error: "No code" }, { status: 400 });
 
-  const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
-  const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-  const REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI;
-
-  const body = qs.stringify({
-    grant_type: "authorization_code",
-    code,
-    redirect_uri: REDIRECT_URI,
-  });
-
-  const res = await fetch("https://accounts.spotify.com/api/token", {
+  const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
       Authorization:
         "Basic " +
-        Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64"),
-      "Content-Type": "application/x-www-form-urlencoded",
+        Buffer.from(
+          process.env.SPOTIFY_CLIENT_ID +
+            ":" +
+            process.env.SPOTIFY_CLIENT_SECRET,
+        ).toString("base64"),
     },
-    body,
+    body: new URLSearchParams({
+      grant_type: "authorization_code",
+      code,
+      redirect_uri: process.env.SPOTIFY_REDIRECT_URI!,
+    }),
   });
 
-  const data = await res.json();
+  const data = await tokenRes.json();
 
-  const response = NextResponse.redirect("/");
-  response.cookies.set("spotify_access_token", data.access_token, {
+  const res = NextResponse.redirect("/"); // wróć do gry
+  res.cookies.set("spotify_access_token", data.access_token, {
     httpOnly: true,
-    path: "/",
   });
-  response.cookies.set("spotify_refresh_token", data.refresh_token, {
-    httpOnly: true,
-    path: "/",
-  });
-  return response;
+
+  return res;
 }
