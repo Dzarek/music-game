@@ -30,7 +30,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     async function init() {
       try {
         // 1️⃣ sprawdź premium
-        const tokenRes = await fetch("/api/spotify/token");
+        const tokenRes = await fetch("/api/auth/spotify/token");
         const tokenData = tokenRes.ok ? await tokenRes.json() : null;
         const premium = !!tokenData?.token;
 

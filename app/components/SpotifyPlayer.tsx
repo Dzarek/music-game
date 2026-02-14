@@ -8,7 +8,7 @@ export default function SpotifyPlayer({ trackId }: Props) {
 
   useEffect(() => {
     let destroyed = false;
-    fetch("/api/spotify/token")
+    fetch("/api/auth/spotify/token")
       .then((r) => r.json())
       .then(({ token }) => {
         if (!token || destroyed) return;
