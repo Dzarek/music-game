@@ -24,28 +24,31 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
   const video = "/video2.mp4";
 
+  // INIT
   useEffect(() => {
     let cancelled = false;
 
     async function init() {
       try {
-        // 1️⃣ sprawdź premium
+        // 1️⃣ sprawdź token Spotify
         const tokenRes = await fetch("/api/auth/spotify/token");
         const tokenData = tokenRes.ok ? await tokenRes.json() : null;
         const premium = !!tokenData?.token;
 
-        // 2️⃣ pobierz kartę
+        // 2️⃣ pobierz dane karty
         const res = await fetch(`/api/card/${cardId}/play`);
         if (!res.ok) throw new Error();
         const { previewUrl, spotifyTrackId } = await res.json();
 
         if (cancelled) return;
 
-        // 3️⃣ routing logiki
+        // 3️⃣ routing
         if (premium && spotifyTrackId) {
           setSpotifyTrackId(spotifyTrackId); // ✅ Spotify FULL
+          setSrc(null); // ❌ Deezer off
         } else {
           setSrc(previewUrl); // ✅ Deezer preview
+          setSpotifyTrackId(null); // ❌ Spotify off
         }
 
         setLoading(false);
@@ -74,6 +77,16 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       .then(() => setPlaying(true))
       .catch(() => setError("Nie można odtworzyć"));
   }, [src, spotifyTrackId]);
+
+  // Spotify → tylko video animacja
+  useEffect(() => {
+    if (!spotifyTrackId) return;
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    videoEl.play().catch(() => {});
+    setPlaying(true);
+  }, [spotifyTrackId]);
 
   // progress bar tylko Deezer
   useEffect(() => {
