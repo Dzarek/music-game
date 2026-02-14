@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaCirclePlay, FaCircleStop } from "react-icons/fa6";
 import { ImNext } from "react-icons/im";
 import Loading from "./Loading";
+import SpotifyPlayer from "./SpotifyPlayer"; // ✅ IMPORT
 
 type Props = {
   cardId: string;
@@ -13,6 +14,7 @@ type Props = {
 export default function PlayScreen({ cardId, onNext }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(true);
   const [src, setSrc] = useState<string | null>(null);
@@ -22,9 +24,18 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
   const video = "/video2.mp4";
 
-  // Sprawdź czy użytkownik zalogowany do Spotify Premium
-  const isPremium = document.cookie.includes("spotify_logged_in=true");
-  // 1️⃣ pobranie audio
+  // 🔹 sprawdzanie premium przez API (a nie cookie JS)
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/spotify/token")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.token) setIsPremium(true);
+      });
+  }, []);
+
+  // 1️⃣ pobranie tracków
   useEffect(() => {
     fetch(`/api/card/${cardId}/play`)
       .then((res) => {
@@ -33,9 +44,9 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       })
       .then(({ previewUrl, spotifyTrackId }) => {
         if (isPremium && spotifyTrackId) {
-          setSpotifyTrackId(spotifyTrackId);
+          setSpotifyTrackId(spotifyTrackId); // ✅ Spotify
         } else {
-          setSrc(previewUrl);
+          setSrc(previewUrl); // ✅ Deezer
         }
         setLoading(false);
       })
@@ -47,70 +58,19 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
   // 2️⃣ Auto-play Deezer
   useEffect(() => {
-    if (!src || spotifyTrackId) return; // pomiń jeśli Spotify
+    if (!src || spotifyTrackId) return;
     const audio = audioRef.current;
-    const video = videoRef.current;
-    if (!audio || !video) return;
+    const videoEl = videoRef.current;
+    if (!audio || !videoEl) return;
 
-    Promise.all([audio.play(), video.play()])
+    Promise.all([audio.play(), videoEl.play()])
       .then(() => setPlaying(true))
       .catch(() => setError("Nie można odtworzyć"));
   }, [src, spotifyTrackId]);
 
-  // 3️⃣ Odtwarzanie Spotify Premium
+  // 3️⃣ progress bar (tylko Deezer)
   useEffect(() => {
-    if (!spotifyTrackId) return;
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("spotify_access_token="))
-      ?.split("=")[1];
-    if (!token) return;
-
-    fetch("https://api.spotify.com/v1/me/player/play", {
-      method: "PUT",
-      body: JSON.stringify({ uris: [`spotify:track:${spotifyTrackId}`] }),
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => setPlaying(true))
-      .catch(() => setError("Nie można odtworzyć Spotify"));
-  }, [spotifyTrackId]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    const video = videoRef.current;
-    if (!audio || !video) return;
-
-    const onPlay = () => {
-      setPlaying(true);
-      video.play().catch(() => {});
-    };
-
-    const onPause = () => {
-      setPlaying(false);
-      video.pause();
-    };
-
-    const onEnded = () => {
-      setPlaying(false);
-      video.pause();
-      video.currentTime = 0;
-    };
-
-    audio.addEventListener("play", onPlay);
-    audio.addEventListener("pause", onPause);
-    audio.addEventListener("ended", onEnded);
-
-    return () => {
-      audio.removeEventListener("play", onPlay);
-      audio.removeEventListener("pause", onPause);
-      audio.removeEventListener("ended", onEnded);
-    };
-  }, [playing]);
-
-  useEffect(() => {
+    if (spotifyTrackId) return; // ❌ Spotify ma własny timer
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -125,27 +85,26 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, [src]);
+  }, [src, spotifyTrackId]);
 
   function togglePlay() {
-    const audio = audioRef.current;
-    const video = videoRef.current;
-    if (!audio || !video) return;
+    if (spotifyTrackId) {
+      // ❌ Spotify sterowane SDK
+      return;
+    }
 
-    if (audio.paused && !spotifyTrackId) {
-      Promise.all([audio.play(), video.play()]).catch(() =>
-        setError("Nie można odtworzyć utworu"),
-      );
+    const audio = audioRef.current;
+    const videoEl = videoRef.current;
+    if (!audio || !videoEl) return;
+
+    if (audio.paused) {
+      Promise.all([audio.play(), videoEl.play()]);
     } else {
       audio.pause();
-      video.pause();
-      if (spotifyTrackId) {
-        setError("Sterowanie Spotify wymaga SDK lub Web Playback API");
-      }
+      videoEl.pause();
     }
-    setPlaying((prev) => !prev);
+    setPlaying((p) => !p);
   }
-  console.log(isPremium);
 
   return (
     <div className="flex relative h-full w-full flex-col bg-black text-white">
@@ -154,6 +113,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
           {error}
         </p>
       )}
+
       {!error && !loading ? (
         <>
           <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
@@ -165,44 +125,50 @@ export default function PlayScreen({ cardId, onNext }: Props) {
               playsInline
               className="inset-0 w-full h-full mx-auto object-cover lg:object-contain brightness-60"
             />
-            {playing && (
-              <button
-                onClick={togglePlay}
-                className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
-              >
-                <FaCircleStop className="text-7xl" />
-              </button>
-            )}
-            {!playing && (
-              <button
-                onClick={togglePlay}
-                className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
-              >
-                <FaCirclePlay className="text-7xl" />
-              </button>
+
+            {!spotifyTrackId && (
+              <>
+                {playing ? (
+                  <button onClick={togglePlay} className="absolute ...">
+                    <FaCircleStop className="text-7xl" />
+                  </button>
+                ) : (
+                  <button onClick={togglePlay} className="absolute ...">
+                    <FaCirclePlay className="text-7xl" />
+                  </button>
+                )}
+              </>
             )}
           </div>
+
           <button
             onClick={onNext}
-            className="fixed bottom-0 left-0 h-[20%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
+            className="fixed bottom-0 left-0 h-[20%] ..."
           >
             Następny utwór
             <ImNext className="text-4xl" />
           </button>
-          <div className="fixed z-50 bottom-0 left-0 h-1.25 w-full bg-black overflow-hidden">
-            <div
-              className="h-full bg-red-800 rounded-r-2xl"
-              style={{ width: `${progress * 100}%`, willChange: "width" }}
-            />
-          </div>
+
+          {!spotifyTrackId && (
+            <div className="fixed z-50 bottom-0 left-0 h-1.25 w-full bg-black overflow-hidden">
+              <div
+                className="h-full bg-red-800 rounded-r-2xl"
+                style={{ width: `${progress * 100}%` }}
+              />
+            </div>
+          )}
         </>
       ) : (
         <Loading />
       )}
-      {/* AUDIO MUSI BYĆ W DOM jeśli Deezer */}
+
+      {/* 🔹 Deezer */}
       {!spotifyTrackId && (
         <audio ref={audioRef} src={src ?? undefined} preload="auto" />
       )}
+
+      {/* 🔹 Spotify FULL TRACK */}
+      {spotifyTrackId && <SpotifyPlayer trackId={spotifyTrackId} />}
     </div>
   );
 }
