@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaCirclePlay, FaCircleStop } from "react-icons/fa6";
 import { ImNext } from "react-icons/im";
 import Loading from "./Loading";
-import SpotifyPlayer from "./SpotifyPlayer"; // ✅ IMPORT
+import SpotifyPlayer from "./SpotifyPlayer";
 
 type Props = {
   cardId: string;
@@ -24,39 +24,46 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
   const video = "/video2.mp4";
 
-  // 🔹 sprawdzanie premium przez API (a nie cookie JS)
-  const [isPremium, setIsPremium] = useState(false);
-
   useEffect(() => {
-    fetch("/api/spotify/token")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (data?.token) setIsPremium(true);
-      });
-  }, []);
+    let cancelled = false;
 
-  // 1️⃣ pobranie tracków
-  useEffect(() => {
-    fetch(`/api/card/${cardId}/play`)
-      .then((res) => {
+    async function init() {
+      try {
+        // 1️⃣ sprawdź premium
+        const tokenRes = await fetch("/api/spotify/token");
+        const tokenData = tokenRes.ok ? await tokenRes.json() : null;
+        const premium = !!tokenData?.token;
+
+        // 2️⃣ pobierz kartę
+        const res = await fetch(`/api/card/${cardId}/play`);
         if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then(({ previewUrl, spotifyTrackId }) => {
-        if (isPremium && spotifyTrackId) {
-          setSpotifyTrackId(spotifyTrackId); // ✅ Spotify
-        } else {
-          setSrc(previewUrl); // ✅ Deezer
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        setError("Błąd ładowania audio");
-        setLoading(false);
-      });
-  }, [cardId, isPremium]);
+        const { previewUrl, spotifyTrackId } = await res.json();
 
-  // 2️⃣ Auto-play Deezer
+        if (cancelled) return;
+
+        // 3️⃣ routing logiki
+        if (premium && spotifyTrackId) {
+          setSpotifyTrackId(spotifyTrackId); // ✅ Spotify FULL
+        } else {
+          setSrc(previewUrl); // ✅ Deezer preview
+        }
+
+        setLoading(false);
+      } catch {
+        if (!cancelled) {
+          setError("Błąd ładowania audio");
+          setLoading(false);
+        }
+      }
+    }
+
+    init();
+    return () => {
+      cancelled = true;
+    };
+  }, [cardId]);
+
+  // Deezer autoplay
   useEffect(() => {
     if (!src || spotifyTrackId) return;
     const audio = audioRef.current;
@@ -68,9 +75,9 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       .catch(() => setError("Nie można odtworzyć"));
   }, [src, spotifyTrackId]);
 
-  // 3️⃣ progress bar (tylko Deezer)
+  // progress bar tylko Deezer
   useEffect(() => {
-    if (spotifyTrackId) return; // ❌ Spotify ma własny timer
+    if (spotifyTrackId) return;
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -88,10 +95,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   }, [src, spotifyTrackId]);
 
   function togglePlay() {
-    if (spotifyTrackId) {
-      // ❌ Spotify sterowane SDK
-      return;
-    }
+    if (spotifyTrackId) return; // Spotify sterowane SDK
 
     const audio = audioRef.current;
     const videoEl = videoRef.current;
@@ -129,11 +133,17 @@ export default function PlayScreen({ cardId, onNext }: Props) {
             {!spotifyTrackId && (
               <>
                 {playing ? (
-                  <button onClick={togglePlay} className="absolute ...">
+                  <button
+                    onClick={togglePlay}
+                    className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
+                  >
                     <FaCircleStop className="text-7xl" />
                   </button>
                 ) : (
-                  <button onClick={togglePlay} className="absolute ...">
+                  <button
+                    onClick={togglePlay}
+                    className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
+                  >
                     <FaCirclePlay className="text-7xl" />
                   </button>
                 )}
@@ -143,7 +153,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
           <button
             onClick={onNext}
-            className="fixed bottom-0 left-0 h-[20%] ..."
+            className="fixed bottom-0 left-0 h-[20%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
           >
             Następny utwór
             <ImNext className="text-4xl" />
@@ -162,12 +172,12 @@ export default function PlayScreen({ cardId, onNext }: Props) {
         <Loading />
       )}
 
-      {/* 🔹 Deezer */}
+      {/* Deezer */}
       {!spotifyTrackId && (
         <audio ref={audioRef} src={src ?? undefined} preload="auto" />
       )}
 
-      {/* 🔹 Spotify FULL TRACK */}
+      {/* Spotify */}
       {spotifyTrackId && <SpotifyPlayer trackId={spotifyTrackId} />}
     </div>
   );
