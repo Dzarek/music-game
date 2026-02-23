@@ -16,6 +16,7 @@ export default function SpotifyPlayer({ trackId }: Props) {
   const playerRef = useRef<any>(null);
   const deviceIdRef = useRef<string | null>(null);
   const [status, setStatus] = useState<string>("Ładowanie Spotify Player...");
+  const activatedRef = useRef(false);
 
   useEffect(() => {
     let destroyed = false;
@@ -88,6 +89,18 @@ export default function SpotifyPlayer({ trackId }: Props) {
             );
 
             setStatus("Odtwarzanie Spotify Premium");
+
+            // 🔥 AKTYWACJA AUDIO CONTEXT (KLUCZ)
+            if (!activatedRef.current) {
+              activatedRef.current = true;
+
+              try {
+                await player.activateElement(); // iOS/Safari/Chrome
+                await player.resume(); // start audio
+              } catch (e) {
+                console.warn("Audio activation failed:", e);
+              }
+            }
           },
         );
 
