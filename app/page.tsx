@@ -40,8 +40,23 @@ export default function Page() {
         //   Spotify Premium
         // </div>
         <button
-          onClick={() => {
-            window.location.href = "/api/auth/spotify/logout";
+          onClick={async () => {
+            try {
+              // zatrzymaj playback
+              await fetch("/api/auth/spotify/pause");
+
+              // disconnect SDK
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              if ((window as any).spotifyPlayer) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).spotifyPlayer.disconnect();
+              }
+
+              // logout app
+              window.location.href = "/api/auth/spotify/logout";
+            } catch {
+              window.location.href = "/api/auth/spotify/logout";
+            }
           }}
           className="fixed z-50 top-4 right-4 bg-green-800 px-2 py-1 rounded text-xs uppercase font-bold text-white"
         >
