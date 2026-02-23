@@ -126,7 +126,7 @@ export default function SpotifyPlayer({ trackId }: Props) {
           setStatus("Błąd odtwarzania Spotify");
         });
 
-        // 8️⃣ Connect player
+        // 8️⃣ Connect playera
         player.connect();
       };
     }
