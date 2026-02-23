@@ -21,7 +21,7 @@ export default function StartScreen({ onStart, isPremium }: Props) {
         src="/images/speakers.png"
         width={500}
         height={500}
-        className="w-[45vw] md:w-[15vw] object-fill mb-10 mt-10 speakersAnimation"
+        className="w-[45vw] md:w-[15vw] object-fill mb-10 mt-6 speakersAnimation"
       />
       <div className="mb-20 text-center">
         <h1 className="text-4xl font-semibold audiowide tracking-wider uppercase ">
@@ -29,7 +29,7 @@ export default function StartScreen({ onStart, isPremium }: Props) {
         </h1>
         <p className="opacity-60 text-lg mt-2">Muzyczna Linia Czasu</p>
       </div>
-      <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-12 border-2 border-white py-16 rounded-2xl rounded-b-none pt-20 relative border-b-0">
+      <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-12 border-2 border-white py-[5vh] rounded-2xl rounded-b-none pt-[7vh] relative border-b-0">
         <h3 className="uppercase bg-black absolute -top-6 font-semibold text-2xl cairo w-3/5 text-center left-1/2 -translate-x-1/2 p-2">
           Zagraj Teraz
         </h3>
