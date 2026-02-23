@@ -38,7 +38,7 @@ export default function StartScreen({ onStart, isPremium }: Props) {
           className="Btn Btn1 w-4/5 lg:w-62 flex flex-col justify-center items-center text-xl cairo uppercase px-8 py-3 rounded-xl text-white font-semibold"
         >
           <p>Tryb Zwykły</p>
-          <span className="lowercase text-sm mt-2 text-gray-200">
+          <span className="lowercase text-sm mt-2 text-zinc-400 ">
             nie wymaga niczego
           </span>
         </button>
@@ -47,7 +47,7 @@ export default function StartScreen({ onStart, isPremium }: Props) {
           className="Btn Btn2 w-4/5  lg:w-62 flex flex-col justify-center items-center text-xl cairo uppercase px-8 py-3 rounded-xl  text-white font-semibold"
         >
           <p>Tryb Premium</p>
-          <span className="lowercase text-sm mt-2 text-gray-200">
+          <span className="lowercase text-sm mt-2 text-zinc-400">
             wymaga spotify premium
           </span>
         </button>

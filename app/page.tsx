@@ -36,9 +36,17 @@ export default function Page() {
     <>
       {/* 🔹 Informacja o Spotify Premium */}
       {isPremium && (
-        <div className="fixed z-50 top-4 right-4 bg-green-600 px-2 py-1 rounded text-xs uppercase font-bold">
-          Spotify Premium
-        </div>
+        // <div className="fixed z-50 top-4 right-4 bg-green-800 px-2 py-1 rounded text-xs uppercase font-bold">
+        //   Spotify Premium
+        // </div>
+        <button
+          onClick={() => {
+            window.location.href = "/api/auth/spotify/logout";
+          }}
+          className="fixed z-50 top-4 right-4 bg-green-800 px-2 py-1 rounded text-xs uppercase font-bold text-white"
+        >
+          Wyloguj Spotify
+        </button>
       )}
 
       {/* 🔹 StartScreen */}
