@@ -1,37 +1,27 @@
 "use client";
 import Image from "next/image";
-// import { useEffect, useState } from "react";
 type Props = {
   onStart: () => void;
   isPremium: boolean;
 };
 
 export default function StartScreen({ onStart, isPremium }: Props) {
-  // const [isPremium, setIsPremium] = useState(false);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsPremium(document.cookie.includes("spotify_access_token="));
-  //   }, 0);
-  // }, []);
-
   const handlePremiumClick = () => {
     if (isPremium) {
-      // jeśli już zalogowany, od razu ScanScreen
       onStart();
     } else {
-      // jeśli nie, przekieruj do logowania Spotify
       window.location.href = "/api/auth/spotify";
     }
   };
   console.log(isPremium);
   return (
-    <div className="flex flex-col items-center justify-center h-dvh w-screen bg-black text-white p-6">
+    <div className="flex flex-col items-center justify-between h-dvh w-screen bg-black text-white px-6 pt-20 md:pt-10">
       <Image
         alt="speakers"
         src="/images/speakers.png"
         width={500}
         height={500}
-        className="w-[50vw] md:w-[15vw] object-fill mb-18 speakersAnimation"
+        className="w-[45vw] md:w-[15vw] object-fill mb-10 mt-10 speakersAnimation"
       />
       <div className="mb-20 text-center">
         <h1 className="text-4xl font-semibold audiowide tracking-wider uppercase ">
@@ -39,19 +29,29 @@ export default function StartScreen({ onStart, isPremium }: Props) {
         </h1>
         <p className="opacity-60 text-lg mt-2">Muzyczna Linia Czasu</p>
       </div>
-
-      <button
-        onClick={onStart}
-        className="Btn text-xl cairo uppercase px-8 py-3 rounded-xl mb-10  text-white font-semibold"
-      >
-        Zagraj teraz
-      </button>
-      <button
-        onClick={handlePremiumClick}
-        className="Btn text-xl cairo uppercase px-8 py-3 rounded-xl mb-4 text-white font-semibold"
-      >
-        Gra Premium
-      </button>
+      <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-12 border-2 border-white py-16 rounded-2xl rounded-b-none pt-20 relative border-b-0">
+        <h3 className="uppercase bg-black absolute -top-6 font-semibold text-2xl cairo w-3/5 text-center left-1/2 -translate-x-1/2 p-2">
+          Zagraj Teraz
+        </h3>
+        <button
+          onClick={onStart}
+          className="Btn Btn1 w-4/5 lg:w-62 flex flex-col justify-center items-center text-xl cairo uppercase px-8 py-3 rounded-xl text-white font-semibold"
+        >
+          <p>Tryb Zwykły</p>
+          <span className="lowercase text-sm mt-2 text-gray-200">
+            nie wymaga niczego
+          </span>
+        </button>
+        <button
+          onClick={handlePremiumClick}
+          className="Btn Btn2 w-4/5  lg:w-62 flex flex-col justify-center items-center text-xl cairo uppercase px-8 py-3 rounded-xl  text-white font-semibold"
+        >
+          <p>Tryb Premium</p>
+          <span className="lowercase text-sm mt-2 text-gray-200">
+            wymaga spotify premium
+          </span>
+        </button>
+      </div>
     </div>
   );
 }

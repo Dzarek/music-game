@@ -30,7 +30,7 @@ body {
 
 /* From Uiverse.io by vinodjangid07 */
 
-.Btn {
+.Btn1 {
   border: none;
   border-radius: 10px;
   background: linear-gradient(
@@ -53,7 +53,32 @@ body {
   /* transition-duration: 0.6s; */
   overflow: hidden;
   animation: animateBtn 3s linear infinite;
-  border: 1px solid white;
+  border: 2px solid white;
+}
+.Btn2 {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    #0f3f14,
+    #0f3f14,
+    rgb(17, 78, 26),
+    #0f3f14,
+    #0f3f14,
+    rgb(17, 78, 26)
+  );
+  background-size: 250%;
+  background-position: left;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px black;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* transition-duration: 0.6s; */
+  overflow: hidden;
+  animation: animateBtn 3s linear infinite;
+  border: 2px solid white;
 }
 
 .Btn::before {
