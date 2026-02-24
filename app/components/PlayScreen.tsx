@@ -24,23 +24,24 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   const [progress, setProgress] = useState(0); // Deezer
   const [spotifyProgress, setSpotifyProgress] = useState(0);
   const [spotifyDuration, setSpotifyDuration] = useState(1);
-  const [isPremium, setIsPremium] = useState(false);
 
   const video = "/video2.mp4";
 
   // INIT
   useEffect(() => {
     let cancelled = false;
-    setIsPremium(document.cookie.includes("spotify_logged_in=true"));
     async function init() {
       try {
+        const tokenRes = await fetch("/api/auth/spotify/token");
+        const tokenData = tokenRes.ok ? await tokenRes.json() : null;
+        const premium = !!tokenData?.token;
         const res = await fetch(`/api/card/${cardId}/play`);
         if (!res.ok) throw new Error();
         const { previewUrl, spotifyTrackId } = await res.json();
 
         if (cancelled) return;
 
-        if (isPremium && spotifyTrackId) {
+        if (premium && spotifyTrackId) {
           setSpotifyTrackId(spotifyTrackId);
           setSrc(null);
         } else {
