@@ -69,7 +69,7 @@ export default function SpotifyPlayer({ trackId }: Props) {
               },
               body: JSON.stringify({
                 device_ids: [device_id],
-                play: false,
+                play: true,
               }),
             });
 
