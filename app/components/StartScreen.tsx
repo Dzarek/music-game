@@ -14,13 +14,13 @@ export default function StartScreen({ onStart, isPremium }: Props) {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-between h-dvh w-screen bg-black text-white px-6 pt-20 md:pt-10">
+    <div className="flex flex-col items-center justify-center h-dvh w-screen bg-black text-white p-6">
       <Image
         alt="speakers"
         src="/images/speakers.png"
         width={500}
         height={500}
-        className="w-[45vw] md:w-[15vw] object-fill mb-10 mt-6 speakersAnimation"
+        className="w-[45vw] md:w-[15vw] max-h-[30vh] object-fill mb-10 mt-6 speakersAnimation"
       />
       <div className="mb-20 text-center">
         <h1 className="text-4xl font-semibold audiowide tracking-wider uppercase ">
@@ -28,7 +28,7 @@ export default function StartScreen({ onStart, isPremium }: Props) {
         </h1>
         <p className="opacity-60 text-lg mt-2">Muzyczna Linia Czasu</p>
       </div>
-      <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-12 border-2 border-white py-[5vh] rounded-2xl rounded-b-none pt-[7vh] relative border-b-0">
+      <div className="w-full mt-10 max-h-[60vh] flex flex-col lg:flex-row justify-center items-center gap-12 border-2 border-white py-[5vh] rounded-2xl pt-[7vh] relative ">
         <h3 className="uppercase bg-black absolute -top-6 font-semibold text-2xl cairo w-3/5 text-center left-1/2 -translate-x-1/2 p-2">
           Zagraj Teraz
         </h3>

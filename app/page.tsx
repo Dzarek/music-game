@@ -31,14 +31,9 @@ export default function Page() {
       }, 0);
     }
   }, []);
-  console.log(isPremium);
   return (
     <>
-      {/* 🔹 Informacja o Spotify Premium */}
       {isPremium && (
-        // <div className="fixed z-50 top-4 right-4 bg-green-800 px-2 py-1 rounded text-xs uppercase font-bold">
-        //   Spotify Premium
-        // </div>
         <button
           onClick={async () => {
             try {

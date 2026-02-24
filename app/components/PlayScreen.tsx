@@ -20,7 +20,10 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   const [src, setSrc] = useState<string | null>(null);
   const [spotifyTrackId, setSpotifyTrackId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [progress, setProgress] = useState(1);
+
+  const [progress, setProgress] = useState(0); // Deezer
+  const [spotifyProgress, setSpotifyProgress] = useState(0);
+  const [spotifyDuration, setSpotifyDuration] = useState(1);
 
   const video = "/video2.mp4";
 
@@ -30,25 +33,22 @@ export default function PlayScreen({ cardId, onNext }: Props) {
 
     async function init() {
       try {
-        // 1️⃣ sprawdź token Spotify
         const tokenRes = await fetch("/api/auth/spotify/token");
         const tokenData = tokenRes.ok ? await tokenRes.json() : null;
         const premium = !!tokenData?.token;
 
-        // 2️⃣ pobierz dane karty
         const res = await fetch(`/api/card/${cardId}/play`);
         if (!res.ok) throw new Error();
         const { previewUrl, spotifyTrackId } = await res.json();
 
         if (cancelled) return;
 
-        // 3️⃣ routing
         if (premium && spotifyTrackId) {
-          setSpotifyTrackId(spotifyTrackId); // ✅ Spotify FULL
-          setSrc(null); // ❌ Deezer off
+          setSpotifyTrackId(spotifyTrackId);
+          setSrc(null);
         } else {
-          setSrc(previewUrl); // ✅ Deezer preview
-          setSpotifyTrackId(null); // ❌ Spotify off
+          setSrc(previewUrl);
+          setSpotifyTrackId(null);
         }
 
         setLoading(false);
@@ -78,7 +78,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       .catch(() => setError("Nie można odtworzyć"));
   }, [src, spotifyTrackId]);
 
-  // Spotify → tylko video animacja
+  // Spotify video loop
   useEffect(() => {
     if (!spotifyTrackId) return;
     const videoEl = videoRef.current;
@@ -88,7 +88,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     setPlaying(true);
   }, [spotifyTrackId]);
 
-  // progress bar tylko Deezer
+  // Deezer progress
   useEffect(() => {
     if (spotifyTrackId) return;
     const audio = audioRef.current;
@@ -97,7 +97,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     let rafId: number;
     const tick = () => {
       if (audio.duration) {
-        const p = 1 - audio.currentTime / audio.duration;
+        const p = audio.currentTime / audio.duration;
         setProgress(p);
       }
       rafId = requestAnimationFrame(tick);
@@ -107,8 +107,21 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     return () => cancelAnimationFrame(rafId);
   }, [src, spotifyTrackId]);
 
+  function handleSpotifyState(state: {
+    position: number;
+    duration: number;
+    paused: boolean;
+  }) {
+    setSpotifyProgress(state.position);
+    setSpotifyDuration(state.duration);
+    setPlaying(!state.paused);
+  }
+
   function togglePlay() {
-    if (spotifyTrackId) return; // Spotify sterowane SDK
+    if (spotifyTrackId) {
+      setPlaying((p) => !p); // Spotify SDK
+      return;
+    }
 
     const audio = audioRef.current;
     const videoEl = videoRef.current;
@@ -120,8 +133,13 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       audio.pause();
       videoEl.pause();
     }
+
     setPlaying((p) => !p);
   }
+
+  const progressPercent = spotifyTrackId
+    ? (spotifyProgress / spotifyDuration) * 100
+    : progress * 100;
 
   return (
     <div className="flex relative h-full w-full flex-col bg-black text-white">
@@ -140,27 +158,24 @@ export default function PlayScreen({ cardId, onNext }: Props) {
               muted
               preload="auto"
               playsInline
+              loop
               className="inset-0 w-full h-full mx-auto object-cover lg:object-contain brightness-60"
             />
 
-            {!spotifyTrackId && (
-              <>
-                {playing ? (
-                  <button
-                    onClick={togglePlay}
-                    className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
-                  >
-                    <FaCircleStop className="text-7xl" />
-                  </button>
-                ) : (
-                  <button
-                    onClick={togglePlay}
-                    className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
-                  >
-                    <FaCirclePlay className="text-7xl" />
-                  </button>
-                )}
-              </>
+            {playing ? (
+              <button
+                onClick={togglePlay}
+                className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
+              >
+                <FaCircleStop className="text-7xl" />
+              </button>
+            ) : (
+              <button
+                onClick={togglePlay}
+                className="absolute rounded-full bg-black z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition text-white"
+              >
+                <FaCirclePlay className="text-7xl" />
+              </button>
             )}
           </div>
 
@@ -172,14 +187,12 @@ export default function PlayScreen({ cardId, onNext }: Props) {
             <ImNext className="text-4xl" />
           </button>
 
-          {!spotifyTrackId && (
-            <div className="fixed z-50 bottom-0 left-0 h-1.25 w-full bg-black overflow-hidden">
-              <div
-                className="h-full bg-red-800 rounded-r-2xl"
-                style={{ width: `${progress * 100}%` }}
-              />
-            </div>
-          )}
+          <div className="fixed z-50 bottom-0 left-0 h-1.25 w-full bg-black overflow-hidden">
+            <div
+              className="h-full bg-red-800 rounded-r-2xl"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
         </>
       ) : (
         <Loading />
@@ -191,7 +204,13 @@ export default function PlayScreen({ cardId, onNext }: Props) {
       )}
 
       {/* Spotify */}
-      {spotifyTrackId && <SpotifyPlayer trackId={spotifyTrackId} />}
+      {spotifyTrackId && (
+        <SpotifyPlayer
+          trackId={spotifyTrackId}
+          playing={playing}
+          onState={handleSpotifyState}
+        />
+      )}
     </div>
   );
 }
