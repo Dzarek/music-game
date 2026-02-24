@@ -3,9 +3,14 @@ import Image from "next/image";
 type Props = {
   onStart: () => void;
   isPremium: boolean;
+  handleLogout: () => void;
 };
 
-export default function StartScreen({ onStart, isPremium }: Props) {
+export default function StartScreen({
+  onStart,
+  isPremium,
+  handleLogout,
+}: Props) {
   const handlePremiumClick = () => {
     if (isPremium) {
       onStart();
@@ -13,6 +18,12 @@ export default function StartScreen({ onStart, isPremium }: Props) {
       window.location.href = "/api/auth/spotify";
     }
   };
+
+  const PlayDeezerOption = () => {
+    handleLogout();
+    onStart();
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-dvh w-screen bg-black text-white p-6">
       <Image
@@ -33,7 +44,7 @@ export default function StartScreen({ onStart, isPremium }: Props) {
           Zagraj Teraz
         </h3>
         <button
-          onClick={onStart}
+          onClick={PlayDeezerOption}
           className="Btn Btn1 w-4/5 lg:w-62 flex flex-col justify-center items-center text-xl cairo uppercase px-8 py-3 rounded-xl text-white font-semibold"
         >
           <p>Tryb Zwykły</p>
