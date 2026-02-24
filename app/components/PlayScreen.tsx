@@ -28,22 +28,19 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   const video = "/video2.mp4";
 
   // INIT
+  // INIT
   useEffect(() => {
     let cancelled = false;
 
     async function init() {
       try {
-        const tokenRes = await fetch("/api/auth/spotify/token");
-        const tokenData = tokenRes.ok ? await tokenRes.json() : null;
-        const premium = !!tokenData?.token;
-
         const res = await fetch(`/api/card/${cardId}/play`);
         if (!res.ok) throw new Error();
         const { previewUrl, spotifyTrackId } = await res.json();
 
         if (cancelled) return;
 
-        if (premium && spotifyTrackId) {
+        if (spotifyTrackId) {
           setSpotifyTrackId(spotifyTrackId);
           setSrc(null);
         } else {
@@ -118,17 +115,27 @@ export default function PlayScreen({ cardId, onNext }: Props) {
   }
 
   function togglePlay() {
+    const videoEl = videoRef.current;
+
     if (spotifyTrackId) {
-      setPlaying((p) => !p); // Spotify SDK
+      // Spotify
+      if (!playing) {
+        videoEl?.play().catch(() => {});
+      } else {
+        videoEl?.pause();
+      }
+
+      setPlaying((p) => !p);
       return;
     }
 
+    // Deezer
     const audio = audioRef.current;
-    const videoEl = videoRef.current;
     if (!audio || !videoEl) return;
 
     if (audio.paused) {
-      Promise.all([audio.play(), videoEl.play()]);
+      audio.play();
+      videoEl.play();
     } else {
       audio.pause();
       videoEl.pause();
@@ -158,7 +165,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
               muted
               preload="auto"
               playsInline
-              loop
+              loop={spotifyTrackId !== null}
               className="inset-0 w-full h-full mx-auto object-cover lg:object-contain brightness-60"
             />
 
