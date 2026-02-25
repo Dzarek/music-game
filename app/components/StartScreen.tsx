@@ -3,13 +3,13 @@ import Image from "next/image";
 type Props = {
   onStart: () => void;
   isPremium: boolean;
-  handleLogout: () => void;
+  setIsPremium: (isPremium: boolean) => void;
 };
 
 export default function StartScreen({
   onStart,
   isPremium,
-  handleLogout,
+  setIsPremium,
 }: Props) {
   const handlePremiumClick = () => {
     if (isPremium) {
@@ -18,9 +18,8 @@ export default function StartScreen({
       window.location.href = "/api/auth/spotify";
     }
   };
-
-  const PlayDeezerOption = () => {
-    handleLogout();
+  const handleDeezerClick = () => {
+    setIsPremium(false);
     onStart();
   };
 
@@ -44,7 +43,7 @@ export default function StartScreen({
           Zagraj Teraz
         </h3>
         <button
-          onClick={PlayDeezerOption}
+          onClick={handleDeezerClick}
           className="Btn Btn1 w-4/5 lg:w-62 flex flex-col justify-center items-center text-xl cairo uppercase px-8 py-3 rounded-xl text-white font-semibold"
         >
           <p>Tryb Zwykły</p>

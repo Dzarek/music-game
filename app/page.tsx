@@ -65,8 +65,8 @@ export default function Page() {
       {appState.screen === "start" && (
         <StartScreen
           onStart={() => setAppState({ screen: "scan", autoStart: true })}
-          isPremium={isPremium} // można przekazać props żeby StartScreen zmienił zachowanie
-          handleLogout={handleLogout}
+          isPremium={isPremium}
+          setIsPremium={setIsPremium}
         />
       )}
 
