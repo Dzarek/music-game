@@ -1,18 +1,7 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 
-import { useEffect, useRef } from "react";
-
-type SpotifyState = {
-  position: number;
-  duration: number;
-  paused: boolean;
-};
-
-type Props = {
-  trackId: string;
-  playing: boolean;
-  onState?: (state: SpotifyState) => void;
-};
+type Props = { trackId: string };
 
 declare global {
   interface Window {
@@ -22,24 +11,28 @@ declare global {
   }
 }
 
-export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
+export default function SpotifyPlayer({ trackId }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
   const deviceIdRef = useRef<string | null>(null);
+  const [status, setStatus] = useState<string>("Ładowanie Spotify Player...");
   const activatedRef = useRef(false);
 
   useEffect(() => {
     let destroyed = false;
 
     async function init() {
-      // 1️⃣ TOKEN
+      // 1️⃣ Pobierz token z API
       const res = await fetch("/api/auth/spotify/token");
       const data = await res.json();
       const token = data?.token;
 
-      if (!token || destroyed) return;
+      if (!token || destroyed) {
+        setStatus("Brak tokenu Spotify");
+        return;
+      }
 
-      // 2️⃣ SDK LOAD
+      // 2️⃣ Załaduj SDK (jeśli nie istnieje)
       if (!document.getElementById("spotify-sdk")) {
         const script = document.createElement("script");
         script.id = "spotify-sdk";
@@ -48,97 +41,92 @@ export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
         document.body.appendChild(script);
       }
 
-      // 3️⃣ SDK READY
+      // 3️⃣ SDK ready handler
       window.onSpotifyWebPlaybackSDKReady = () => {
         if (destroyed) return;
 
         const player = new window.Spotify.Player({
-          name: "BeatTrack Player",
+          name: "BeatTrack Premium",
           getOAuthToken: (cb: (t: string) => void) => cb(token),
           volume: 0.8,
         });
 
         playerRef.current = player;
 
-        // READY
+        // 4️⃣ Ready = mamy device_id
         player.addListener(
           "ready",
           async ({ device_id }: { device_id: string }) => {
             deviceIdRef.current = device_id;
+            setStatus("Połączono z Spotify");
 
-            try {
-              // 🔥 1. ACTIVATE AUDIO FIRST
-              if (!activatedRef.current) {
-                activatedRef.current = true;
-                await player.activateElement();
-              }
+            // 5️⃣ Transfer playback na nasz player
+            await fetch("https://api.spotify.com/v1/me/player", {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                device_ids: [device_id],
+                play: false,
+              }),
+            });
 
-              // 🔥 2. TRANSFER PLAYBACK
-              await fetch("https://api.spotify.com/v1/me/player", {
+            // 6️⃣ Play track
+            await fetch(
+              `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
+              {
                 method: "PUT",
                 headers: {
                   Authorization: `Bearer ${token}`,
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  device_ids: [device_id],
-                  play: false,
+                  uris: [`spotify:track:${trackId}`],
                 }),
-              });
+              },
+            );
 
-              // 🔥 3. PLAY TRACK
-              await fetch(
-                `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
-                {
-                  method: "PUT",
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    uris: [`spotify:track:${trackId}`],
-                  }),
-                },
-              );
+            setStatus("Odtwarzanie Spotify Premium");
 
-              // 🔥 4. RESUME AUDIO ENGINE
-              await player.resume();
-            } catch (e) {
-              console.error("Spotify playback init error:", e);
+            // 🔥 AKTYWACJA AUDIO CONTEXT (KLUCZ)
+            if (!activatedRef.current) {
+              activatedRef.current = true;
+
+              try {
+                await player.activateElement(); // iOS/Safari/Chrome
+                await player.resume(); // start audio
+              } catch (e) {
+                console.warn("Audio activation failed:", e);
+              }
             }
           },
         );
 
-        // STATE
+        // 7️⃣ Error handling
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        player.addListener("player_state_changed", (state: any) => {
-          if (!state) return;
-
-          onState?.({
-            position: state.position,
-            duration: state.duration,
-            paused: state.paused,
-          });
+        player.addListener("initialization_error", (e: any) => {
+          console.error("init error", e);
+          setStatus("Błąd inicjalizacji Spotify");
+        });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        player.addListener("authentication_error", (e: any) => {
+          console.error("auth error", e);
+          setStatus("Błąd autoryzacji Spotify");
+        });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        player.addListener("account_error", (e: any) => {
+          console.error("account error", e);
+          setStatus("Brak Spotify Premium");
+        });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        player.addListener("playback_error", (e: any) => {
+          console.error("playback error", e);
+          setStatus("Błąd odtwarzania Spotify");
         });
 
-        // ERRORS
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        player.addListener("initialization_error", (e: any) =>
-          console.error("init error", e),
-        );
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        player.addListener("authentication_error", (e: any) =>
-          console.error("auth error", e),
-        );
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        player.addListener("account_error", (e: any) =>
-          console.error("account error", e),
-        );
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        player.addListener("playback_error", (e: any) =>
-          console.error("playback error", e),
-        );
-
+        // 8️⃣ Connect playera
         player.connect();
       };
     }
@@ -152,18 +140,11 @@ export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
         playerRef.current = null;
       }
     };
-  }, [trackId, onState]);
+  }, [trackId]);
 
-  // PLAY / PAUSE CONTROL (UI BUTTON)
-  // useEffect(() => {
-  //   if (!playerRef.current) return;
-
-  //   if (playing) {
-  //     playerRef.current.resume();
-  //   } else {
-  //     playerRef.current.pause();
-  //   }
-  // }, [playing]);
-
-  return null;
+  return (
+    <div className="w-full h-full flex items-center justify-center text-white text-sm opacity-80">
+      {status}
+    </div>
+  );
 }

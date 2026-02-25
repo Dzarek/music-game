@@ -217,8 +217,8 @@ export default function PlayScreen({
       {spotifyTrackId && (
         <SpotifyPlayer
           trackId={spotifyTrackId}
-          playing={playing}
-          onState={handleSpotifyState}
+          // playing={playing}
+          // onState={handleSpotifyState}
         />
       )}
     </div>
