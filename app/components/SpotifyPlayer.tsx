@@ -155,15 +155,15 @@ export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
   }, [trackId, onState]);
 
   // PLAY / PAUSE CONTROL (UI BUTTON)
-  useEffect(() => {
-    if (!playerRef.current) return;
+  // useEffect(() => {
+  //   if (!playerRef.current) return;
 
-    if (playing) {
-      playerRef.current.resume();
-    } else {
-      playerRef.current.pause();
-    }
-  }, [playing]);
+  //   if (playing) {
+  //     playerRef.current.resume();
+  //   } else {
+  //     playerRef.current.pause();
+  //   }
+  // }, [playing]);
 
   return null;
 }
