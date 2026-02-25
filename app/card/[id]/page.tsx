@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useParams, useRouter } from "next/navigation";
 import PlayScreen from "../../components/PlayScreen";
+import SpotifyPlayer from "@/app/components/SpotifyPlayer";
 
 export default function CardPage() {
   const searchParams = useSearchParams();
@@ -15,11 +16,17 @@ export default function CardPage() {
 
   return (
     <div className="h-dvh w-vw overflow-hidden">
-      <PlayScreen
-        cardId={id}
-        onNext={() => router.push("/?autostart=true")}
-        hasSpotifyPremium={premium}
-      />
+      {!premium ? (
+        <PlayScreen
+          cardId={id}
+          onNext={() => router.push("/?autostart=true")}
+        />
+      ) : (
+        <SpotifyPlayer
+          cardId={id}
+          onNext={() => router.push("/?autostart=true")}
+        />
+      )}
     </div>
   );
 }
