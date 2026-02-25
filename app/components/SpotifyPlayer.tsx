@@ -142,9 +142,5 @@ export default function SpotifyPlayer({ trackId }: Props) {
     };
   }, [trackId]);
 
-  return (
-    <div className="w-full h-full flex items-center justify-center text-white text-sm opacity-80">
-      {status}
-    </div>
-  );
+  return null;
 }
