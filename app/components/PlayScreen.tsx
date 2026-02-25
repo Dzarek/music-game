@@ -9,9 +9,14 @@ import SpotifyPlayer from "./SpotifyPlayer";
 type Props = {
   cardId: string;
   onNext: () => void;
+  hasSpotifyPremium: boolean; //
 };
 
-export default function PlayScreen({ cardId, onNext }: Props) {
+export default function PlayScreen({
+  cardId,
+  onNext,
+  hasSpotifyPremium,
+}: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -32,16 +37,13 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     let cancelled = false;
     async function init() {
       try {
-        const tokenRes = await fetch("/api/auth/spotify/token");
-        const tokenData = tokenRes.ok ? await tokenRes.json() : null;
-        const premium = !!tokenData?.token;
         const res = await fetch(`/api/card/${cardId}/play`);
         if (!res.ok) throw new Error();
         const { previewUrl, spotifyTrackId } = await res.json();
 
         if (cancelled) return;
 
-        if (premium && spotifyTrackId) {
+        if (hasSpotifyPremium && spotifyTrackId) {
           setSpotifyTrackId(spotifyTrackId);
           setSrc(null);
         } else {
@@ -62,7 +64,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [cardId]);
+  }, [cardId, hasSpotifyPremium]);
 
   // Deezer autoplay
   useEffect(() => {

@@ -1,9 +1,13 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useParams, useRouter } from "next/navigation";
 import PlayScreen from "../../components/PlayScreen";
 
 export default function CardPage() {
+  const searchParams = useSearchParams();
+  const premium = searchParams.get("premium") === "true";
+
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
 
@@ -11,7 +15,11 @@ export default function CardPage() {
 
   return (
     <div className="h-dvh w-vw overflow-hidden">
-      <PlayScreen cardId={id} onNext={() => router.push("/?autostart=true")} />
+      <PlayScreen
+        cardId={id}
+        onNext={() => router.push("/?autostart=true")}
+        hasSpotifyPremium={premium}
+      />
     </div>
   );
 }
