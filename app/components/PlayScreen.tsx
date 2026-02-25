@@ -121,13 +121,11 @@ export default function PlayScreen({
     const videoEl = videoRef.current;
 
     if (spotifyTrackId) {
-      // Spotify
-      if (!playing) {
-        videoEl?.play().catch(() => {});
-      } else {
+      if (playing) {
         videoEl?.pause();
+      } else {
+        videoEl?.play().catch(() => {});
       }
-
       setPlaying((p) => !p);
       return;
     }
@@ -217,8 +215,8 @@ export default function PlayScreen({
       {spotifyTrackId && (
         <SpotifyPlayer
           trackId={spotifyTrackId}
-          // playing={playing}
-          // onState={handleSpotifyState}
+          playing={playing}
+          onState={handleSpotifyState}
         />
       )}
     </div>
