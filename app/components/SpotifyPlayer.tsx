@@ -32,14 +32,14 @@ export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
     let destroyed = false;
 
     async function init() {
-      // 1️⃣ token
+      // 1️⃣ TOKEN
       const res = await fetch("/api/auth/spotify/token");
       const data = await res.json();
       const token = data?.token;
 
       if (!token || destroyed) return;
 
-      // 2️⃣ SDK load
+      // 2️⃣ SDK LOAD
       if (!document.getElementById("spotify-sdk")) {
         const script = document.createElement("script");
         script.id = "spotify-sdk";
@@ -48,7 +48,7 @@ export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
         document.body.appendChild(script);
       }
 
-      // 3️⃣ SDK ready
+      // 3️⃣ SDK READY
       window.onSpotifyWebPlaybackSDKReady = () => {
         if (destroyed) return;
 
@@ -66,41 +66,45 @@ export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
           async ({ device_id }: { device_id: string }) => {
             deviceIdRef.current = device_id;
 
-            // transfer playback
-            await fetch("https://api.spotify.com/v1/me/player", {
-              method: "PUT",
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                device_ids: [device_id],
-                play: false,
-              }),
-            });
+            try {
+              // 🔥 1. ACTIVATE AUDIO FIRST
+              if (!activatedRef.current) {
+                activatedRef.current = true;
+                await player.activateElement();
+              }
 
-            // play
-            await fetch(
-              `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
-              {
+              // 🔥 2. TRANSFER PLAYBACK
+              await fetch("https://api.spotify.com/v1/me/player", {
                 method: "PUT",
                 headers: {
                   Authorization: `Bearer ${token}`,
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  uris: [`spotify:track:${trackId}`],
+                  device_ids: [device_id],
+                  play: false,
                 }),
-              },
-            );
+              });
 
-            // audio activation
-            if (!activatedRef.current) {
-              activatedRef.current = true;
-              try {
-                await player.activateElement();
-                await player.resume();
-              } catch {}
+              // 🔥 3. PLAY TRACK
+              await fetch(
+                `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
+                {
+                  method: "PUT",
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    uris: [`spotify:track:${trackId}`],
+                  }),
+                },
+              );
+
+              // 🔥 4. RESUME AUDIO ENGINE
+              await player.resume();
+            } catch (e) {
+              console.error("Spotify playback init error:", e);
             }
           },
         );
@@ -150,7 +154,7 @@ export default function SpotifyPlayer({ trackId, playing, onState }: Props) {
     };
   }, [trackId, onState]);
 
-  // PLAY / PAUSE CONTROL
+  // PLAY / PAUSE CONTROL (UI BUTTON)
   useEffect(() => {
     if (!playerRef.current) return;
 
