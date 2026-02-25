@@ -25,6 +25,8 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
   const activatedRef = useRef(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
+  const positionRef = useRef(0);
+  const durationRef = useRef(1);
 
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState(false);
@@ -119,6 +121,17 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
               // video
               videoRef.current?.play().catch(() => {});
               setPlaying(true);
+              // video autoplay loop
+              const tryPlayVideo = () => {
+                const v = videoRef.current;
+                if (!v) return;
+
+                v.play().catch(() => {
+                  requestAnimationFrame(tryPlayVideo);
+                });
+              };
+
+              tryPlayVideo();
               setLoading(false);
             },
           );
@@ -127,6 +140,9 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           player.addListener("player_state_changed", (state: any) => {
             if (!state) return;
+
+            positionRef.current = state.position;
+            durationRef.current = state.duration;
 
             setProgress(state.position);
             setDuration(state.duration);
@@ -189,6 +205,21 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
     setPlaying((p) => !p);
   }
 
+  useEffect(() => {
+    let rafId: number;
+
+    const tick = () => {
+      if (playing) {
+        positionRef.current += 100; // ms step
+        setProgress(positionRef.current);
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [playing]);
+
   const progressPercent = (progress / duration) * 100;
 
   return (
@@ -204,11 +235,11 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
           <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
             <video
               ref={videoRef}
-              src="/video2.mp4"
+              src={video}
               muted
+              loop
               preload="auto"
               playsInline
-              loop
               className="inset-0 w-full h-full mx-auto object-cover lg:object-contain brightness-60"
             />
 
