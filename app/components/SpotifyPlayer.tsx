@@ -37,6 +37,23 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
   const video = "/video2.mp4";
 
+  const forceVideoPlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const tryPlay = () => {
+      v.play()
+        .then(() => {
+          // success
+        })
+        .catch(() => {
+          requestAnimationFrame(tryPlay);
+        });
+    };
+
+    tryPlay();
+  };
+
   // INIT
   useEffect(() => {
     let destroyed = false;
@@ -121,17 +138,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
               // video
               videoRef.current?.play().catch(() => {});
               setPlaying(true);
-              // video autoplay loop
-              const tryPlayVideo = () => {
-                const v = videoRef.current;
-                if (!v) return;
-
-                v.play().catch(() => {
-                  requestAnimationFrame(tryPlayVideo);
-                });
-              };
-
-              tryPlayVideo();
+              forceVideoPlay();
               setLoading(false);
             },
           );
@@ -206,17 +213,23 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
   }
 
   useEffect(() => {
-    let rafId: number;
+    if (!playing) return; // tylko gdy gra
 
-    const tick = () => {
-      if (playing) {
-        positionRef.current += 100; // ms step
-        setProgress(positionRef.current);
-      }
+    let rafId: number;
+    let lastTs = performance.now();
+
+    const tick = (ts: number) => {
+      const dt = ts - lastTs;
+      lastTs = ts;
+
+      positionRef.current += dt;
+      setProgress(positionRef.current);
+
       rafId = requestAnimationFrame(tick);
     };
 
     rafId = requestAnimationFrame(tick);
+
     return () => cancelAnimationFrame(rafId);
   }, [playing]);
 

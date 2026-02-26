@@ -165,7 +165,7 @@ export default function PlayScreen({ cardId, onNext }: Props) {
             <ImNext className="text-4xl" />
           </button>
           {/* PROGRESS BAR */}
-          <div className="fixed z-50 bottom-0 left-0 h-[5px] w-full bg-black overflow-hidden ">
+          <div className="fixed z-50 bottom-0 left-0 h-1.25 w-full bg-black overflow-hidden ">
             <div
               className="h-full bg-red-800 rounded-r-2xl"
               style={{
