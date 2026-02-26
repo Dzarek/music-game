@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaCirclePlay, FaCircleStop } from "react-icons/fa6";
 import { ImNext } from "react-icons/im";
 import Loading from "./Loading";
+import { getCardData } from "@/lib/cardCache";
 
 type Props = {
   cardId: string;
@@ -21,52 +22,46 @@ declare global {
 export default function SpotifyPlayer({ cardId, onNext }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  // const deviceIdRef = useRef<string | null>(null);
   const activatedRef = useRef(false);
 
+  // Video
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // UI state
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const video = "/video2.mp4";
 
-  const forceVideoPlay = () => {
+  // ---------- VIDEO SAFE AUTOPLAY ----------
+  const ensureVideoPlay = () => {
     const v = videoRef.current;
     if (!v) return;
 
     const tryPlay = () => {
-      v.play().catch(() => requestAnimationFrame(tryPlay));
+      v.play().catch(() => {
+        requestAnimationFrame(tryPlay);
+      });
     };
+
     tryPlay();
   };
 
+  // ---------- INIT ----------
   useEffect(() => {
     let destroyed = false;
 
     async function init() {
       try {
-        // 1️⃣ pobierz token i trackId
-        const tokenRes = await fetch("/api/auth/spotify/token");
-        const tokenData = await tokenRes.json();
-        const token = tokenData?.token;
-        if (!token) throw new Error("Brak tokenu Spotify");
+        /* ---------- DATA PARALLEL ---------- */
+        const token = sessionStorage.getItem("spotify_token");
+        const { spotifyTrackId } = await getCardData(cardId);
+        if (!token) throw new Error("no token");
+        if (!spotifyTrackId) throw new Error("no spotifyTrackId");
 
-        const res = await fetch(`/api/card/${cardId}/play`);
-        if (!res.ok) throw new Error("Brak karty");
-        const { spotifyTrackId } = await res.json();
-        if (!spotifyTrackId) throw new Error("Brak Spotify trackId");
-
-        // 2️⃣ załaduj SDK
-        if (!document.getElementById("spotify-sdk")) {
-          const script = document.createElement("script");
-          script.id = "spotify-sdk";
-          script.src = "https://sdk.scdn.co/spotify-player.js";
-          script.async = true;
-          document.body.appendChild(script);
-        }
-
-        // 3️⃣ handler ready
-        window.onSpotifyWebPlaybackSDKReady = () => {
+        const startPlayer = () => {
           if (destroyed) return;
 
           const player = new window.Spotify.Player({
@@ -77,73 +72,76 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
           playerRef.current = player;
 
+          /* ---------- READY ---------- */
           player.addListener(
             "ready",
             async ({ device_id }: { device_id: string }) => {
               if (destroyed) return;
 
-              try {
-                // ustaw track i odtwórz
-                await player.connect();
-                await player._options.getOAuthToken((t: string) => {
-                  player
-                    .play({
-                      uris: [`spotify:track:${spotifyTrackId}`],
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    })
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    .catch((e: any) => {
-                      console.warn("Spotify play error:", e);
-                      setError("Nie można odtworzyć Spotify");
-                    });
-                });
+              // Play
+              await fetch(
+                `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
+                {
+                  method: "PUT",
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    uris: [`spotify:track:${spotifyTrackId}`],
+                  }),
+                },
+              );
 
-                // aktywacja audio
-                if (!activatedRef.current) {
-                  activatedRef.current = true;
+              if (!activatedRef.current) {
+                activatedRef.current = true;
+                try {
                   await player.activateElement();
-                }
-
-                // video
-                forceVideoPlay();
-                setPlaying(true);
-                setLoading(false);
-              } catch (e) {
-                console.error(e);
-                setError("Błąd odtwarzania Spotify");
-                setLoading(false);
+                  await player.resume();
+                } catch {}
               }
+              ensureVideoPlay();
+              setPlaying(true);
+              setLoading(false);
             },
           );
 
-          // Errors
+          /* ---------- STATE SYNC ---------- */
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("initialization_error", (e: any) =>
-            console.error(e),
-          );
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("authentication_error", (e: any) =>
-            console.error(e),
-          );
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("account_error", (e: any) => {
-            console.error(e);
-            setError("Brak Spotify Premium");
+          player.addListener("player_state_changed", (state: any) => {
+            if (!state) return;
+
+            setPlaying(!state.paused);
+
+            // 🎥 Video sync ONLY when audio is реально playing
+            if (!state.paused) {
+              ensureVideoPlay();
+            } else {
+              videoRef.current?.pause();
+            }
           });
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("playback_error", (e: any) => console.error(e));
 
           player.connect();
         };
+        // SDK preload logic
+        if (window.Spotify) {
+          startPlayer();
+        } else {
+          if (!document.getElementById("spotify-sdk")) {
+            const script = document.createElement("script");
+            script.id = "spotify-sdk";
+            script.src = "https://sdk.scdn.co/spotify-player.js";
+            script.async = true;
+            document.body.appendChild(script);
+          }
 
-        // Jeśli SDK już było wcześniej załadowane
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((window as any).Spotify) {
-          window.onSpotifyWebPlaybackSDKReady();
+          window.onSpotifyWebPlaybackSDKReady = () => {
+            startPlayer();
+          };
         }
       } catch (e) {
-        console.error(e);
         if (!destroyed) {
+          console.error(e);
           setError("Błąd uruchamiania Spotify");
           setLoading(false);
         }
@@ -161,21 +159,19 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
     };
   }, [cardId]);
 
-  const togglePlay = () => {
+  /* ---------- TOGGLE ---------- */
+  function togglePlay() {
     const player = playerRef.current;
-    const videoEl = videoRef.current;
     if (!player) return;
 
     if (playing) {
       player.pause();
-      videoEl?.pause();
+      videoRef.current?.pause();
     } else {
       player.resume();
-      videoEl?.play().catch(() => {});
+      ensureVideoPlay();
     }
-
-    setPlaying((p) => !p);
-  };
+  }
 
   return (
     <div className="flex relative h-full w-full flex-col bg-black text-white">
@@ -187,6 +183,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
       {!error && !loading ? (
         <>
+          {/* VIDEO */}
           <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
             <video
               ref={videoRef}
@@ -198,6 +195,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
               className="inset-0 w-full h-full mx-auto object-cover lg:object-contain brightness-60"
             />
 
+            {/* CONTROLS */}
             {playing ? (
               <button
                 onClick={togglePlay}
@@ -215,6 +213,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
             )}
           </div>
 
+          {/* NEXT */}
           <button
             onClick={onNext}
             className="fixed bottom-0 left-0 h-[20%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"

@@ -16,8 +16,7 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
   const qrCodeRef = useRef<Html5Qrcode | null>(null);
   const hasScannedRef = useRef(false);
   const router = useRouter();
-
-  const [finishing, setFinishing] = useState(false); // 👈 UI STATE
+  const [finishing, setFinishing] = useState(false);
 
   useEffect(() => {
     const startScanner = () => {
@@ -33,14 +32,35 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
             return { width: size, height: size };
           },
         },
-        (decodedText) => {
+        async (decodedText) => {
           if (hasScannedRef.current) return;
-
           hasScannedRef.current = true;
-          setFinishing(true); // 🔥 natychmiast ukrywa "Anuluj"
+          setFinishing(true);
 
           const match = decodedText.match(/\/card\/([^/?]+)/);
           const cardId = match ? match[1] : decodedText;
+
+          // 🔥 preload token
+          try {
+            const tokenRes = await fetch("/api/auth/spotify/token");
+            const tokenData = await tokenRes.json();
+            if (tokenData?.token) {
+              sessionStorage.setItem("spotify_token", tokenData.token);
+            }
+          } catch {}
+
+          // 🔥 preload card
+          fetch(`/api/card/${cardId}/play`);
+
+          // 🔥 preload SDK
+          if (!document.getElementById("spotify-sdk")) {
+            const script = document.createElement("script");
+            script.id = "spotify-sdk";
+            script.src = "https://sdk.scdn.co/spotify-player.js";
+            script.async = true;
+            document.body.appendChild(script);
+          }
+
           router.prefetch(`/card/${cardId}`);
           onScan(cardId);
           // navigator.vibrate?.(20);

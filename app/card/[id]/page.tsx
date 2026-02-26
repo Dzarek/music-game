@@ -1,7 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useParams, useRouter } from "next/navigation";
+import { useSearchParams, useParams, useRouter } from "next/navigation";
 import PlayScreen from "../../components/PlayScreen";
 import SpotifyPlayer from "@/app/components/SpotifyPlayer";
 
