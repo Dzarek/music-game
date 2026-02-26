@@ -19,15 +19,21 @@ declare global {
 }
 
 export default function SpotifyPlayer({ cardId, onNext }: Props) {
+  // Spotify
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
   const deviceIdRef = useRef<string | null>(null);
   const activatedRef = useRef(false);
 
+  // Video
   const videoRef = useRef<HTMLVideoElement>(null);
-  const positionRef = useRef(0);
+
+  // Time sync
+  const lastSpotifyUpdateRef = useRef(0);
+  const lastPositionRef = useRef(0);
   const durationRef = useRef(1);
 
+  // UI state
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -37,42 +43,41 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
   const video = "/video2.mp4";
 
-  const forceVideoPlay = () => {
+  // ---------- VIDEO SAFE AUTOPLAY ----------
+  const ensureVideoPlay = () => {
     const v = videoRef.current;
     if (!v) return;
 
     const tryPlay = () => {
-      v.play()
-        .then(() => {
-          // success
-        })
-        .catch(() => {
-          requestAnimationFrame(tryPlay);
-        });
+      v.play().catch(() => {
+        requestAnimationFrame(tryPlay);
+      });
     };
 
     tryPlay();
   };
 
-  // INIT
+  // ---------- INIT ----------
   useEffect(() => {
     let destroyed = false;
 
     async function init() {
       try {
-        // 1️⃣ token
-        const tokenRes = await fetch("/api/auth/spotify/token");
+        /* ---------- DATA PARALLEL ---------- */
+        const [tokenRes, cardRes] = await Promise.all([
+          fetch("/api/auth/spotify/token"),
+          fetch(`/api/card/${cardId}/play`),
+        ]);
+
         const tokenData = await tokenRes.json();
         const token = tokenData?.token;
         if (!token) throw new Error("no token");
 
-        // 2️⃣ card data
-        const res = await fetch(`/api/card/${cardId}/play`);
-        if (!res.ok) throw new Error("no card");
-        const { spotifyTrackId } = await res.json();
+        if (!cardRes.ok) throw new Error("no card");
+        const { spotifyTrackId } = await cardRes.json();
         if (!spotifyTrackId) throw new Error("no spotifyTrackId");
 
-        // 3️⃣ SDK
+        /* ---------- SDK LOAD ---------- */
         if (!document.getElementById("spotify-sdk")) {
           const script = document.createElement("script");
           script.id = "spotify-sdk";
@@ -92,13 +97,15 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
           playerRef.current = player;
 
-          // READY
+          /* ---------- READY ---------- */
           player.addListener(
             "ready",
             async ({ device_id }: { device_id: string }) => {
+              if (destroyed) return;
+
               deviceIdRef.current = device_id;
 
-              // transfer
+              // Transfer playback
               await fetch("https://api.spotify.com/v1/me/player", {
                 method: "PUT",
                 headers: {
@@ -111,7 +118,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                 }),
               });
 
-              // play
+              // Play
               await fetch(
                 `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
                 {
@@ -126,7 +133,18 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                 },
               );
 
-              // activate audio
+              // 🔁 RESET TRACK (always from 0)
+              await fetch(
+                `https://api.spotify.com/v1/me/player/seek?position_ms=0&device_id=${device_id}`,
+                {
+                  method: "PUT",
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                },
+              );
+
+              // Activate audio context
               if (!activatedRef.current) {
                 activatedRef.current = true;
                 try {
@@ -135,28 +153,33 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                 } catch {}
               }
 
-              // video
-              videoRef.current?.play().catch(() => {});
-              setPlaying(true);
-              forceVideoPlay();
+              // UX: hide loading immediately
               setLoading(false);
             },
           );
 
-          // STATE
+          /* ---------- STATE SYNC ---------- */
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           player.addListener("player_state_changed", (state: any) => {
             if (!state) return;
 
-            positionRef.current = state.position;
-            durationRef.current = state.duration;
+            // Spotify time source
+            lastSpotifyUpdateRef.current = performance.now();
+            lastPositionRef.current = state.position;
 
-            setProgress(state.position);
+            durationRef.current = state.duration;
             setDuration(state.duration);
             setPlaying(!state.paused);
+
+            // 🎥 Video sync ONLY when audio is реально playing
+            if (!state.paused) {
+              ensureVideoPlay();
+            } else {
+              videoRef.current?.pause();
+            }
           });
 
-          // ERRORS
+          /* ---------- ERRORS ---------- */
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           player.addListener("initialization_error", (e: any) =>
             console.error("init error", e),
@@ -177,8 +200,9 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
           player.connect();
         };
-      } catch {
+      } catch (e) {
         if (!destroyed) {
+          console.error(e);
           setError("Błąd uruchamiania Spotify");
           setLoading(false);
         }
@@ -196,44 +220,42 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
     };
   }, [cardId]);
 
-  function togglePlay() {
-    const player = playerRef.current;
-    const videoEl = videoRef.current;
-    if (!player) return;
-
-    if (playing) {
-      player.pause();
-      videoEl?.pause();
-    } else {
-      player.resume();
-      videoEl?.play().catch(() => {});
-    }
-
-    setPlaying((p) => !p);
-  }
-
+  /* ---------- SMOOTH PROGRESS RAF ---------- */
   useEffect(() => {
-    if (!playing) return; // tylko gdy gra
+    if (!playing) return;
 
     let rafId: number;
-    let lastTs = performance.now();
 
-    const tick = (ts: number) => {
-      const dt = ts - lastTs;
-      lastTs = ts;
+    const tick = () => {
+      const now = performance.now();
+      const dt = now - lastSpotifyUpdateRef.current;
 
-      positionRef.current += dt;
-      setProgress(positionRef.current);
+      const interpolated = lastPositionRef.current + dt;
+
+      setProgress(interpolated);
 
       rafId = requestAnimationFrame(tick);
     };
 
     rafId = requestAnimationFrame(tick);
-
     return () => cancelAnimationFrame(rafId);
   }, [playing]);
 
-  const progressPercent = (progress / duration) * 100;
+  /* ---------- TOGGLE ---------- */
+  function togglePlay() {
+    const player = playerRef.current;
+    if (!player) return;
+
+    if (playing) {
+      player.pause();
+      videoRef.current?.pause();
+    } else {
+      player.resume();
+      ensureVideoPlay();
+    }
+  }
+
+  const progressPercent = Math.min((progress / duration) * 100, 100);
 
   return (
     <div className="flex relative h-full w-full flex-col bg-black text-white">
@@ -245,6 +267,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
       {!error && !loading ? (
         <>
+          {/* VIDEO */}
           <div className="fixed top-0 left-0 lg:left-1/2 lg:-translate-x-1/2 w-full h-[80%] lg:rounded-full lg:w-auto overflow-hidden">
             <video
               ref={videoRef}
@@ -256,6 +279,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
               className="inset-0 w-full h-full mx-auto object-cover lg:object-contain brightness-60"
             />
 
+            {/* CONTROLS */}
             {playing ? (
               <button
                 onClick={togglePlay}
@@ -273,6 +297,7 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
             )}
           </div>
 
+          {/* NEXT */}
           <button
             onClick={onNext}
             className="fixed bottom-0 left-0 h-[20%] text-xl uppercase cairo font-bold py-8 px-4 w-full bg-black text-white transition hover:opacity-100 flex flex-col justify-center items-center gap-y-4 opacity-85"
@@ -281,9 +306,10 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
             <ImNext className="text-4xl" />
           </button>
 
+          {/* PROGRESS */}
           <div className="fixed z-50 bottom-0 left-0 h-1.25 w-full bg-black overflow-hidden">
             <div
-              className="h-full bg-red-800 rounded-r-2xl"
+              className="h-full bg-red-800 rounded-r-2xl transition-[width] duration-75 linear"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
