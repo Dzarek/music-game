@@ -22,7 +22,6 @@ declare global {
 export default function SpotifyPlayer({ cardId, onNext }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
-  // const deviceIdRef = useRef<string | null>(null);
   const activatedRef = useRef(false);
 
   // Video
@@ -62,15 +61,15 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
         if (!spotifyTrackId) throw new Error("no spotifyTrackId");
 
         /* ---------- SDK LOAD ---------- */
-        // if (!document.getElementById("spotify-sdk")) {
-        //   const script = document.createElement("script");
-        //   script.id = "spotify-sdk";
-        //   script.src = "https://sdk.scdn.co/spotify-player.js";
-        //   script.async = true;
-        //   document.body.appendChild(script);
-        // }
+        if (!document.getElementById("spotify-sdk")) {
+          const script = document.createElement("script");
+          script.id = "spotify-sdk";
+          script.src = "https://sdk.scdn.co/spotify-player.js";
+          script.async = true;
+          document.body.appendChild(script);
+        }
 
-        const startPlayer = () => {
+        window.onSpotifyWebPlaybackSDKReady = () => {
           if (destroyed) return;
 
           const player = new window.Spotify.Player({
@@ -81,12 +80,13 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
           playerRef.current = player;
 
-          /* READY */
+          /* ---------- READY ---------- */
           player.addListener(
             "ready",
             async ({ device_id }: { device_id: string }) => {
               if (destroyed) return;
 
+              // Play
               await fetch(
                 `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
                 {
@@ -101,6 +101,8 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                 },
               );
 
+              setLoading(false);
+
               if (!activatedRef.current) {
                 activatedRef.current = true;
                 try {
@@ -108,13 +110,10 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                   await player.resume();
                 } catch {}
               }
-
-              ensureVideoPlay();
-              setPlaying(true);
-              setLoading(false);
             },
           );
 
+          /* ---------- STATE SYNC ---------- */
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           player.addListener("player_state_changed", (state: any) => {
             if (!state) return;
@@ -130,25 +129,6 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
           player.connect();
         };
-
-        /* 🔐 HANDLER MUSI ISTNIEĆ ZANIM SDK SIĘ ZAŁADUJE */
-        window.onSpotifyWebPlaybackSDKReady = () => {
-          startPlayer();
-        };
-
-        /* ---------- LOAD SDK ---------- */
-        if (!document.getElementById("spotify-sdk")) {
-          const script = document.createElement("script");
-          script.id = "spotify-sdk";
-          script.src = "https://sdk.scdn.co/spotify-player.js";
-          script.async = true;
-          document.body.appendChild(script);
-        }
-
-        /* ---------- JEŚLI JUŻ JEST ZAŁADOWANE ---------- */
-        if (window.Spotify) {
-          startPlayer();
-        }
       } catch (e) {
         if (!destroyed) {
           console.error(e);
