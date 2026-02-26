@@ -117,11 +117,25 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                   play: false,
                 }),
               });
-              // UX: hide loading immediately
-              setLoading(false);
+
               // Play
+              // await fetch(
+              //   `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
+              //   {
+              //     method: "PUT",
+              //     headers: {
+              //       Authorization: `Bearer ${token}`,
+              //       "Content-Type": "application/json",
+              //     },
+              //     body: JSON.stringify({
+              //       uris: [`spotify:track:${spotifyTrackId}`],
+              //     }),
+              //   },
+              // );
+
+              // 🔁 RESET TRACK (always from 0)
               await fetch(
-                `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
+                `https://api.spotify.com/v1/me/player/seek?position_ms=0&device_id=${device_id}`,
                 {
                   method: "PUT",
                   headers: {
@@ -133,18 +147,8 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                   }),
                 },
               );
-
-              // 🔁 RESET TRACK (always from 0)
-              await fetch(
-                `https://api.spotify.com/v1/me/player/seek?position_ms=0&device_id=${device_id}`,
-                {
-                  method: "PUT",
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                },
-              );
-
+              // UX: hide loading immediately
+              setLoading(false);
               // Activate audio context
               if (!activatedRef.current) {
                 activatedRef.current = true;
