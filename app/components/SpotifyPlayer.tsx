@@ -21,7 +21,6 @@ declare global {
 }
 
 export default function SpotifyPlayer({ cardId, onNext }: Props) {
-  // Spotify
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
   const deviceIdRef = useRef<string | null>(null);
@@ -30,18 +29,10 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
   // Video
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Time sync
-  const lastSpotifyUpdateRef = useRef(0);
-  const lastPositionRef = useRef(0);
-  const durationRef = useRef(1);
-
   // UI state
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(1);
 
   const video = "/video2.mp4";
 
@@ -78,13 +69,13 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
         if (!spotifyTrackId) throw new Error("no spotifyTrackId");
 
         /* ---------- SDK LOAD ---------- */
-        if (!document.getElementById("spotify-sdk")) {
-          const script = document.createElement("script");
-          script.id = "spotify-sdk";
-          script.src = "https://sdk.scdn.co/spotify-player.js";
-          script.async = true;
-          document.body.appendChild(script);
-        }
+        // if (!document.getElementById("spotify-sdk")) {
+        //   const script = document.createElement("script");
+        //   script.id = "spotify-sdk";
+        //   script.src = "https://sdk.scdn.co/spotify-player.js";
+        //   script.async = true;
+        //   document.body.appendChild(script);
+        // }
 
         window.onSpotifyWebPlaybackSDKReady = () => {
           if (destroyed) return;
@@ -133,23 +124,8 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                 },
               );
 
-              // 🔁 RESET TRACK (always from 0)
-              // await fetch(
-              //   `https://api.spotify.com/v1/me/player/seek?position_ms=0&device_id=${device_id}`,
-              //   {
-              //     method: "PUT",
-              //     headers: {
-              //       Authorization: `Bearer ${token}`,
-              //       "Content-Type": "application/json",
-              //     },
-              //     body: JSON.stringify({
-              //       uris: [`spotify:track:${spotifyTrackId}`],
-              //     }),
-              //   },
-              // );
-              // UX: hide loading immediately
               setLoading(false);
-              // Activate audio context
+
               if (!activatedRef.current) {
                 activatedRef.current = true;
                 try {
@@ -165,12 +141,6 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
           player.addListener("player_state_changed", (state: any) => {
             if (!state) return;
 
-            // Spotify time source
-            lastSpotifyUpdateRef.current = performance.now();
-            lastPositionRef.current = state.position;
-
-            durationRef.current = state.duration;
-            setDuration(state.duration);
             setPlaying(!state.paused);
 
             // 🎥 Video sync ONLY when audio is реально playing
@@ -181,30 +151,8 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
             }
           });
 
-          /* ---------- ERRORS ---------- */
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("initialization_error", (e: any) =>
-            console.error("init error", e),
-          );
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("authentication_error", (e: any) =>
-            console.error("auth error", e),
-          );
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("account_error", (e: any) => {
-            console.error("account error", e);
-            setError("Brak Spotify Premium");
-          });
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          player.addListener("playback_error", (e: any) =>
-            console.error("playback error", e),
-          );
-
           player.connect();
         };
-        if (window.Spotify) {
-          window.onSpotifyWebPlaybackSDKReady();
-        }
       } catch (e) {
         if (!destroyed) {
           console.error(e);
@@ -225,27 +173,6 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
     };
   }, [cardId]);
 
-  /* ---------- SMOOTH PROGRESS RAF ---------- */
-  useEffect(() => {
-    if (!playing) return;
-
-    let rafId: number;
-
-    const tick = () => {
-      const now = performance.now();
-      const dt = now - lastSpotifyUpdateRef.current;
-
-      const interpolated = lastPositionRef.current + dt;
-
-      setProgress(interpolated);
-
-      rafId = requestAnimationFrame(tick);
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [playing]);
-
   /* ---------- TOGGLE ---------- */
   function togglePlay() {
     const player = playerRef.current;
@@ -259,8 +186,6 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
       ensureVideoPlay();
     }
   }
-
-  const progressPercent = Math.min((progress / duration) * 100, 100);
 
   return (
     <div className="flex relative h-full w-full flex-col bg-black text-white">
@@ -310,14 +235,6 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
             Następny utwór
             <ImNext className="text-4xl" />
           </button>
-
-          {/* PROGRESS */}
-          <div className="fixed z-50 bottom-0 left-0 h-1.25 w-full bg-black overflow-hidden">
-            <div
-              className="h-full bg-red-800 rounded-r-2xl transition-[width] duration-75 linear"
-              style={{ width: `${progressPercent}%` }}
-            />
-          </div>
         </>
       ) : (
         <Loading />
