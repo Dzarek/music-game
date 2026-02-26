@@ -41,9 +41,28 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
 
           const match = decodedText.match(/\/card\/([^/?]+)/);
           const cardId = match ? match[1] : decodedText;
+
+          async function preload(cardId: string) {
+            // warm token
+            fetch("/api/auth/spotify/token");
+
+            // warm card
+            fetch(`/api/card/${cardId}/play`);
+
+            // 🔥 preload Spotify SDK
+            if (!document.getElementById("spotify-sdk")) {
+              const script = document.createElement("script");
+              script.id = "spotify-sdk";
+              script.src = "https://sdk.scdn.co/spotify-player.js";
+              script.async = true;
+              document.body.appendChild(script);
+            }
+          }
+
+          preload(cardId);
+
           router.prefetch(`/card/${cardId}`);
           onScan(cardId);
-          // navigator.vibrate?.(20);
 
           qr.stop().catch(() => {});
           qrCodeRef.current = null;

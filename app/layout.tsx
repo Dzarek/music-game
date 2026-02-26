@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo, Audiowide } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -58,6 +59,11 @@ export default function RootLayout({
       <body
         className={`${cairo.variable} ${audiowide.variable} antialiased bg-black`}
       >
+        {/* Spotify SDK preload */}
+        <Script
+          src="https://sdk.scdn.co/spotify-player.js"
+          strategy="beforeInteractive"
+        />
         {children}
       </body>
     </html>

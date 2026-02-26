@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { FaCirclePlay, FaCircleStop } from "react-icons/fa6";
 import { ImNext } from "react-icons/im";
 import Loading from "./Loading";
+import { getSpotifyToken } from "@/lib/spotifyToken";
+import { getCardData } from "@/lib/cardCache";
 
 type Props = {
   cardId: string;
@@ -64,17 +66,15 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
     async function init() {
       try {
         /* ---------- DATA PARALLEL ---------- */
-        const [tokenRes, cardRes] = await Promise.all([
-          fetch("/api/auth/spotify/token"),
-          fetch(`/api/card/${cardId}/play`),
-        ]);
+        const token = await getSpotifyToken();
+        const { spotifyTrackId } = await getCardData(cardId);
 
-        const tokenData = await tokenRes.json();
-        const token = tokenData?.token;
+        // const tokenData = await tokenRes.json();
+        // const token = tokenData?.token;
         if (!token) throw new Error("no token");
 
-        if (!cardRes.ok) throw new Error("no card");
-        const { spotifyTrackId } = await cardRes.json();
+        // if (!cardRes.ok) throw new Error("no card");
+        // const { spotifyTrackId } = await cardRes.json();
         if (!spotifyTrackId) throw new Error("no spotifyTrackId");
 
         /* ---------- SDK LOAD ---------- */
@@ -117,7 +117,8 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                   play: false,
                 }),
               });
-
+              // UX: hide loading immediately
+              setLoading(false);
               // Play
               await fetch(
                 `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
@@ -152,9 +153,6 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
                   await player.resume();
                 } catch {}
               }
-
-              // UX: hide loading immediately
-              setLoading(false);
             },
           );
 
@@ -200,6 +198,9 @@ export default function SpotifyPlayer({ cardId, onNext }: Props) {
 
           player.connect();
         };
+        if (window.Spotify) {
+          window.onSpotifyWebPlaybackSDKReady();
+        }
       } catch (e) {
         if (!destroyed) {
           console.error(e);
