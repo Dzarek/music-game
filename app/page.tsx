@@ -55,7 +55,7 @@ export default function Page() {
       {isPremium && (
         <button
           onClick={handleLogout}
-          className="fixed z-50 top-4 right-4 bg-green-800 px-2 py-1 rounded text-xs uppercase font-bold text-white"
+          className="fixed z-40 top-4 right-4 bg-green-800 px-2 py-1 rounded text-xs uppercase font-bold text-white"
         >
           Wyloguj Spotify
         </button>
