@@ -88,7 +88,7 @@ export default function ScanScreen({ onScan, onCancel, autoStart }: Props) {
   }, [onScan, autoStart, router]);
 
   return (
-    <div className="flex z-50 h-dvh w-screen flex-col items-center justify-center bg-black p-4 text-white">
+    <div className="flex fixed top-0 left-0 z-50 h-dvh w-screen flex-col items-center justify-center bg-black p-4 text-white">
       <div id={SCANNER_ID} className="w-full max-w-md" />
 
       {onCancel && !finishing && (
